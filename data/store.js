@@ -1,10 +1,13 @@
+import { initialActivities } from './initialData.js';
+
 export class TrainingStore {
   constructor() {
     this.activities = this._loadFromStorage();
   }
 
   _loadFromStorage() {
-    const data = localStorage.getItem('tri-activities');
+    // Using a new key 'tri-activities-v2' to force refresh with CSV data
+    const data = localStorage.getItem('tri-activities-v2');
     const activities = data ? JSON.parse(data) : [];
     if (activities.length === 0) {
       return this._seedData();
@@ -13,18 +16,12 @@ export class TrainingStore {
   }
 
   _seedData() {
-    const seed = [
-      { id: 1, type: 'run', distance: 10, duration: 50, notes: '조깅 10k', cadence: 175, date: new Date(Date.now() - 86400000 * 1).toISOString() },
-      { id: 2, type: 'bike', distance: 40, duration: 80, notes: '평지 라이딩', power: 180, cadence: 90, date: new Date(Date.now() - 86400000 * 2).toISOString() },
-      { id: 3, type: 'swim', distance: 1500, duration: 30, notes: '드릴 위주', date: new Date(Date.now() - 86400000 * 3).toISOString() },
-      { id: 4, type: 'run', distance: 5, duration: 22, notes: '인터벌 훈련', cadence: 182, date: new Date(Date.now() - 86400000 * 4).toISOString() },
-    ];
-    localStorage.setItem('tri-activities', JSON.stringify(seed));
-    return seed;
+    localStorage.setItem('tri-activities-v2', JSON.stringify(initialActivities));
+    return initialActivities;
   }
 
   _saveToStorage() {
-    localStorage.setItem('tri-activities', JSON.stringify(this.activities));
+    localStorage.setItem('tri-activities-v2', JSON.stringify(this.activities));
   }
 
   addActivity(activity) {
