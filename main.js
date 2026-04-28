@@ -1,13 +1,39 @@
 import { StorageService } from './services/storage.js';
 import { NewsService } from './services/news.js';
 
+const TRANSLATIONS = {
+    en: {
+        logo: 'Harness News Global',
+        main: 'Main',
+        todaysBriefing: "Today's Briefing",
+        archiveLogs: 'Archive Logs',
+        subTitle: 'Global industry trends and major issues report.',
+        fetching: 'Fetching latest industry data...',
+        recentIssue: 'Recent Issue',
+        today: "Today's Briefing",
+        archive: 'Archive'
+    },
+    ko: {
+        logo: '하네스 뉴스 글로벌',
+        main: '메인',
+        todaysBriefing: '오늘의 브리핑',
+        archiveLogs: '과거 로그',
+        subTitle: '글로벌 산업 동향 및 주요 이슈 보고서',
+        fetching: '최신 산업 데이터를 불러오는 중...',
+        recentIssue: '주요 이슈',
+        today: '오늘의 브리핑',
+        archive: '아카이브'
+    }
+};
+
 class IndustryApp extends HTMLElement {
     constructor() {
         super();
-        this.currentView = 'today'; // 'today' or 'archive'
+        this.currentView = 'today';
         this.selectedDate = new Date().toISOString().split('T')[0];
         this.briefingData = null;
         this.isLoading = false;
+        this.lang = localStorage.getItem('gidb_lang') || 'ko';
     }
 
     async connectedCallback() {
@@ -31,6 +57,12 @@ class IndustryApp extends HTMLElement {
         }
     }
 
+    setLanguage(lang) {
+        this.lang = lang;
+        localStorage.setItem('gidb_lang', lang);
+        this.render();
+    }
+
     setView(view, date = null) {
         this.currentView = view;
         if (date) {
@@ -44,6 +76,7 @@ class IndustryApp extends HTMLElement {
     }
 
     render() {
+        const t = TRANSLATIONS[this.lang];
         const availableDates = StorageService.getAvailableDates();
         const industries = NewsService.getIndustries();
 
@@ -52,20 +85,20 @@ class IndustryApp extends HTMLElement {
                 <aside>
                     <div class="logo">
                         <i data-lucide="globe"></i>
-                        <span>Harness News Global</span>
+                        <span>${t.logo}</span>
                     </div>
                     
                     <nav class="nav-section">
-                        <h3>Main</h3>
+                        <h3>${t.main}</h3>
                         <div class="nav-list">
                             <div class="nav-item ${this.currentView === 'today' ? 'active' : ''}" id="nav-today">
-                                <i data-lucide="layout-dashboard"></i> Today's Briefing
+                                <i data-lucide="layout-dashboard"></i> ${t.todaysBriefing}
                             </div>
                         </div>
                     </nav>
 
                     <nav class="nav-section">
-                        <h3>Archive Logs</h3>
+                        <h3>${t.archiveLogs}</h3>
                         <div class="nav-list" id="archive-list">
                             ${availableDates.map(date => `
                                 <div class="nav-item ${this.selectedDate === date && this.currentView === 'archive' ? 'active' : ''}" data-date="${date}">
@@ -79,21 +112,28 @@ class IndustryApp extends HTMLElement {
                 <main>
                     <header>
                         <div class="header-title">
-                            <h1>${this.currentView === 'today' ? "Today's Briefing" : `Archive: ${this.selectedDate}`}</h1>
-                            <p>Global industry trends and major issues report.</p>
+                            <h1>${this.currentView === 'today' ? t.today : `${t.archive}: ${this.selectedDate}`}</h1>
+                            <p>${t.subTitle}</p>
                         </div>
-                        <div class="date-display">
-                            <div class="today">${new Date(this.selectedDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                        <div class="top-controls">
+                            <div class="lang-toggle">
+                                <button class="lang-btn ${this.lang === 'ko' ? 'active' : ''}" data-lang="ko">KO</button>
+                                <button class="lang-btn ${this.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
+                            </div>
+                            <div class="date-display">
+                                <div class="today">${new Date(this.selectedDate).toLocaleDateString(this.lang === 'ko' ? 'ko-KR' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                            </div>
                         </div>
                     </header>
 
                     ${this.isLoading ? `
-                        <div style="display: flex; justify-content: center; align-items: center; height: 300px; color: var(--text-muted);">
-                            <p>Fetching latest industry data...</p>
+                        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 300px; color: var(--text-muted); gap: 1.5rem;">
+                            <span class="loader"></span>
+                            <p>${t.fetching}</p>
                         </div>
                     ` : `
                         <div class="briefing-grid">
-                            ${industries.map(ind => this.renderIndustrySection(ind)).join('')}
+                            ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
                         </div>
                     `}
                 </main>
@@ -104,7 +144,7 @@ class IndustryApp extends HTMLElement {
         if (window.lucide) lucide.createIcons();
     }
 
-    renderIndustrySection(industry) {
+    renderIndustrySection(industry, t) {
         const newsItems = this.briefingData ? this.briefingData[industry.id] : [];
         if (!newsItems || newsItems.length === 0) return '';
 
@@ -112,16 +152,16 @@ class IndustryApp extends HTMLElement {
             <section class="industry-section ${industry.id}">
                 <div class="industry-header">
                     <i data-lucide="${industry.icon}" style="color: var(--accent-${this.getAccentColor(industry.id)})"></i>
-                    <h2>${industry.name}</h2>
+                    <h2>${industry.name[this.lang]}</h2>
                 </div>
                 <div class="news-cards">
                     ${newsItems.map(item => `
                         <div class="news-card">
-                            <h4>${item.title}</h4>
-                            <p>${item.summary}</p>
+                            <h4>${item.title[this.lang]}</h4>
+                            <p>${item.summary[this.lang]}</p>
                             <div class="news-meta">
                                 <span class="badge">${item.source}</span>
-                                <span>Recent Issue</span>
+                                <span>${t.recentIssue}</span>
                             </div>
                         </div>
                     `).join('')}
@@ -148,6 +188,12 @@ class IndustryApp extends HTMLElement {
             item.addEventListener('click', () => {
                 const date = item.getAttribute('data-date');
                 this.setView('archive', date);
+            });
+        });
+
+        this.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setLanguage(btn.getAttribute('data-lang'));
             });
         });
     }

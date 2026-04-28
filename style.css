@@ -108,7 +108,7 @@ header {
     margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .header-title h1 {
@@ -119,6 +119,38 @@ header {
 
 .header-title p {
     color: var(--text-muted);
+}
+
+.top-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.lang-toggle {
+    display: flex;
+    background-color: var(--bg-secondary);
+    padding: 0.25rem;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+}
+
+.lang-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    color: var(--text-muted);
+    border: none;
+    background: none;
+}
+
+.lang-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
 }
 
 .date-display {
@@ -211,12 +243,28 @@ header {
     font-weight: 600;
 }
 
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--bg-tertiary);
+    border-bottom-color: var(--accent-blue);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .app-container {
         grid-template-columns: 1fr;
     }
     aside {
-        display: none; /* In a real app, I'd implement a mobile menu */
+        display: none; 
     }
 }
