@@ -1,38 +1,37 @@
-# Triathlon Training Analysis Dashboard Blueprint
+# Global Industry Daily Briefing (GIDB) Blueprint
 
 ## Overview
-A modern, high-performance web application designed for triathletes to track and analyze their swimming, cycling, and running training sessions. The app provides visual insights into training volume, performance trends, and an integrated AI Coach for personalized training advice.
+A professional dashboard for industry professionals to stay updated on global trends in Robotics, Automotive, Battery, Wiring Harness, and Automation Equipment. The app provides curated daily briefings and maintains a historical log of all past reports for retrospective analysis.
 
 ## Features & Style
 - **Visual Design:**
-  - Modern, mobile-responsive layout with a dashboard feel.
-  - OKLCH color palette: Blue (Swim), Orange (Bike), Green (Run), Purple (AI Coach).
-  - High-depth shadows and subtle textures for a premium aesthetic.
-  - Interactive icons and smooth transitions.
+  - **Industrial Professional Theme:** Clean, high-contrast UI with a focus on readability.
+  - **Dynamic Icons:** Industry-specific iconography (e.g., Robot for Robotics, Battery for Power systems).
+  - **Responsive Layout:** Works seamlessly on desktop and mobile for on-the-go updates.
 - **Functional Features:**
-  - **Dashboard:** Real-time summary of training volume and Chart.js visualizations.
-  - **Activity Logging:** Support for Swim, Bike, and Run with specialized metrics.
-  - **History:** Searchable/filterable list of past sessions.
-  - **AI Coach (New):** An interactive assistant that analyzes your training data to provide performance insights and answer training-related questions.
-  - **Data Persistence:** LocalStorage for session-based tracking.
+  - **Daily Briefing Engine:** Automatically generates or displays the latest industry news.
+  - **Historical Logging:** Saves daily briefings to LocalStorage, organized by date.
+  - **Archive Navigator:** A dedicated view to browse and read past briefings.
+  - **Industry Segmentation:** Categorized news sections for focused reading.
 
 ## Technology Stack
 - Framework-less HTML/CSS/JavaScript.
-- Web Components for UI encapsulation.
-- Modern CSS (Container Queries, `:has()`, Cascade Layers).
-- Chart.js for visualizations.
-- Lucide Icons for iconography.
+- **Web Components:** Encapsulated UI for Modular growth.
+- **Modern CSS:** Grid/Flexbox, CSS Variables, and Container Queries.
+- **LocalStorage API:** For client-side data persistence of historical logs.
 
-## Current Plan: AI Assistant Integration
-1.  **UI Updates:** 
-    - Add "AI Coach" button to the sidebar in `index.html`.
-    - Create a dedicated `view-ai` container.
-2.  **AI Component:** 
-    - Implement `components/AIAssistant.js` Web Component.
-    - Feature a chat interface (input + message history).
-    - Logic to analyze `store.js` data and generate "coaching" responses.
-3.  **Styling:** 
-    - Add specific styles for the chat bubble, AI persona, and interactive elements.
-4.  **Integration:**
-    - Update `main.js` to handle navigation to the AI view.
-    - Ensure the AI can access current training stats for context-aware answers.
+## Current Plan: Initial Implementation
+1.  **Project Cleanup:** Remove all legacy triathlon-related files.
+2.  **Scaffolding:**
+    - Initialize `index.html` with a modern shell.
+    - Setup `services/storage.js` for log management.
+    - Setup `services/news.js` for data fetching.
+3.  **Component Development:**
+    - `industry-briefing-app`: The main orchestrator.
+    - `briefing-card`: Component for individual news items.
+    - `archive-sidebar`: Navigation for historical logs.
+4.  **Data Integration:**
+    - Implement logic to check for "Today's Briefing" on load.
+    - If missing, fetch latest data and save to logs.
+5.  **Styling:** 
+    - Apply professional typography and a color-coded system for different industries.

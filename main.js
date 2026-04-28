@@ -1,207 +1,156 @@
-import { store } from './data/store.js';
-import './components/LogActivityForm.js';
-import './components/AIAssistant.js';
+import { StorageService } from './services/storage.js';
+import { NewsService } from './services/news.js';
 
-class App {
-  constructor() {
-    this.chart = null;
-    this.filters = {
-      type: 'month',
-      year: new Date().getFullYear().toString(),
-      month: new Date().getMonth().toString(),
-      week: 'all'
-    };
-    this.init();
-  }
-
-  init() {
-    this.setupNavigation();
-    this.setupFilters();
-    this.updateDashboard();
-    this.renderHistory();
-    this.initChart();
-
-    window.addEventListener('activity-added', () => {
-      this.updateDashboard();
-      this.renderHistory();
-      this.updateChart();
-    });
-  }
-
-  setupNavigation() {
-    const navButtons = document.querySelectorAll('.nav-btn');
-    const views = document.querySelectorAll('.view');
-
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const viewId = btn.getAttribute('data-view');
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        views.forEach(v => v.classList.remove('active'));
-        document.getElementById(`view-${viewId}`).classList.add('active');
-        if (viewId === 'dashboard') this.updateChart();
-      });
-    });
-  }
-
-  setupFilters() {
-    const typeSelect = document.getElementById('filter-type');
-    const yearSelect = document.getElementById('filter-year');
-    const monthSelect = document.getElementById('filter-month');
-    const weekSelect = document.getElementById('filter-week');
-
-    // Populate Years
-    const years = store.getYears();
-    yearSelect.innerHTML = years.map(y => `<option value="${y}" ${y === this.filters.year ? 'selected' : ''}>${y}년</option>`).join('');
-
-    const updateFilterVisibility = () => {
-      const type = typeSelect.value;
-      document.getElementById('group-month').style.display = type === 'year' ? 'none' : 'block';
-      document.getElementById('group-week').style.display = type === 'week' ? 'block' : 'none';
-      
-      if (type === 'week') {
-        this.populateWeeks();
-      }
-    };
-
-    typeSelect.addEventListener('change', (e) => {
-      this.filters.type = e.target.value;
-      updateFilterVisibility();
-      this.updateDashboard();
-      this.updateChart();
-    });
-
-    yearSelect.addEventListener('change', (e) => {
-      this.filters.year = e.target.value;
-      if (this.filters.type === 'week') this.populateWeeks();
-      this.updateDashboard();
-      this.updateChart();
-    });
-
-    monthSelect.addEventListener('change', (e) => {
-      this.filters.month = e.target.value;
-      if (this.filters.type === 'week') this.populateWeeks();
-      this.updateDashboard();
-      this.updateChart();
-    });
-
-    weekSelect.addEventListener('change', (e) => {
-      this.filters.week = e.target.value;
-      this.updateDashboard();
-      this.updateChart();
-    });
-
-    updateFilterVisibility();
-  }
-
-  populateWeeks() {
-    const weekSelect = document.getElementById('filter-week');
-    const weeks = store.getWeeksOfMonth(this.filters.year, this.filters.month);
-    weekSelect.innerHTML = weeks.map(w => `<option value="${w}">${w}주차</option>`).join('');
-    this.filters.week = weekSelect.value;
-  }
-
-  updateDashboard() {
-    const totals = store.getTotals(this.filters.type, this.filters.year, this.filters.month, this.filters.week);
-    document.getElementById('swim-total-dist').textContent = totals.swim.dist.toLocaleString();
-    document.getElementById('swim-total-time').textContent = totals.swim.time.toLocaleString();
-    document.getElementById('bike-total-dist').textContent = totals.bike.dist.toLocaleString();
-    document.getElementById('bike-total-time').textContent = totals.bike.time.toLocaleString();
-    document.getElementById('run-total-dist').textContent = totals.run.dist.toLocaleString();
-    document.getElementById('run-total-time').textContent = totals.run.time.toLocaleString();
-  }
-
-  calculatePace(type, dist, time) {
-    if (!dist || !time || dist == 0) return '-';
-    if (type === 'run') {
-      const paceMin = Math.floor(time / dist);
-      const paceSec = Math.round((time / dist - paceMin) * 60);
-      return `${paceMin}:${paceSec.toString().padStart(2, '0')}/km`;
-    } else if (type === 'bike') {
-      return `${(dist / (time / 60)).toFixed(1)} km/h`;
-    } else if (type === 'swim') {
-      const pacePer100 = (time * 60) / (dist / 100);
-      const min = Math.floor(pacePer100 / 60);
-      const sec = Math.round(pacePer100 % 60);
-      return `${min}:${sec.toString().padStart(2, '0')}/100m`;
+class IndustryApp extends HTMLElement {
+    constructor() {
+        super();
+        this.currentView = 'today'; // 'today' or 'archive'
+        this.selectedDate = new Date().toISOString().split('T')[0];
+        this.briefingData = null;
+        this.isLoading = false;
     }
-    return '-';
-  }
 
-  renderHistory() {
-    const list = document.getElementById('activity-list');
-    const activities = store.getActivities();
-    
-    list.innerHTML = activities.map(a => {
-      const pace = this.calculatePace(a.type, a.distance, a.duration);
-      let extraInfo = '';
-      if (a.type === 'run' && a.cadence) extraInfo = ` • ${a.cadence} spm`;
-      if (a.type === 'bike') {
-        if (a.power) extraInfo += ` • ${a.power} W`;
-        if (a.cadence) extraInfo += ` • ${a.cadence} rpm`;
-      }
+    async connectedCallback() {
+        await this.init();
+        this.render();
+    }
 
-      return `
-        <div class="activity-item ${a.type}">
-          <div class="activity-info">
-            <h4>${this.getDisciplineLabel(a.type)}</h4>
-            <p>${new Date(a.date).toLocaleDateString('ko-KR')} • ${a.notes || '기록 없음'}</p>
-            <p style="font-size: 0.8rem; color: var(--color-text-dim); margin-top: 4px;">
-               ${pace}${extraInfo}
-            </p>
-          </div>
-          <div class="activity-metrics">
-            <div>${a.distance} ${a.type === 'swim' ? 'm' : 'km'}</div>
-            <div style="font-size: 0.75rem; color: var(--color-text-dim)">${a.duration}분</div>
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
+    async init() {
+        const today = new Date().toISOString().split('T')[0];
+        const existingBriefing = StorageService.getBriefingByDate(today);
 
-  getDisciplineLabel(type) {
-    const labels = { swim: '수영 🏊‍♂️', bike: '자전거 🚴‍♂️', run: '달리기 🏃‍♂️' };
-    return labels[type] || type;
-  }
-
-  initChart() {
-    const ctx = document.getElementById('volumeChart').getContext('2d');
-    const data = store.getFilteredChartData(this.filters.type, this.filters.year, this.filters.month, this.filters.week);
-    this.chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: data.labels,
-        datasets: [
-          { label: '수영', data: data.swimData, backgroundColor: 'rgba(105, 175, 230, 0.6)' },
-          { label: '자전거', data: data.bikeData, backgroundColor: 'rgba(230, 126, 34, 0.6)' },
-          { label: '달리기', data: data.runData, backgroundColor: 'rgba(46, 204, 113, 0.6)' }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { position: 'bottom', labels: { color: '#ecf0f1' } } },
-        scales: {
-          x: { stacked: true, grid: { display: false }, ticks: { color: '#95a5a6' } },
-          y: { stacked: true, grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#95a5a6' } }
+        if (!existingBriefing) {
+            this.isLoading = true;
+            this.render();
+            const newBriefing = await NewsService.fetchLatestBriefing();
+            StorageService.saveBriefing(today, newBriefing);
+            this.briefingData = newBriefing;
+            this.isLoading = false;
+        } else {
+            this.briefingData = existingBriefing;
         }
-      }
-    });
-  }
+    }
 
-  updateChart() {
-    const data = store.getFilteredChartData(this.filters.type, this.filters.year, this.filters.month, this.filters.week);
-    this.chart.data.labels = data.labels;
-    this.chart.data.datasets[0].data = data.swimData;
-    this.chart.data.datasets[1].data = data.bikeData;
-    this.chart.data.datasets[2].data = data.runData;
-    
-    // Update chart title/labels based on view
-    const title = this.filters.type === 'year' ? '월간 훈련량 (분)' : 
-                  this.filters.type === 'month' ? '일간 훈련량 (분)' : '주간 일일 훈련량 (분)';
-    this.chart.options.plugins.title = { display: true, text: title, color: '#ecf0f1' };
-    
-    this.chart.update();
-  }
+    setView(view, date = null) {
+        this.currentView = view;
+        if (date) {
+            this.selectedDate = date;
+            this.briefingData = StorageService.getBriefingByDate(date);
+        } else {
+            this.selectedDate = new Date().toISOString().split('T')[0];
+            this.briefingData = StorageService.getBriefingByDate(this.selectedDate);
+        }
+        this.render();
+    }
+
+    render() {
+        const availableDates = StorageService.getAvailableDates();
+        const industries = NewsService.getIndustries();
+
+        this.innerHTML = `
+            <div class="app-container">
+                <aside>
+                    <div class="logo">
+                        <i data-lucide="globe"></i>
+                        <span>GIDB Global</span>
+                    </div>
+                    
+                    <nav class="nav-section">
+                        <h3>Main</h3>
+                        <div class="nav-list">
+                            <div class="nav-item ${this.currentView === 'today' ? 'active' : ''}" id="nav-today">
+                                <i data-lucide="layout-dashboard"></i> Today's Briefing
+                            </div>
+                        </div>
+                    </nav>
+
+                    <nav class="nav-section">
+                        <h3>Archive Logs</h3>
+                        <div class="nav-list" id="archive-list">
+                            ${availableDates.map(date => `
+                                <div class="nav-item ${this.selectedDate === date && this.currentView === 'archive' ? 'active' : ''}" data-date="${date}">
+                                    <i data-lucide="calendar"></i> ${date}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </nav>
+                </aside>
+
+                <main>
+                    <header>
+                        <div class="header-title">
+                            <h1>${this.currentView === 'today' ? "Today's Briefing" : `Archive: ${this.selectedDate}`}</h1>
+                            <p>Global industry trends and major issues report.</p>
+                        </div>
+                        <div class="date-display">
+                            <div class="today">${new Date(this.selectedDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                        </div>
+                    </header>
+
+                    ${this.isLoading ? `
+                        <div style="display: flex; justify-content: center; align-items: center; height: 300px; color: var(--text-muted);">
+                            <p>Fetching latest industry data...</p>
+                        </div>
+                    ` : `
+                        <div class="briefing-grid">
+                            ${industries.map(ind => this.renderIndustrySection(ind)).join('')}
+                        </div>
+                    `}
+                </main>
+            </div>
+        `;
+
+        this.attachEventListeners();
+        if (window.lucide) lucide.createIcons();
+    }
+
+    renderIndustrySection(industry) {
+        const newsItems = this.briefingData ? this.briefingData[industry.id] : [];
+        if (!newsItems || newsItems.length === 0) return '';
+
+        return `
+            <section class="industry-section ${industry.id}">
+                <div class="industry-header">
+                    <i data-lucide="${industry.icon}" style="color: var(--accent-${this.getAccentColor(industry.id)})"></i>
+                    <h2>${industry.name}</h2>
+                </div>
+                <div class="news-cards">
+                    ${newsItems.map(item => `
+                        <div class="news-card">
+                            <h4>${item.title}</h4>
+                            <p>${item.summary}</p>
+                            <div class="news-meta">
+                                <span class="badge">${item.source}</span>
+                                <span>Recent Issue</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </section>
+        `;
+    }
+
+    getAccentColor(id) {
+        const colors = {
+            robotics: 'blue',
+            automotive: 'orange',
+            battery: 'green',
+            wiring: 'purple',
+            automation: 'yellow'
+        };
+        return colors[id] || 'blue';
+    }
+
+    attachEventListeners() {
+        this.querySelector('#nav-today').addEventListener('click', () => this.setView('today'));
+        
+        this.querySelectorAll('#archive-list .nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const date = item.getAttribute('data-date');
+                this.setView('archive', date);
+            });
+        });
+    }
 }
 
-new App();
+customElements.define('industry-app', IndustryApp);
