@@ -152,19 +152,23 @@ class IndustryApp extends HTMLElement {
             <section class="industry-section ${industry.id}">
                 <div class="industry-header">
                     <i data-lucide="${industry.icon}" style="color: var(--accent-${this.getAccentColor(industry.id)})"></i>
-                    <h2>${industry.name[this.lang]}</h2>
+                    <h2>${industry.name[this.lang] || industry.name['en'] || industry.name}</h2>
                 </div>
                 <div class="news-cards">
-                    ${newsItems.map(item => `
-                        <div class="news-card">
-                            <h4>${item.title[this.lang]}</h4>
-                            <p>${item.summary[this.lang]}</p>
-                            <div class="news-meta">
-                                <span class="badge">${item.source}</span>
-                                <span>${t.recentIssue}</span>
+                    ${newsItems.map(item => {
+                        const title = typeof item.title === 'object' ? item.title[this.lang] || item.title['en'] : item.title;
+                        const summary = typeof item.summary === 'object' ? item.summary[this.lang] || item.summary['en'] : item.summary;
+                        return `
+                            <div class="news-card">
+                                <h4>${title}</h4>
+                                <p>${summary}</p>
+                                <div class="news-meta">
+                                    <span class="badge">${item.source}</span>
+                                    <span>${t.recentIssue}</span>
+                                </div>
                             </div>
-                        </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             </section>
         `;
@@ -193,6 +197,14 @@ class IndustryApp extends HTMLElement {
 
         this.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => {
+                this.setLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+    }
+}
+
+customElements.define('industry-app', IndustryApp);
+btn.addEventListener('click', () => {
                 this.setLanguage(btn.getAttribute('data-lang'));
             });
         });
