@@ -52,7 +52,7 @@ class IndustryApp extends HTMLElement {
                 <aside>
                     <div class="logo">
                         <i data-lucide="globe"></i>
-                        <span>GIDB Global</span>
+                        <span>Harness News Global</span>
                     </div>
                     
                     <nav class="nav-section">
