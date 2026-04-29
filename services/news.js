@@ -29,7 +29,7 @@ export const NewsService = {
                             title: { en: 'Humanoid robot beats human half-marathon world record in Beijing', ko: '베이징 하프 마라톤에서 인간 세계 기록을 경신한 휴머노이드 로봇' }, 
                             summary: { en: 'Chinese brand HONOR\'s "Lightning" robot set a new half-marathon record of 50m 26s, significantly faster than the human world record.', ko: '중국 HONOR사의 "라이트닝" 로봇이 하프 마라톤에서 50분 26초를 기록하며 기존 인간 세계 기록(57분 20초)을 6분 이상 앞당겼습니다.' }, 
                             source: 'CBS News',
-                            url: 'https://www.cbsnews.com/news/humanoid-robot-beats-human-half-marathon-world-record-beijing/#:~:text=50%20minutes%20and%2026%20seconds',
+                            url: 'https://www.cbsnews.com/news/humanoid-robot-beats-human-half-marathon-world-record-beijing/',
                             date: today
                         },
                         { 
@@ -49,10 +49,10 @@ export const NewsService = {
                             date: today
                         },
                         { 
-                            title: { en: 'BMW Unveils Durable Color-Changing E Ink Tech', ko: 'BMW, 내구성이 강화된 색상 변경 E-Ink 기술 공개' }, 
-                            summary: { en: 'The iX3 Flow Edition features E Ink Prism technology embedded directly into the hood structure for mass production.', ko: 'BMW가 보닛 구조에 직접 E-Ink를 내장하여 양산에 가까워진 iX3 Flow 에디션을 베이징 오토쇼에서 선보였습니다.' }, 
-                            source: 'The Verge',
-                            url: 'https://www.theverge.com/2022/1/5/22867090/bmw-color-changing-car-ces-2022-e-ink',
+                            title: { en: 'BMW Unveils Series-Ready iX3 Flow with Integrated E Ink Technology', ko: 'BMW, 양산 준비를 마친 E-Ink 내장형 iX3 플로우 공개' }, 
+                            summary: { en: 'At Auto China 2026, BMW revealed the iX3 Flow Edition featuring E Ink Prism technology integrated directly into the hood structure.', ko: '2026 베이징 오토쇼에서 BMW는 보닛 구조에 직접 E-Ink 기술을 통합하여 내구성과 양산성을 확보한 iX3 플로우 에디션을 정식 공개했습니다.' }, 
+                            source: 'BMW Blog',
+                            url: 'https://www.bmwblog.com/2026/04/24/bmw-ix3-flow-beijing-auto-show/',
                             date: today
                         }
                     ],
@@ -74,10 +74,10 @@ export const NewsService = {
                     ],
                     wiring: [
                         { 
-                            title: { en: 'Automotive Wire Harness Market Size to Reach $72.99 Billion in 2026', ko: '2026년 글로벌 자동차 와이어링 하네스 시장 729억 달러 도달 전망' }, 
-                            summary: { en: 'Market growth is driven by EV architecture complexity and the demand for high-speed data transmission for ADAS.', ko: '전기차(EV) 아키텍처의 복잡성 증가와 자율주행(ADAS)을 위한 고속 데이터 전송 수요에 힘입어 2026년 하네스 시장이 729억 달러 규모로 성장할 것으로 분석되었습니다.' }, 
-                            source: 'The Business Research Company',
-                            url: 'https://www.thebusinessresearchcompany.com/report/automotive-wire-harness-global-market-report#:~:text=72.99%20billion%20in%202026',
+                            title: { en: 'Automotive Wire Harness Market Valuation Projected to Hit $100 Billion by 2026', ko: '글로벌 자동차 와이어링 하네스 시장 규모, 2026년 1000억 달러 돌파 전망' }, 
+                            summary: { en: 'Recent industry analysis shows the global market is set to surpass $100 billion by 2026, driven by high-voltage EV requirements.', ko: '최신 산업 분석에 따르면, 전기차(EV)의 고전압 시스템 수요와 자율주행 전자 장비의 복잡성 증가로 인해 2026년 하네스 시장 규모가 1,000억 달러를 넘어설 것으로 보입니다.' }, 
+                            source: 'Research Nester',
+                            url: 'https://www.researchnester.com/reports/automotive-wiring-harness-market/4432',
                             date: today
                         },
                         { 
@@ -90,15 +90,15 @@ export const NewsService = {
                     ],
                     automation: [
                         { 
-                            title: { en: 'Intel and FPT collaborate to advance AI-driven autonomous factories', ko: '인텔-FPT, AI 기반 자율 공장 고도화를 위한 전략적 협력' }, 
-                            summary: { en: 'The partnership integrates digital twin technology with AI to optimize material flows and resolve production bottlenecks in real-time.', ko: '인텔과 FPT가 협력하여 디지털 트윈과 AI를 결합한 공장 최적화 솔루션을 개발합니다. 실시간 병목 현상 감지 및 자율적인 물류 관리를 통해 생산 효율을 극대화합니다.' }, 
-                            source: 'CRN Asia',
-                            url: 'https://www.crn.asia/news/intel-and-fpt-collaborate-to-advance-ai-driven-autonomous-factories-202604',
+                            title: { en: 'Intel and FPT Collaborate to Advance AI-Driven Autonomous Factories', ko: '인텔-FPT, AI 기반 자율 공장 구현을 위한 전략적 파트너십 체결' }, 
+                            summary: { en: 'Intel and FPT announced a collaboration to deliver an end-to-end AI factory optimization solution using Digital Twin technology.', ko: '인텔과 FPT가 협력하여 디지털 트윈 기반의 공장 최적화 솔루션을 발표했습니다. 실시간 시뮬레이션을 통해 생산 병목 현상을 해결하는 자율 공장 운영의 핵심 기술입니다.' }, 
+                            source: 'Business Wire',
+                            url: 'https://www.businesswire.com/news/home/20260427301486/en/Intel-and-FPT-Collaborate-to-Advance-AI-Driven-Autonomous-Factories',
                             date: today
                         },
                         { 
-                            title: { en: 'Siemens and NVIDIA expand partnership for Industrial Metaverse', ko: '지멘스-엔비디아, 산업용 메타버스 구현을 위한 파트너십 확대' }, 
-                            summary: { en: 'The launch of Digital Twin Composer enables AI agents to perform autonomous root-cause analysis in factory simulations.', ko: '지멘스가 엔비디아와 협력하여 디지털 트윈 컴포저를 출시했습니다. AI 에이전트가 가상 공장 시뮬레이션에서 스스로 문제 원인을 분석하고 최적화하는 산업용 메타버스 시대가 열리고 있습니다.' }, 
+                            title: { en: 'Siemens and NVIDIA Expand Partnership for the Industrial Metaverse', ko: '지멘스-엔비디아, 산업용 메타버스 구현을 위한 파트너십 확대' }, 
+                            summary: { en: 'The Digital Twin Composer enables AI agents to perform autonomous root-cause analysis in high-fidelity factory simulations.', ko: '지멘스와 엔비디아가 협력하여 디지털 트윈 컴포저를 출시했습니다. AI 에이전트가 가상 공장에서 실시간으로 문제의 원인을 분석하고 생산을 최적화하는 기술입니다.' }, 
                             source: 'Siemens News',
                             url: 'https://www.siemens.com/global/en/company/stories/industry/2024/siemens-nvidia-generative-ai-visualization-digital-twin.html',
                             date: today
