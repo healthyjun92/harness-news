@@ -13,7 +13,8 @@ const TRANSLATIONS = {
         fetching: 'Fetching latest industry data...',
         recentIssue: 'Recent Issue',
         today: "Today's Briefing",
-        archive: 'Archive'
+        archive: 'Archive',
+        lastUpdated: 'Last updated'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -24,7 +25,8 @@ const TRANSLATIONS = {
         fetching: '최신 산업 데이터를 불러오는 중...',
         recentIssue: '주요 이슈',
         today: '오늘의 브리핑',
-        archive: '아카이브'
+        archive: '아카이브',
+        lastUpdated: '최종 수정'
     }
 };
 
@@ -65,7 +67,13 @@ class IndustryApp extends HTMLElement {
         const today = new Date().toISOString().split('T')[0];
         const existingBriefing = StorageService.getBriefingByDate(today);
 
-        if (!existingBriefing) {
+        // Check if data exists AND has the new 'url' field (by checking first item of robotics)
+        const isDataUpToDate = existingBriefing && 
+                              existingBriefing.robotics && 
+                              existingBriefing.robotics[0] && 
+                              existingBriefing.robotics[0].url;
+
+        if (!existingBriefing || !isDataUpToDate) {
             this.isLoading = true;
             this.render();
             const newBriefing = await NewsService.fetchLatestBriefing();
@@ -192,13 +200,21 @@ class IndustryApp extends HTMLElement {
                     ${newsItems.map(item => {
                         const title = typeof item.title === 'object' ? item.title[this.lang] || item.title['en'] : item.title;
                         const summary = typeof item.summary === 'object' ? item.summary[this.lang] || item.summary['en'] : item.summary;
+                        const hasUrl = item.url && item.url !== 'undefined';
+                        
                         return `
                             <div class="news-card">
                                 <h4>${title}</h4>
                                 <p>${summary}</p>
                                 <div class="news-meta">
-                                    <span class="badge">${item.source}</span>
-                                    <span>${t.recentIssue}</span>
+                                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                        ${hasUrl ? 
+                                            `<a href="${item.url}" target="_blank" class="badge source-link">${item.source}</a>` : 
+                                            `<span class="badge">${item.source}</span>`
+                                        }
+                                        <span class="issue-badge">${t.recentIssue}</span>
+                                    </div>
+                                    <span class="update-date">${t.lastUpdated}: ${item.date || this.selectedDate}</span>
                                 </div>
                             </div>
                         `;
