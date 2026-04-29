@@ -8,11 +8,14 @@ A professional dashboard for industry professionals to stay updated on global tr
   - **Industrial Professional Theme:** Clean, high-contrast UI with a focus on readability.
   - **Dynamic Icons:** Industry-specific iconography (e.g., Robot for Robotics, Battery for Power systems).
   - **Responsive Layout:** Works seamlessly on desktop and mobile for on-the-go updates.
+  - **Interactive News Cards:** Clickable titles and explicit "Read Full Article" links for quick access to source content.
 - **Functional Features:**
+  - **Direct News Access:** Every news item links directly to a verified article, bypassing general news lists.
   - **Daily Briefing Engine:** Automatically generates or displays the latest industry news.
   - **Historical Logging:** Saves daily briefings to LocalStorage, organized by date.
   - **Archive Navigator:** A dedicated view to browse and read past briefings.
   - **Industry Segmentation:** Categorized news sections for focused reading.
+  - **Data Integrity:** Automatic verification and refresh logic to ensure links remain direct and valid.
 
 ## Technology Stack
 - Framework-less HTML/CSS/JavaScript.
@@ -20,18 +23,13 @@ A professional dashboard for industry professionals to stay updated on global tr
 - **Modern CSS:** Grid/Flexbox, CSS Variables, and Container Queries.
 - **LocalStorage API:** For client-side data persistence of historical logs.
 
-## Current Plan: Initial Implementation
-1.  **Project Cleanup:** Remove all legacy triathlon-related files.
-2.  **Scaffolding:**
-    - Initialize `index.html` with a modern shell.
-    - Setup `services/storage.js` for log management.
-    - Setup `services/news.js` for data fetching.
-3.  **Component Development:**
-    - `industry-briefing-app`: The main orchestrator.
-    - `briefing-card`: Component for individual news items.
-    - `archive-sidebar`: Navigation for historical logs.
-4.  **Data Integration:**
-    - Implement logic to check for "Today's Briefing" on load.
-    - If missing, fetch latest data and save to logs.
-5.  **Styling:** 
-    - Apply professional typography and a color-coded system for different industries.
+## Implementation Progress
+1.  **Project Scaffolding:** Initialized shell, storage, and news services.
+2.  **Core Components:** Developed `industry-app` with dashboard and archive views.
+3.  **UI Refinement:** Implemented industrial theme, responsive sidebar, and multilingual support (KO/EN).
+4.  **Navigation Fix (Current):** 
+    - Replaced general list URLs with direct article links in `news.js`.
+    - Enhanced `main.js` to support clickable titles and "Read Article" buttons.
+    - Added CSS for improved link hover states and industry-specific accents.
+    - Implemented logic to force-update legacy placeholder/list URLs.
+5.  **Persistence:** All logs are managed via `StorageService` for seamless retrospective access.
