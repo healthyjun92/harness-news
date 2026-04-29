@@ -26,31 +26,31 @@ export const NewsService = {
                 const briefing = {
                     robotics: [
                         { 
-                            title: { en: 'New Humanoid Robot Unveiled in Japan', ko: '일본에서 공개된 새로운 휴머노이드 로봇' }, 
-                            summary: { en: 'A breakthrough in bipedal balance has been achieved by a leading Tokyo tech firm.', ko: '도쿄의 한 주요 기술 기업이 이족 보행 균형 제어에서 획기적인 발전을 이루었습니다.' }, 
+                            title: { en: 'Humanoid Robots Outrun Humans in Beijing', ko: '베이징에서 인간을 추월한 휴머노이드 로봇' }, 
+                            summary: { en: 'Chinese brand Honor\'s humanoid robot set a new half-marathon record of 50m 26s, surpassing elite human runners.', ko: '중국 Honor사의 휴머노이드 로봇이 하프 마라톤에서 50분 26초를 기록하며 엘리트 인간 선수들의 기록을 경신했습니다.' }, 
                             source: 'Reuters',
                             url: 'https://www.reuters.com/technology/',
                             date: today
                         },
                         { 
-                            title: { en: 'Global Robot Sales Surge 15%', ko: '전 세계 로봇 판매량 15% 급증' }, 
-                            summary: { en: 'Industrial automation adoption is accelerating across Southeast Asia.', ko: '동남아시아 전역에서 산업 자동화 도입이 가속화되고 있습니다.' }, 
-                            source: 'TechCrunch',
-                            url: 'https://techcrunch.com/category/robotics/',
+                            title: { en: 'Amazon Robotics Strategic Shift & Layoffs', ko: '아마존 로보틱스의 전략적 변화와 감원' }, 
+                            summary: { en: 'Amazon confirmed layoffs and halted "Blue Jay" robotic arm project to focus on energy-efficient automation.', ko: '아마존이 에너지 효율적인 자동화에 집중하기 위해 "Blue Jay" 로봇 팔 프로젝트를 중단하고 감원을 단행했습니다.' }, 
+                            source: 'Reuters',
+                            url: 'https://www.reuters.com/business/',
                             date: today
                         }
                     ],
                     automotive: [
                         { 
-                            title: { en: 'Electric Vehicle Range Reaches 1000km', ko: '전기차 주행 거리 1000km 달성' }, 
-                            summary: { en: 'Solid-state battery integration allows for record-breaking travel distances.', ko: '전고체 배터리 통합으로 기록적인 주행 거리가 가능해졌습니다.' }, 
+                            title: { en: 'GM Indefinitely Delays Next-Gen EV Pickups', ko: 'GM, 차세대 전기 픽업트럭 출시 무기한 연기' }, 
+                            summary: { en: 'General Motors is shifting focus back to ICE platforms and PHEV expansion due to market volatility.', ko: 'GM이 시장 변동성에 따라 차세대 전기 픽업 출시를 미루고 내연기관 및 하이브리드(PHEV) 확대로 선회했습니다.' }, 
                             source: 'AutoNews',
                             url: 'https://www.autonews.com/',
                             date: today
                         },
                         { 
-                            title: { en: 'Autonomous Driving Level 4 Approval', ko: '자율주행 레벨 4 승인' }, 
-                            summary: { en: 'Major European cities begin permitting full autonomy for public transport.', ko: '유럽 주요 도시들이 대중교통의 완전 자율주행을 허용하기 시작했습니다.' }, 
+                            title: { en: 'BMW Unveils Durable Color-Changing E Ink Tech', ko: 'BMW, 내구성이 강화된 색상 변경 E-Ink 기술 공개' }, 
+                            summary: { en: 'The iX3 Flow Edition features E Ink Prism technology embedded directly into the hood structure for mass production.', ko: 'BMW가 보닛 구조에 직접 E-Ink를 내장하여 양산에 가까워진 iX3 Flow 에디션을 베이징 오토쇼에서 선보였습니다.' }, 
                             source: 'The Verge',
                             url: 'https://www.theverge.com/transportation',
                             date: today
@@ -58,49 +58,49 @@ export const NewsService = {
                     ],
                     battery: [
                         { 
-                            title: { en: 'New Lithium-Sulfur Battery Patent', ko: '새로운 리튬-황 배터리 특허' }, 
-                            summary: { en: 'A startup claims a 40% reduction in production costs using sustainable materials.', ko: '한 스타트업이 지속 가능한 재료를 사용하여 생산 비용을 40% 절감했다고 주장합니다.' }, 
-                            source: 'Energy News',
-                            url: 'https://www.energy.gov/newsroom',
+                            title: { en: 'CATL Signs Major Sodium-Ion Battery Deal', ko: 'CATL, 대규모 나트륨 이온 배터리 공급 계약 체결' }, 
+                            summary: { en: 'CATL will provide 60GWh of sodium-ion batteries to HyperStrong, signaling a pivotal shift from lithium.', ko: 'CATL이 HyperStrong에 60GWh 규모의 나트륨 이온 배터리를 공급하기로 하며 리튬 대체 시장의 본격화를 알렸습니다.' }, 
+                            source: 'Bloomberg',
+                            url: 'https://www.bloomberg.com/energy',
                             date: today
                         },
                         { 
-                            title: { en: 'Global Battery Gigafactory Expansion', ko: '글로벌 배터리 기가팩토리 확장' }, 
-                            summary: { en: 'Plans for 5 new factories in North America announced this week.', ko: '이번 주 북미 지역에 5개의 새로운 공장을 건설하겠다는 계획이 발표되었습니다.' }, 
-                            source: 'Bloomberg',
-                            url: 'https://www.bloomberg.com/energy',
+                            title: { en: 'Long-Duration Energy Storage Forecast to Quadruple', ko: '장기 에너지 저장 시스템(LDES) 4배 성장 전망' }, 
+                            summary: { en: 'Demand for grid-forming iron-air and vanadium batteries is surging to support AI data centers.', ko: 'AI 데이터 센터의 전력 수요를 뒷받침하기 위한 철-공기 및 바나듐 배터리 등 장기 저장 시스템 수요가 급증하고 있습니다.' }, 
+                            source: 'BloombergNEF',
+                            url: 'https://about.bnef.com/',
                             date: today
                         }
                     ],
                     wiring: [
                         { 
-                            title: { en: 'High-Voltage Wiring Standards Updated', ko: '고전압 와이어링 표준 업데이트' }, 
-                            summary: { en: 'New safety protocols for EV charging infrastructure have been finalized.', ko: 'EV 충전 인프라를 위한 새로운 안전 프로토콜이 최종 확정되었습니다.' }, 
-                            source: 'SAE International',
-                            url: 'https://www.sae.org/news',
+                            title: { en: 'Southwire Named Rockwell Automation Partner of the Year', ko: '사우스와이어, 로크웰 오토메이션 올해의 파트너 선정' }, 
+                            summary: { en: 'Recognition for advanced VFD technology integration in greenfield industrial projects.', ko: '산업용 그린필드 프로젝트에서 첨단 VFD 기술을 성공적으로 통합한 공로를 인정받았습니다.' }, 
+                            source: 'Southwire News',
+                            url: 'https://www.southwire.com/newsroom',
                             date: today
                         },
                         { 
-                            title: { en: 'Weight-Saving Harness Materials Found', ko: '경량 와이어링 하네스 소재 발견' }, 
-                            summary: { en: 'NASA-inspired alloys reduce vehicle weight by up to 5kg.', ko: 'NASA에서 영감을 받은 합금이 차량 무게를 최대 5kg까지 줄여줍니다.' }, 
-                            source: 'NASA Tech',
-                            url: 'https://techport.nasa.gov/',
+                            title: { en: 'Breakthrough in Robotic Wire Insertion Automation', ko: '로봇 와이어 삽입 자동화 기술의 획기적 발전' }, 
+                            summary: { en: 'Nissan and UT demonstrated a robotic system for wire insertion, a historically difficult manual task.', ko: '닛산과 테네시 대학이 그동안 자동화가 어려웠던 와이어 삽입 공정을 로봇 시스템으로 구현하는 데 성공했습니다.' }, 
+                            source: 'Industry Media',
+                            url: 'https://www.yazaki-group.com/global/',
                             date: today
                         }
                     ],
                     automation: [
                         { 
-                            title: { en: 'AI-Driven Factory Optimization', ko: 'AI 기반 공장 최적화' }, 
-                            summary: { en: 'Machine learning models reduce production waste by 30% in trial runs.', ko: '기계 학습 모델이 시험 가동에서 생산 폐기물을 30% 줄였습니다.' }, 
-                            source: 'Forbes Tech',
-                            url: 'https://www.forbes.com/innovation/',
+                            title: { en: 'Global Wire Harness Market Reaches $96 Billion', ko: '글로벌 와이어링 하네스 시장 960억 달러 규모 달성' }, 
+                            summary: { en: 'Growth driven by EV architectures and the adoption of halogen-free sustainable materials.', ko: '전기차 아키텍처 확산과 할로겐 프리 지속 가능 소재 채택에 힘입어 시장이 성장하고 있습니다.' }, 
+                            source: 'Market Watch',
+                            url: 'https://www.einpresswire.com/',
                             date: today
                         },
                         { 
-                            title: { en: 'Collaborative Robots in Small Businesses', ko: '소규모 사업장의 협동 로봇' }, 
-                            summary: { en: 'Affordable cobots are transforming the craft manufacturing sector.', ko: '저렴한 협동 로봇이 수공업 제조 분야를 변화시키고 있습니다.' }, 
-                            source: 'SME Today',
-                            url: 'https://smetoday.co.uk/',
+                            title: { en: 'AI-Driven Digital Twin Integration in Manufacturing', ko: '제조업 내 AI 기반 디지털 트윈 통합 확산' }, 
+                            summary: { en: 'Manufacturers use digital twins to validate harness layouts and EMC before physical production.', ko: '제조사들이 실제 생산 전 디지털 트윈을 통해 하네스 배치와 전자기 적합성을 검증하여 공기를 단축하고 있습니다.' }, 
+                            source: 'Forbes Tech',
+                            url: 'https://www.forbes.com/innovation/',
                             date: today
                         }
                     ]
