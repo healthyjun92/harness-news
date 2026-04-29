@@ -67,11 +67,12 @@ class IndustryApp extends HTMLElement {
         const today = new Date().toISOString().split('T')[0];
         const existingBriefing = StorageService.getBriefingByDate(today);
 
-        // Check if data exists AND has the new 'url' field (by checking first item of robotics)
+        // Check if data exists AND has valid URLs (not placeholders like example.com)
         const isDataUpToDate = existingBriefing && 
                               existingBriefing.robotics && 
                               existingBriefing.robotics[0] && 
-                              existingBriefing.robotics[0].url;
+                              existingBriefing.robotics[0].url &&
+                              !existingBriefing.robotics[0].url.includes('example.com');
 
         if (!existingBriefing || !isDataUpToDate) {
             this.isLoading = true;
