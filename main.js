@@ -15,8 +15,10 @@ const TRANSLATIONS = {
         today: "Today's Briefing",
         archive: 'Archive',
         lastUpdated: 'Last updated',
-        readArticle: 'Go to Direct Article',
-        directLinkTip: 'Opens the exact article source'
+        readArticle: 'View Official Source',
+        directLinkTip: 'Go to the primary press release or newsroom',
+        searchFallback: 'Search on Google',
+        searchTip: 'If the link above is restricted, use this to search manually'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -29,8 +31,10 @@ const TRANSLATIONS = {
         today: '오늘의 브리핑',
         archive: '아카이브',
         lastUpdated: '최종 수정',
-        readArticle: '해당 기사 원문 바로가기',
-        directLinkTip: '목록이 아닌 실제 기사 본문으로 이동합니다'
+        readArticle: '공식 원문 보기',
+        directLinkTip: '기업 공식 뉴스룸이나 대형 언론사 원문으로 이동합니다',
+        searchFallback: '구글에서 직접 검색',
+        searchTip: '링크 접속이 원활하지 않을 경우 구글 검색 결과로 이동합니다'
     }
 };
 
@@ -71,9 +75,6 @@ class IndustryApp extends HTMLElement {
         const today = new Date().toISOString().split('T')[0];
         const existingBriefing = StorageService.getBriefingByDate(today);
 
-        // Since we changed the STORAGE_KEY in storage.js, 
-        // existingBriefing will be null for everyone on first load,
-        // effectively forcing a clean fetch with the new direct links.
         if (!existingBriefing) {
             this.isLoading = true;
             this.render();
@@ -202,6 +203,7 @@ class IndustryApp extends HTMLElement {
                         const title = typeof item.title === 'object' ? item.title[this.lang] || item.title['en'] : item.title;
                         const summary = typeof item.summary === 'object' ? item.summary[this.lang] || item.summary['en'] : item.summary;
                         const hasUrl = item.url && item.url !== 'undefined';
+                        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(title + ' ' + item.source)}`;
                         
                         return `
                             <div class="news-card">
@@ -211,17 +213,22 @@ class IndustryApp extends HTMLElement {
                                 }
                                 <p>${summary}</p>
                                 <div class="news-meta">
-                                    <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; width: 100%;">
-                                        <span class="badge">${item.source}</span>
-                                        ${hasUrl ? 
-                                            `<a href="${item.url}" target="_blank" class="read-more-link direct-article-link" title="${t.directLinkTip}">
-                                                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> ${t.readArticle}
-                                            </a>` : 
-                                            ''
-                                        }
-                                        <div style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
+                                        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                                            <span class="badge">${item.source}</span>
+                                            ${hasUrl ? 
+                                                `<a href="${item.url}" target="_blank" class="read-more-link direct-article-link highlight" title="${t.directLinkTip}">
+                                                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> ${t.readArticle}
+                                                </a>` : 
+                                                ''
+                                            }
+                                            <a href="${searchUrl}" target="_blank" class="read-more-link search-fallback-link" title="${t.searchTip}" style="opacity: 0.8;">
+                                                <i data-lucide="search" style="width: 14px; height: 14px;"></i> ${t.searchFallback}
+                                            </a>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted);">
                                             <span class="issue-badge">${t.recentIssue}</span>
-                                            <span class="update-date">${item.date || this.selectedDate}</span>
+                                            <span class="update-date" style="margin-left: auto;">${item.date || this.selectedDate}</span>
                                         </div>
                                     </div>
                                 </div>

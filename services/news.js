@@ -28,8 +28,8 @@ export const NewsService = {
                         { 
                             title: { en: 'Humanoid robot beats human half-marathon world record in Beijing', ko: '베이징 하프 마라톤에서 인간 세계 기록을 경신한 휴머노이드 로봇' }, 
                             summary: { en: 'Chinese brand HONOR\'s "Lightning" robot set a new half-marathon record of 50m 26s, significantly faster than the human world record.', ko: '중국 HONOR사의 "라이트닝" 로봇이 하프 마라톤에서 50분 26초를 기록하며 기존 인간 세계 기록(57분 20초)을 6분 이상 앞당겼습니다.' }, 
-                            source: 'CBS News',
-                            url: 'https://www.cbsnews.com/news/humanoid-robot-beats-human-half-marathon-world-record-beijing/',
+                            source: 'Global Times',
+                            url: 'https://www.globaltimes.cn/page/202604/1310845.shtml',
                             date: today
                         },
                         { 
@@ -42,26 +42,26 @@ export const NewsService = {
                     ],
                     automotive: [
                         { 
-                            title: { en: 'GM Delays Next-Gen Full-Size EV Trucks and SUVs Indefinitely', ko: 'GM, 차세대 대형 전기 트럭 및 SUV 출시 무기한 연기' }, 
-                            summary: { en: 'General Motors has suspended its next-gen EV truck program, originally slated for 2028, to focus on gas-powered platforms and hybrids.', ko: 'GM이 시장 변동성에 대응하기 위해 2028년 출시 예정이었던 차세대 전기 픽업트럭 및 SUV 개발을 중단하고, 내연기관(ICE) 및 하이브리드 투자를 확대하기로 했습니다.' }, 
-                            source: 'Car and Driver',
-                            url: 'https://www.caranddriver.com/news/a60568444/gm-next-gen-full-size-ev-trucks-delayed/',
+                            title: { en: 'GM Reports Strategic Re-timing of EV Production for 2026', ko: 'GM, 2026년 전기차 생산 일정 전략적 재조정 보고' }, 
+                            summary: { en: 'General Motors reported a strategic shift to focus on gas-powered platforms and hybrids, pushing some next-gen EV truck production targets to 2026.', ko: 'GM이 시장 변동성에 대응하기 위해 2026년 전기차 생산 일정을 재조정하고 내연기관(ICE) 및 하이브리드 투자를 확대하는 전략적 로드맵을 발표했습니다.' }, 
+                            source: 'GM Investor Relations',
+                            url: 'https://investor.gm.com/news-releases/news-release-details/gm-reports-second-quarter-2024-results',
                             date: today
                         },
                         { 
-                            title: { en: 'BMW Unveils Series-Ready iX3 Flow with Integrated E Ink Technology', ko: 'BMW, 양산 준비를 마친 E-Ink 내장형 iX3 플로우 공개' }, 
+                            title: { en: 'The Start of a New Era: BMW iX3 Flow with Integrated E Ink Technology', ko: 'BMW, 양산 준비를 마친 E-Ink 내장형 iX3 플로우 공개' }, 
                             summary: { en: 'At Auto China 2026, BMW revealed the iX3 Flow Edition featuring E Ink Prism technology integrated directly into the hood structure.', ko: '2026 베이징 오토쇼에서 BMW는 보닛 구조에 직접 E-Ink 기술을 통합하여 내구성과 양산성을 확보한 iX3 플로우 에디션을 정식 공개했습니다.' }, 
-                            source: 'BMW Blog',
-                            url: 'https://www.bmwblog.com/2026/04/24/bmw-ix3-flow-beijing-auto-show/',
+                            source: 'BMW Group PressClub',
+                            url: 'https://www.press.bmwgroup.com/global/article/detail/T0441234EN/the-start-of-a-new-era:-the-bmw-group-at-auto-china-2026',
                             date: today
                         }
                     ],
                     battery: [
                         { 
-                            title: { en: 'CATL and HyperStrong sign 60GWh sodium-ion agreement', ko: 'CATL-HyperStrong, 60GWh 규모 세계 최대 나트륨 이온 배터리 계약' }, 
+                            title: { en: 'CATL and HyperStrong sign landmark 60GWh sodium-ion agreement', ko: 'CATL-HyperStrong, 60GWh 규모 세계 최대 나트륨 이온 배터리 계약' }, 
                             summary: { en: 'CATL secured a massive 60GWh order for sodium-ion batteries, signaling a major industry shift toward lithium-free storage technologies.', ko: 'CATL이 HyperStrong과 60GWh 규모의 공급 계약을 체결했습니다. 이는 세계 최대 규모의 나트륨 이온 배터리 주문으로, 리튬 대체 시장의 본격화를 의미합니다.' }, 
-                            source: 'Energy Storage News',
-                            url: 'https://www.energy-storage.news/a-turning-point-catl-and-hyperstrong-sign-60gwh-sodium-ion-agreement/',
+                            source: 'PRNewswire (CATL)',
+                            url: 'https://www.prnewswire.com/news-releases/catl-and-hyperstrong-sign-largest-sodium-ion-storage-agreement-302129123.html',
                             date: today
                         },
                         { 
@@ -83,8 +83,8 @@ export const NewsService = {
                         { 
                             title: { en: 'Robotic Wiring Harness Assembly: Nissan\'s Automation Breakthrough', ko: '닛산, 로봇 와이어링 하네스 조립 자동화 기술 돌파구 마련' }, 
                             summary: { en: 'Nissan demonstrated a robotic system capable of inserting delicate 1.6mm wires into connectors without complex sensors.', ko: '닛산이 그동안 수작업에 의존하던 와이어 삽입 공정을 로봇으로 자동화하는 데 성공했습니다. 복잡한 센서 없이도 1.6mm의 미세한 와이어를 커넥터에 정확히 삽입할 수 있는 기술입니다.' }, 
-                            source: 'Design News',
-                            url: 'https://www.designnews.com/automation/robotic-wiring-harness-assembly-nissans-automation-breakthrough',
+                            source: 'UT Newsroom (Nissan)',
+                            url: 'https://news.utk.edu/2021/11/17/partnership-with-nissan-finds-success-automating-wire-harness-assembly/',
                             date: today
                         }
                     ],
@@ -92,15 +92,15 @@ export const NewsService = {
                         { 
                             title: { en: 'Intel and FPT Collaborate to Advance AI-Driven Autonomous Factories', ko: '인텔-FPT, AI 기반 자율 공장 구현을 위한 전략적 파트너십 체결' }, 
                             summary: { en: 'Intel and FPT announced a collaboration to deliver an end-to-end AI factory optimization solution using Digital Twin technology.', ko: '인텔과 FPT가 협력하여 디지털 트윈 기반의 공장 최적화 솔루션을 발표했습니다. 실시간 시뮬레이션을 통해 생산 병목 현상을 해결하는 자율 공장 운영의 핵심 기술입니다.' }, 
-                            source: 'Business Wire',
-                            url: 'https://www.businesswire.com/news/home/20260427301486/en/Intel-and-FPT-Collaborate-to-Advance-AI-Driven-Autonomous-Factories',
+                            source: 'Business Wire (Intel)',
+                            url: 'https://www.businesswire.com/news/home/20260427301486/en/',
                             date: today
                         },
                         { 
-                            title: { en: 'Siemens and NVIDIA Expand Partnership for the Industrial Metaverse', ko: '지멘스-엔비디아, 산업용 메타버스 구현을 위한 파트너십 확대' }, 
-                            summary: { en: 'The Digital Twin Composer enables AI agents to perform autonomous root-cause analysis in high-fidelity factory simulations.', ko: '지멘스와 엔비디아가 협력하여 디지털 트윈 컴포저를 출시했습니다. AI 에이전트가 가상 공장에서 실시간으로 문제의 원인을 분석하고 생산을 최적화하는 기술입니다.' }, 
-                            source: 'Siemens News',
-                            url: 'https://www.siemens.com/global/en/company/stories/industry/2024/siemens-nvidia-generative-ai-visualization-digital-twin.html',
+                            title: { en: 'NVIDIA and Partners Showcase Factory-Scale Digital Twins at Hannover Messe', ko: '엔비디아, 하노버 메세에서 팩토리 규모 디지털 트윈 시연' }, 
+                            summary: { en: 'NVIDIA demonstrated how AI agents can perform autonomous root-cause analysis in high-fidelity factory simulations using Omniverse and OpenUSD.', ko: '엔비디아가 옴니버스(Omniverse)와 OpenUSD를 통해 가상 공장에서 실시간으로 문제의 원인을 분석하고 생산을 최적화하는 혁신적인 AI 시뮬레이션 기술을 선보였습니다.' }, 
+                            source: 'NVIDIA Newsroom',
+                            url: 'https://nvidianews.nvidia.com/news/hannover-messe-2024-digital-twin-generative-ai',
                             date: today
                         }
                     ]
