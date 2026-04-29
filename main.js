@@ -15,7 +15,8 @@ const TRANSLATIONS = {
         today: "Today's Briefing",
         archive: 'Archive',
         lastUpdated: 'Last updated',
-        readArticle: 'Read Full Article'
+        readArticle: 'Go to Direct Article',
+        directLinkTip: 'Opens the exact article source'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -28,7 +29,8 @@ const TRANSLATIONS = {
         today: '오늘의 브리핑',
         archive: '아카이브',
         lastUpdated: '최종 수정',
-        readArticle: '기사 원문 보기'
+        readArticle: '해당 기사 원문 바로가기',
+        directLinkTip: '목록이 아닌 실제 기사 본문으로 이동합니다'
     }
 };
 
@@ -69,16 +71,10 @@ class IndustryApp extends HTMLElement {
         const today = new Date().toISOString().split('T')[0];
         const existingBriefing = StorageService.getBriefingByDate(today);
 
-        // Check if data exists AND has verified direct URLs
-        // We force a refresh if the source is from a general list like SCMP or Reuters without specific article paths
-        const isDataUpToDate = existingBriefing && 
-                              existingBriefing.robotics && 
-                              existingBriefing.robotics[0] && 
-                              existingBriefing.robotics[0].url &&
-                              !existingBriefing.robotics[0].url.includes('example.com') &&
-                              existingBriefing.robotics[0].source !== 'South China Morning Post'; // Force update from old source
-
-        if (!existingBriefing || !isDataUpToDate) {
+        // Since we changed the STORAGE_KEY in storage.js, 
+        // existingBriefing will be null for everyone on first load,
+        // effectively forcing a clean fetch with the new direct links.
+        if (!existingBriefing) {
             this.isLoading = true;
             this.render();
             const newBriefing = await NewsService.fetchLatestBriefing();
@@ -215,17 +211,19 @@ class IndustryApp extends HTMLElement {
                                 }
                                 <p>${summary}</p>
                                 <div class="news-meta">
-                                    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                                    <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; width: 100%;">
                                         <span class="badge">${item.source}</span>
                                         ${hasUrl ? 
-                                            `<a href="${item.url}" target="_blank" class="read-more-link">
-                                                ${t.readArticle} <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
+                                            `<a href="${item.url}" target="_blank" class="read-more-link direct-article-link" title="${t.directLinkTip}">
+                                                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> ${t.readArticle}
                                             </a>` : 
                                             ''
                                         }
-                                        <span class="issue-badge">${t.recentIssue}</span>
+                                        <div style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+                                            <span class="issue-badge">${t.recentIssue}</span>
+                                            <span class="update-date">${item.date || this.selectedDate}</span>
+                                        </div>
                                     </div>
-                                    <span class="update-date">${t.lastUpdated}: ${item.date || this.selectedDate}</span>
                                 </div>
                             </div>
                         `;
