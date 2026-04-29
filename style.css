@@ -265,6 +265,31 @@ header {
         grid-template-columns: 1fr;
     }
     aside {
-        display: none; 
+        position: fixed;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        width: 280px;
+        z-index: 1000;
+        transition: left 0.3s ease;
     }
+    aside.active {
+        left: 0;
+        box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    }
+    .menu-toggle {
+        display: flex !important;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }

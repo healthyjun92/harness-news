@@ -1,6 +1,8 @@
 import { StorageService } from './services/storage.js';
 import { NewsService } from './services/news.js';
 
+console.log('Harness News App is loading...');
+
 const TRANSLATIONS = {
     en: {
         logo: 'Harness News Global',
@@ -34,11 +36,29 @@ class IndustryApp extends HTMLElement {
         this.briefingData = null;
         this.isLoading = false;
         this.lang = localStorage.getItem('gidb_lang') || 'ko';
+        this.sidebarActive = false;
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
 
     async connectedCallback() {
         await this.init();
         this.render();
+        document.addEventListener('click', this.handleOutsideClick);
+    }
+
+    disconnectedCallback() {
+        document.removeEventListener('click', this.handleOutsideClick);
+    }
+
+    handleOutsideClick(e) {
+        if (this.sidebarActive) {
+            const aside = this.querySelector('aside');
+            const menuToggle = this.querySelector('#menu-toggle');
+            if (aside && !aside.contains(e.target) && menuToggle && !menuToggle.contains(e.target)) {
+                this.sidebarActive = false;
+                aside.classList.remove('active');
+            }
+        }
     }
 
     async init() {
@@ -65,6 +85,7 @@ class IndustryApp extends HTMLElement {
 
     setView(view, date = null) {
         this.currentView = view;
+        this.sidebarActive = false;
         if (date) {
             this.selectedDate = date;
             this.briefingData = StorageService.getBriefingByDate(date);
@@ -75,6 +96,14 @@ class IndustryApp extends HTMLElement {
         this.render();
     }
 
+    toggleSidebar() {
+        this.sidebarActive = !this.sidebarActive;
+        const aside = this.querySelector('aside');
+        if (aside) {
+            aside.classList.toggle('active', this.sidebarActive);
+        }
+    }
+
     render() {
         const t = TRANSLATIONS[this.lang];
         const availableDates = StorageService.getAvailableDates();
@@ -82,7 +111,7 @@ class IndustryApp extends HTMLElement {
 
         this.innerHTML = `
             <div class="app-container">
-                <aside>
+                <aside class="${this.sidebarActive ? 'active' : ''}">
                     <div class="logo">
                         <i data-lucide="globe"></i>
                         <span>${t.logo}</span>
@@ -111,9 +140,14 @@ class IndustryApp extends HTMLElement {
 
                 <main>
                     <header>
-                        <div class="header-title">
-                            <h1>${this.currentView === 'today' ? t.today : `${t.archive}: ${this.selectedDate}`}</h1>
-                            <p>${t.subTitle}</p>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <button class="menu-toggle" id="menu-toggle">
+                                <i data-lucide="menu"></i>
+                            </button>
+                            <div class="header-title">
+                                <h1>${this.currentView === 'today' ? t.today : `${t.archive}: ${this.selectedDate}`}</h1>
+                                <p>${t.subTitle}</p>
+                            </div>
                         </div>
                         <div class="top-controls">
                             <div class="lang-toggle">
@@ -186,7 +220,18 @@ class IndustryApp extends HTMLElement {
     }
 
     attachEventListeners() {
-        this.querySelector('#nav-today').addEventListener('click', () => this.setView('today'));
+        const navToday = this.querySelector('#nav-today');
+        if (navToday) {
+            navToday.addEventListener('click', () => this.setView('today'));
+        }
+        
+        const menuToggle = this.querySelector('#menu-toggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleSidebar();
+            });
+        }
         
         this.querySelectorAll('#archive-list .nav-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -197,14 +242,6 @@ class IndustryApp extends HTMLElement {
 
         this.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                this.setLanguage(btn.getAttribute('data-lang'));
-            });
-        });
-    }
-}
-
-customElements.define('industry-app', IndustryApp);
-btn.addEventListener('click', () => {
                 this.setLanguage(btn.getAttribute('data-lang'));
             });
         });
