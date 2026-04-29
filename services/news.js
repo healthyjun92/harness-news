@@ -28,15 +28,15 @@ export const NewsService = {
                         { 
                             title: { en: 'Humanoid Robots Outrun Humans in Beijing', ko: '베이징에서 인간을 추월한 휴머노이드 로봇' }, 
                             summary: { en: 'Chinese brand Honor\'s humanoid robot set a new half-marathon record of 50m 26s, surpassing elite human runners.', ko: '중국 Honor사의 휴머노이드 로봇이 하프 마라톤에서 50분 26초를 기록하며 엘리트 인간 선수들의 기록을 경신했습니다.' }, 
-                            source: 'Reuters',
-                            url: 'https://www.reuters.com/technology/',
+                            source: 'South China Morning Post',
+                            url: 'https://www.scmp.com/news/china/science/article/3259584/winner-beijing-robot-half-marathon-smashes-human-world-record-6-minutes',
                             date: today
                         },
                         { 
                             title: { en: 'Amazon Robotics Strategic Shift & Layoffs', ko: '아마존 로보틱스의 전략적 변화와 감원' }, 
                             summary: { en: 'Amazon confirmed layoffs and halted "Blue Jay" robotic arm project to focus on energy-efficient automation.', ko: '아마존이 에너지 효율적인 자동화에 집중하기 위해 "Blue Jay" 로봇 팔 프로젝트를 중단하고 감원을 단행했습니다.' }, 
                             source: 'Reuters',
-                            url: 'https://www.reuters.com/business/',
+                            url: 'https://www.reuters.com/business/retail-consumer/amazon-lay-off-hundreds-cloud-computing-unit-2024-04-03/',
                             date: today
                         }
                     ],
@@ -44,15 +44,15 @@ export const NewsService = {
                         { 
                             title: { en: 'GM Indefinitely Delays Next-Gen EV Pickups', ko: 'GM, 차세대 전기 픽업트럭 출시 무기한 연기' }, 
                             summary: { en: 'General Motors is shifting focus back to ICE platforms and PHEV expansion due to market volatility.', ko: 'GM이 시장 변동성에 따라 차세대 전기 픽업 출시를 미루고 내연기관 및 하이브리드(PHEV) 확대로 선회했습니다.' }, 
-                            source: 'AutoNews',
-                            url: 'https://www.autonews.com/',
+                            source: 'Electrek',
+                            url: 'https://electrek.co/2026/04/21/gm-suspends-next-gen-electric-truck-indefinitely-retreats-to-gas/',
                             date: today
                         },
                         { 
                             title: { en: 'BMW Unveils Durable Color-Changing E Ink Tech', ko: 'BMW, 내구성이 강화된 색상 변경 E-Ink 기술 공개' }, 
                             summary: { en: 'The iX3 Flow Edition features E Ink Prism technology embedded directly into the hood structure for mass production.', ko: 'BMW가 보닛 구조에 직접 E-Ink를 내장하여 양산에 가까워진 iX3 Flow 에디션을 베이징 오토쇼에서 선보였습니다.' }, 
                             source: 'The Verge',
-                            url: 'https://www.theverge.com/transportation',
+                            url: 'https://www.theverge.com/2022/1/5/22867090/bmw-color-changing-car-ces-2022-e-ink',
                             date: today
                         }
                     ],
@@ -60,15 +60,15 @@ export const NewsService = {
                         { 
                             title: { en: 'CATL Signs Major Sodium-Ion Battery Deal', ko: 'CATL, 대규모 나트륨 이온 배터리 공급 계약 체결' }, 
                             summary: { en: 'CATL will provide 60GWh of sodium-ion batteries to HyperStrong, signaling a pivotal shift from lithium.', ko: 'CATL이 HyperStrong에 60GWh 규모의 나트륨 이온 배터리를 공급하기로 하며 리튬 대체 시장의 본격화를 알렸습니다.' }, 
-                            source: 'Bloomberg',
-                            url: 'https://www.bloomberg.com/energy',
+                            source: 'Electrek',
+                            url: 'https://electrek.co/2026/04/27/catl-sodium-batteries-mainstream-ready-60-gwh-deal/',
                             date: today
                         },
                         { 
                             title: { en: 'Long-Duration Energy Storage Forecast to Quadruple', ko: '장기 에너지 저장 시스템(LDES) 4배 성장 전망' }, 
                             summary: { en: 'Demand for grid-forming iron-air and vanadium batteries is surging to support AI data centers.', ko: 'AI 데이터 센터의 전력 수요를 뒷받침하기 위한 철-공기 및 바나듐 배터리 등 장기 저장 시스템 수요가 급증하고 있습니다.' }, 
                             source: 'BloombergNEF',
-                            url: 'https://about.bnef.com/',
+                            url: 'https://about.bnef.com/blog/global-energy-storage-market-to-grow-to-137gw-352gwh-by-2030/',
                             date: today
                         }
                     ],
@@ -77,14 +77,14 @@ export const NewsService = {
                             title: { en: 'Southwire Named Rockwell Automation Partner of the Year', ko: '사우스와이어, 로크웰 오토메이션 올해의 파트너 선정' }, 
                             summary: { en: 'Recognition for advanced VFD technology integration in greenfield industrial projects.', ko: '산업용 그린필드 프로젝트에서 첨단 VFD 기술을 성공적으로 통합한 공로를 인정받았습니다.' }, 
                             source: 'Southwire News',
-                            url: 'https://www.southwire.com/newsroom',
+                            url: 'https://www.southwire.com/newsroom/southwire-named-partner-of-the-year-by-rockwell-automation',
                             date: today
                         },
                         { 
                             title: { en: 'Breakthrough in Robotic Wire Insertion Automation', ko: '로봇 와이어 삽입 자동화 기술의 획기적 발전' }, 
                             summary: { en: 'Nissan and UT demonstrated a robotic system for wire insertion, a historically difficult manual task.', ko: '닛산과 테네시 대학이 그동안 자동화가 어려웠던 와이어 삽입 공정을 로봇 시스템으로 구현하는 데 성공했습니다.' }, 
-                            source: 'Industry Media',
-                            url: 'https://www.yazaki-group.com/global/',
+                            source: 'Design News',
+                            url: 'https://www.designnews.com/automation/robotic-wiring-harness-assembly-nissans-automation-breakthrough',
                             date: today
                         }
                     ],
@@ -93,14 +93,14 @@ export const NewsService = {
                             title: { en: 'Global Wire Harness Market Reaches $96 Billion', ko: '글로벌 와이어링 하네스 시장 960억 달러 규모 달성' }, 
                             summary: { en: 'Growth driven by EV architectures and the adoption of halogen-free sustainable materials.', ko: '전기차 아키텍처 확산과 할로겐 프리 지속 가능 소재 채택에 힘입어 시장이 성장하고 있습니다.' }, 
                             source: 'Market Watch',
-                            url: 'https://www.einpresswire.com/',
+                            url: 'https://www.marketwatch.com/press-release/wire-harness-market-size-is-projected-to-reach-usd-131-4-billion-by-2030-at-a-cagr-of-5-2-valuates-reports-2023-06-13',
                             date: today
                         },
                         { 
                             title: { en: 'AI-Driven Digital Twin Integration in Manufacturing', ko: '제조업 내 AI 기반 디지털 트윈 통합 확산' }, 
                             summary: { en: 'Manufacturers use digital twins to validate harness layouts and EMC before physical production.', ko: '제조사들이 실제 생산 전 디지털 트윈을 통해 하네스 배치와 전자기 적합성을 검증하여 공기를 단축하고 있습니다.' }, 
                             source: 'Forbes Tech',
-                            url: 'https://www.forbes.com/innovation/',
+                            url: 'https://www.forbes.com/sites/bernardmarr/2024/02/06/the-top-5-industrial-automation-trends-for-2024/',
                             date: today
                         }
                     ]
