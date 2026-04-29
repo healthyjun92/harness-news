@@ -243,18 +243,50 @@ header {
     font-weight: 600;
 }
 
-.source-link {
+.news-title-link {
     text-decoration: none;
-    color: var(--accent-blue);
-    transition: all 0.2s;
-    border: 1px solid transparent;
+    color: var(--text-primary);
+    transition: color 0.2s;
 }
 
-.source-link:hover {
+.news-title-link:hover {
+    color: var(--accent-blue);
+}
+
+.read-more-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background-color: oklch(65% 0.15 250 / 0.1);
+    transition: all 0.2s;
+}
+
+.read-more-link:hover {
     background-color: var(--accent-blue);
     color: white;
-    border-color: var(--accent-blue);
 }
+
+.industry-section.automotive .read-more-link { color: var(--accent-orange); background-color: oklch(70% 0.15 40 / 0.1); }
+.industry-section.automotive .read-more-link:hover { background-color: var(--accent-orange); color: white; }
+.industry-section.automotive .news-title-link:hover { color: var(--accent-orange); }
+
+.industry-section.battery .read-more-link { color: var(--accent-green); background-color: oklch(75% 0.15 150 / 0.1); }
+.industry-section.battery .read-more-link:hover { background-color: var(--accent-green); color: white; }
+.industry-section.battery .news-title-link:hover { color: var(--accent-green); }
+
+.industry-section.wiring .read-more-link { color: var(--accent-purple); background-color: oklch(60% 0.15 300 / 0.1); }
+.industry-section.wiring .read-more-link:hover { background-color: var(--accent-purple); color: white; }
+.industry-section.wiring .news-title-link:hover { color: var(--accent-purple); }
+
+.industry-section.automation .read-more-link { color: var(--accent-yellow); background-color: oklch(85% 0.15 80 / 0.1); }
+.industry-section.automation .read-more-link:hover { background-color: var(--accent-yellow); color: black; }
+.industry-section.automation .news-title-link:hover { color: var(--accent-yellow); }
 
 .issue-badge {
     font-size: 0.75rem;

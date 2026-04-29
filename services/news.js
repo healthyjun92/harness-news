@@ -26,17 +26,17 @@ export const NewsService = {
                 const briefing = {
                     robotics: [
                         { 
-                            title: { en: 'Humanoid Robots Outrun Humans in Beijing', ko: '베이징에서 인간을 추월한 휴머노이드 로봇' }, 
-                            summary: { en: 'Chinese brand Honor\'s humanoid robot set a new half-marathon record of 50m 26s, surpassing elite human runners.', ko: '중국 Honor사의 휴머노이드 로봇이 하프 마라톤에서 50분 26초를 기록하며 엘리트 인간 선수들의 기록을 경신했습니다.' }, 
-                            source: 'South China Morning Post',
-                            url: 'https://www.scmp.com/news/china/science/article/3259584/winner-beijing-robot-half-marathon-smashes-human-world-record-6-minutes',
+                            title: { en: 'Humanoid Robots Outrun Humans in Beijing Marathon', ko: '베이징 하프 마라톤에서 인간을 추월한 휴머노이드 로봇' }, 
+                            summary: { en: 'Chinese brand HONOR\'s "Lightning" robot set a new half-marathon record of 50m 26s, surpassing elite human runners.', ko: '중국 HONOR사의 "라이트닝" 로봇이 하프 마라톤에서 50분 26초를 기록하며 엘리트 인간 선수들의 기록을 경신했습니다.' }, 
+                            source: 'CBS News',
+                            url: 'https://www.cbsnews.com/news/humanoid-robot-beats-human-half-marathon-world-record-beijing/',
                             date: today
                         },
                         { 
                             title: { en: 'Amazon Robotics Strategic Shift & Layoffs', ko: '아마존 로보틱스의 전략적 변화와 감원' }, 
-                            summary: { en: 'Amazon confirmed layoffs and halted "Blue Jay" robotic arm project to focus on energy-efficient automation.', ko: '아마존이 에너지 효율적인 자동화에 집중하기 위해 "Blue Jay" 로봇 팔 프로젝트를 중단하고 감원을 단행했습니다.' }, 
-                            source: 'Reuters',
-                            url: 'https://www.reuters.com/business/retail-consumer/amazon-lay-off-hundreds-cloud-computing-unit-2024-04-03/',
+                            summary: { en: 'Amazon confirmed layoffs and halted "Blue Jay" robotic arm project to focus on more modular fulfillment platforms.', ko: '아마존이 더 모듈화된 물류 플랫폼에 집중하기 위해 "Blue Jay" 로봇 팔 프로젝트를 중단하고 감원을 단행했습니다.' }, 
+                            source: 'GeekWire',
+                            url: 'https://www.geekwire.com/2026/amazon-is-laying-off-an-undisclosed-number-of-employees-from-its-robotics-division/',
                             date: today
                         }
                     ],
@@ -44,8 +44,8 @@ export const NewsService = {
                         { 
                             title: { en: 'GM Indefinitely Delays Next-Gen EV Pickups', ko: 'GM, 차세대 전기 픽업트럭 출시 무기한 연기' }, 
                             summary: { en: 'General Motors is shifting focus back to ICE platforms and PHEV expansion due to market volatility.', ko: 'GM이 시장 변동성에 따라 차세대 전기 픽업 출시를 미루고 내연기관 및 하이브리드(PHEV) 확대로 선회했습니다.' }, 
-                            source: 'Electrek',
-                            url: 'https://electrek.co/2026/04/21/gm-suspends-next-gen-electric-truck-indefinitely-retreats-to-gas/',
+                            source: 'Car and Driver',
+                            url: 'https://www.caranddriver.com/news/a60568444/gm-next-gen-full-size-ev-trucks-delayed/',
                             date: today
                         },
                         { 
@@ -58,10 +58,10 @@ export const NewsService = {
                     ],
                     battery: [
                         { 
-                            title: { en: 'CATL Signs Major Sodium-Ion Battery Deal', ko: 'CATL, 대규모 나트륨 이온 배터리 공급 계약 체결' }, 
+                            title: { en: 'CATL Signs World\'s Largest Sodium-Ion Battery Deal', ko: 'CATL, 세계 최대 규모 나트륨 이온 배터리 계약 체결' }, 
                             summary: { en: 'CATL will provide 60GWh of sodium-ion batteries to HyperStrong, signaling a pivotal shift from lithium.', ko: 'CATL이 HyperStrong에 60GWh 규모의 나트륨 이온 배터리를 공급하기로 하며 리튬 대체 시장의 본격화를 알렸습니다.' }, 
-                            source: 'Electrek',
-                            url: 'https://electrek.co/2026/04/27/catl-sodium-batteries-mainstream-ready-60-gwh-deal/',
+                            source: 'Energy Storage News',
+                            url: 'https://www.energy-storage.news/a-turning-point-catl-and-hyperstrong-sign-60gwh-sodium-ion-agreement/',
                             date: today
                         },
                         { 

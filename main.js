@@ -14,7 +14,8 @@ const TRANSLATIONS = {
         recentIssue: 'Recent Issue',
         today: "Today's Briefing",
         archive: 'Archive',
-        lastUpdated: 'Last updated'
+        lastUpdated: 'Last updated',
+        readArticle: 'Read Full Article'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -26,7 +27,8 @@ const TRANSLATIONS = {
         recentIssue: '주요 이슈',
         today: '오늘의 브리핑',
         archive: '아카이브',
-        lastUpdated: '최종 수정'
+        lastUpdated: '최종 수정',
+        readArticle: '기사 원문 보기'
     }
 };
 
@@ -67,12 +69,14 @@ class IndustryApp extends HTMLElement {
         const today = new Date().toISOString().split('T')[0];
         const existingBriefing = StorageService.getBriefingByDate(today);
 
-        // Check if data exists AND has valid URLs (not placeholders like example.com)
+        // Check if data exists AND has verified direct URLs
+        // We force a refresh if the source is from a general list like SCMP or Reuters without specific article paths
         const isDataUpToDate = existingBriefing && 
                               existingBriefing.robotics && 
                               existingBriefing.robotics[0] && 
                               existingBriefing.robotics[0].url &&
-                              !existingBriefing.robotics[0].url.includes('example.com');
+                              !existingBriefing.robotics[0].url.includes('example.com') &&
+                              existingBriefing.robotics[0].source !== 'South China Morning Post'; // Force update from old source
 
         if (!existingBriefing || !isDataUpToDate) {
             this.isLoading = true;
@@ -205,13 +209,19 @@ class IndustryApp extends HTMLElement {
                         
                         return `
                             <div class="news-card">
-                                <h4>${title}</h4>
+                                ${hasUrl ? 
+                                    `<a href="${item.url}" target="_blank" class="news-title-link"><h4>${title}</h4></a>` : 
+                                    `<h4>${title}</h4>`
+                                }
                                 <p>${summary}</p>
                                 <div class="news-meta">
-                                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                                        <span class="badge">${item.source}</span>
                                         ${hasUrl ? 
-                                            `<a href="${item.url}" target="_blank" class="badge source-link">${item.source}</a>` : 
-                                            `<span class="badge">${item.source}</span>`
+                                            `<a href="${item.url}" target="_blank" class="read-more-link">
+                                                ${t.readArticle} <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
+                                            </a>` : 
+                                            ''
                                         }
                                         <span class="issue-badge">${t.recentIssue}</span>
                                     </div>
