@@ -38,8 +38,8 @@ export const NewsService = {
                                 en: ['First customer deliveries of BrightDrop and Hummer EV', 'Expansion of battery cell production capacity', 'Unified architecture for all vehicle segments'],
                                 ko: ['브라이트드롭 및 허머 EV의 첫 고객 인도 시작', '배터리 셀 생산 능력 대폭 확장', '모든 차급을 아우르는 통합 아키텍처 적용']
                             },
-                            source: 'GM Media',
-                            url: 'https://media.gm.com/media/us/en/gm/news.detail.html/content/Pages/news/us/en/2021/dec/1217-ultium-ev.html',
+                            source: 'GM Newsroom',
+                            url: 'https://news.gm.com/newsroom.detail.html/Pages/news/us/en/2021/dec/1217-hummer.html',
                             date: today,
                             isVerified: true
                         }
