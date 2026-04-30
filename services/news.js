@@ -25,7 +25,7 @@ export const NewsService = {
                                 ko: ['안전 펜스 없이 사람 사이를 안전하게 이동', '무거운 카트 운송 작업을 자율적으로 수행', '첨단 안전 및 내비게이션 기술 탑재']
                             },
                             source: 'Amazon News',
-                            url: 'https://www.aboutamazon.com/news/operations/amazon-introduces-first-fully-autonomous-mobile-robot',
+                            url: 'https://www.aboutamazon.com/news/operations/10-years-of-amazon-robotics-how-robots-help-sort-packages-move-product-and-improve-safety',
                             date: today,
                             isVerified: true
                         }
@@ -38,8 +38,8 @@ export const NewsService = {
                                 en: ['First customer deliveries of BrightDrop and Hummer EV', 'Expansion of battery cell production capacity', 'Unified architecture for all vehicle segments'],
                                 ko: ['브라이트드롭 및 허머 EV의 첫 고객 인도 시작', '배터리 셀 생산 능력 대폭 확장', '모든 차급을 아우르는 통합 아키텍처 적용']
                             },
-                            source: 'GM Newsroom',
-                            url: 'https://news.gm.com/newsroom.detail.html/Pages/news/us/en/2021/dec/1217-ultium-ev.html',
+                            source: 'GM Media',
+                            url: 'https://media.gm.com/media/us/en/gm/news.detail.html/content/Pages/news/us/en/2021/dec/1217-ultium-ev.html',
                             date: today,
                             isVerified: true
                         }
@@ -53,7 +53,7 @@ export const NewsService = {
                                 ko: ['10분 충전으로 400km 주행 거리 확보', '4C 충전을 지원하는 세계 최초의 LFP 배터리', '저온 환경에서의 성능 저하 대폭 개선']
                             },
                             source: 'CATL News',
-                            url: 'https://www.catl.com/en/news/6022.html',
+                            url: 'https://www.catl.com/en/news/6093.html',
                             date: today,
                             isVerified: true
                         }
