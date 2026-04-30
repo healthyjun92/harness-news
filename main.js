@@ -205,6 +205,12 @@ class IndustryApp extends HTMLElement {
                         <div class="briefing-grid">
                             ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
                         </div>
+                        
+                        <!-- EXACT DISQUS SNIPPET REQUESTED BY USER -->
+                        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                            <div id="disqus_thread"></div>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        </div>
                     `}
                 </main>
             </div>
@@ -212,6 +218,31 @@ class IndustryApp extends HTMLElement {
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
+
+        if (!this.isLoading) {
+            // Execute the exact Disqus script logic provided by the user
+            if (!document.getElementById('disqus-script')) {
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.id = 'disqus-script';
+                    s.src = 'https://harness-news.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            } else if (window.DISQUS) {
+                // If script is already loaded, reset it so it re-attaches to the newly rendered #disqus_thread
+                window.DISQUS.reset({ reload: true });
+            }
+        }
     }
 
     renderIndustrySection(industry, t) {
