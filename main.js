@@ -56,16 +56,38 @@ const TRANSLATIONS = {
 
 class DisqusComments extends HTMLElement {
     connectedCallback() {
+        this.style.display = 'block';
+        this.style.width = '100%';
+        this.style.minHeight = '300px';
+        
         this.innerHTML = `
-            <div id="disqus_thread" style="min-height: 300px;"></div>
+            <div id="disqus_thread"></div>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         `;
         
+        const resetDisqus = () => {
+            if (window.DISQUS) {
+                window.DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.url = window.location.href.split('#')[0];
+                        this.page.identifier = 'harness_news_global_main';
+                    }
+                });
+            }
+        };
+
         if (window.DISQUS) {
-            window.DISQUS.reset({ reload: true });
-        } else if (!window.DISQUS_INITIALIZED) {
-            window.DISQUS_INITIALIZED = true;
+            // Give the browser a tiny tick to paint the new #disqus_thread before resetting
+            setTimeout(resetDisqus, 100);
+        } else if (!document.getElementById('dsq-embed-scr')) {
+            window.disqus_config = function () {
+                this.page.url = window.location.href.split('#')[0];
+                this.page.identifier = 'harness_news_global_main';
+            };
+            
             const script = document.createElement('script');
+            script.id = 'dsq-embed-scr';
             script.textContent = `
                 /**
                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -85,11 +107,13 @@ class DisqusComments extends HTMLElement {
             `;
             document.body.appendChild(script);
         } else {
+            // Script is already in the document but window.DISQUS isn't ready yet.
+            // Wait for it to load and then reset it.
             let retries = 0;
             const checkInterval = setInterval(() => {
                 if (window.DISQUS) {
                     clearInterval(checkInterval);
-                    window.DISQUS.reset({ reload: true });
+                    resetDisqus();
                 }
                 if (++retries > 20) clearInterval(checkInterval);
             }, 500);
@@ -208,7 +232,7 @@ class IndustryApp extends HTMLElement {
                     </nav>
 
                     <!-- Disqus Comment Section -->
-                    <div style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem; flex-shrink: 0;">
+                    <div style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem; flex-shrink: 0; width: 100%; box-sizing: border-box;">
                         <disqus-comments></disqus-comments>
                     </div>
 
