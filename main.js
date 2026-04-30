@@ -163,11 +163,8 @@ class IndustryApp extends HTMLElement {
                         </div>
                     </nav>
 
-                    <!-- Disqus Comment Section -->
-                    <div style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem;">
-                        <div id="disqus_thread"></div>
-                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    </div>
+                    <!-- Disqus Placeholder -->
+                    <div id="disqus-placeholder"></div>
 
                     <div class="contact-section">
                         <h3>${t.contactUs}</h3>
@@ -220,8 +217,31 @@ class IndustryApp extends HTMLElement {
         if (window.lucide) lucide.createIcons();
 
         if (!this.isLoading) {
+            const disqusPlaceholder = this.querySelector('#disqus-placeholder');
+            if (disqusPlaceholder) {
+                this.initDisqus(disqusPlaceholder);
+            }
+        }
+    }
+
+    initDisqus(placeholder) {
+        // Prevent destruction and recreation of Disqus thread on every render
+        if (!window.disqusContainer) {
+            window.disqusContainer = document.createElement('div');
+            window.disqusContainer.style.marginTop = '2rem';
+            window.disqusContainer.style.marginBottom = '2rem';
+            window.disqusContainer.style.padding = '0 1rem';
+            
+            window.disqusContainer.innerHTML = `
+                <div id="disqus_thread"></div>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            `;
+            
+            placeholder.appendChild(window.disqusContainer);
+
             // Execute the exact Disqus script logic provided by the user
-            if (!document.getElementById('disqus-script')) {
+            const script = document.createElement('script');
+            script.textContent = `
                 /**
                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -232,14 +252,19 @@ class IndustryApp extends HTMLElement {
                 };
                 */
                 (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.id = 'disqus-script';
-                    s.src = 'https://harness-news.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
+                var d = document, s = d.createElement('script');
+                s.src = 'https://harness-news.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
                 })();
-            } else if (window.DISQUS) {
-                // If script is already loaded, reset it so it re-attaches to the newly rendered #disqus_thread
+            `;
+            document.body.appendChild(script);
+        } else {
+            // Container already exists, just move it to the new placeholder
+            placeholder.appendChild(window.disqusContainer);
+            
+            if (window.DISQUS) {
+                // Optionally reload to match new routes if needed, but since it's an SPA and URL doesn't change, we might just keep it as is.
                 window.DISQUS.reset({ reload: true });
             }
         }
