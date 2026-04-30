@@ -39,8 +39,11 @@ A professional dashboard for industry professionals to stay updated on global tr
     - **Ultra-Stable Newsroom Links:** Replaced individual article links with official corporate newsroom/media hubs where appropriate for better longevity.
     - **Verified Badge UI:** Added a "Verified Official" indicator to links that have been confirmed stable.
     - **Enhanced Translation:** Expanded bilingual support for the new Key Points and status indicators.
-    7.  **Partnership Inquiry Form Integration (Current):**
+    7.  **Partnership Inquiry Form Integration:**
     - Added a simple contact form in the sidebar to receive partnership inquiries via Formspree (`https://formspree.io/f/mwvnpzna`).
     - Implemented localization (KO/EN) for the contact form labels and placeholders.
     - Added corresponding CSS styling to match the industrial theme.
+    8.  **Disqus Comments Integration (Current):**
+    - Added Disqus comment section (`<div id="disqus_thread">`) to the bottom of the news briefing dashboard.
+    - Implemented SPA-compatible Disqus script loading and dynamic re-initialization `DISQUS.reset` for daily view routing.
 
