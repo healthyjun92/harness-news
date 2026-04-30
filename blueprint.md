@@ -35,7 +35,12 @@ A professional dashboard for industry professionals to stay updated on global tr
     - Enhanced CSS with high-contrast button styles and micro-interactions.
 5.  **Persistence:** All logs are managed via `StorageService` for seamless retrospective access.
 6.  **Main Issue Visibility Enhancement (V5 - Current):**
-    - **Integrated Key Points:** Added "Key Points" (주요 요점) to each news card to ensure "Main Issues" are visible within the app, reducing dependency on external links.
+    - Integrated Key Points:** Added "Key Points" (주요 요점) to each news card to ensure "Main Issues" are visible within the app, reducing dependency on external links.
     - **Ultra-Stable Newsroom Links:** Replaced individual article links with official corporate newsroom/media hubs where appropriate for better longevity.
     - **Verified Badge UI:** Added a "Verified Official" indicator to links that have been confirmed stable.
     - **Enhanced Translation:** Expanded bilingual support for the new Key Points and status indicators.
+    7.  **Partnership Inquiry Form Integration (Current):**
+    - Added a simple contact form in the sidebar to receive partnership inquiries via Formspree (`https://formspree.io/f/mwvnpzna`).
+    - Implemented localization (KO/EN) for the contact form labels and placeholders.
+    - Added corresponding CSS styling to match the industrial theme.
+

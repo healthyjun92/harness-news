@@ -21,7 +21,12 @@ const TRANSLATIONS = {
         searchTip: 'If the link above is restricted, use this to search manually',
         keyPoints: 'Key Points',
         verified: 'Verified Official',
-        officialNewsroom: 'Official Newsroom'
+        officialNewsroom: 'Official Newsroom',
+        contactUs: 'Partnership Inquiry',
+        name: 'Name',
+        email: 'Email',
+        message: 'Message',
+        send: 'Send Inquiry'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -40,7 +45,12 @@ const TRANSLATIONS = {
         searchTip: '링크 접속이 원활하지 않을 경우 구글 검색 결과로 이동합니다',
         keyPoints: '주요 요점',
         verified: '공식 인증 원문',
-        officialNewsroom: '공식 뉴스룸'
+        officialNewsroom: '공식 뉴스룸',
+        contactUs: '제휴 문의',
+        name: '이름',
+        email: '이메일',
+        message: '문의 내용',
+        send: '문의 보내기'
     }
 };
 
@@ -142,7 +152,7 @@ class IndustryApp extends HTMLElement {
                         </div>
                     </nav>
 
-                    <nav class="nav-section">
+                    <nav class="nav-section" style="flex-grow: 1; overflow-y: auto;">
                         <h3>${t.archiveLogs}</h3>
                         <div class="nav-list" id="archive-list">
                             ${availableDates.map(date => `
@@ -152,6 +162,16 @@ class IndustryApp extends HTMLElement {
                             `).join('')}
                         </div>
                     </nav>
+
+                    <div class="contact-section">
+                        <h3>${t.contactUs}</h3>
+                        <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
+                            <input type="text" name="name" placeholder="${t.name}" required>
+                            <input type="email" name="email" placeholder="${t.email}" required>
+                            <textarea name="message" placeholder="${t.message}" required></textarea>
+                            <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
+                        </form>
+                    </div>
                 </aside>
 
                 <main>
