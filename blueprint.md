@@ -28,9 +28,14 @@ A professional dashboard for industry professionals to stay updated on global tr
 1.  **Project Scaffolding:** Initialized shell, storage, and news services.
 2.  **Core Components:** Developed `industry-app` with dashboard and archive views.
 3.  **UI Refinement:** Implemented industrial theme, responsive sidebar, and multilingual support (KO/EN).
-4.  **Navigation Fix (V4 - Current):** 
+4.  **Navigation Fix (V4):** 
     - Replaced all aging/unstable URLs with verified official corporate newsroom links.
     - Implemented "Fail-Safe" Google Search fallback buttons on every news card.
     - Updated `StorageService` to V4 to force-clear legacy cached links.
     - Enhanced CSS with high-contrast button styles and micro-interactions.
 5.  **Persistence:** All logs are managed via `StorageService` for seamless retrospective access.
+6.  **Main Issue Visibility Enhancement (V5 - Current):**
+    - **Integrated Key Points:** Added "Key Points" (주요 요점) to each news card to ensure "Main Issues" are visible within the app, reducing dependency on external links.
+    - **Ultra-Stable Newsroom Links:** Replaced individual article links with official corporate newsroom/media hubs where appropriate for better longevity.
+    - **Verified Badge UI:** Added a "Verified Official" indicator to links that have been confirmed stable.
+    - **Enhanced Translation:** Expanded bilingual support for the new Key Points and status indicators.

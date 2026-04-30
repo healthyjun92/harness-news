@@ -18,7 +18,10 @@ const TRANSLATIONS = {
         readArticle: 'View Official Source',
         directLinkTip: 'Go to the primary press release or newsroom',
         searchFallback: 'Search on Google',
-        searchTip: 'If the link above is restricted, use this to search manually'
+        searchTip: 'If the link above is restricted, use this to search manually',
+        keyPoints: 'Key Points',
+        verified: 'Verified Official',
+        officialNewsroom: 'Official Newsroom'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -34,7 +37,10 @@ const TRANSLATIONS = {
         readArticle: '공식 원문 보기',
         directLinkTip: '기업 공식 뉴스룸이나 대형 언론사 원문으로 이동합니다',
         searchFallback: '구글에서 직접 검색',
-        searchTip: '링크 접속이 원활하지 않을 경우 구글 검색 결과로 이동합니다'
+        searchTip: '링크 접속이 원활하지 않을 경우 구글 검색 결과로 이동합니다',
+        keyPoints: '주요 요점',
+        verified: '공식 인증 원문',
+        officialNewsroom: '공식 뉴스룸'
     }
 };
 
@@ -192,7 +198,6 @@ class IndustryApp extends HTMLElement {
         const newsItems = this.briefingData ? this.briefingData[industry.id] : [];
         if (!newsItems || newsItems.length === 0) return '';
 
-        // Filter: Only include items with verified official URLs to prevent broken experiences
         const verifiedItems = newsItems.filter(item => 
             item.url && 
             item.url !== 'undefined' && 
@@ -212,13 +217,26 @@ class IndustryApp extends HTMLElement {
                     ${verifiedItems.map(item => {
                         const title = typeof item.title === 'object' ? item.title[this.lang] || item.title['en'] : item.title;
                         const summary = typeof item.summary === 'object' ? item.summary[this.lang] || item.summary['en'] : item.summary;
-                        const hasUrl = true; // Since we filtered, all items here have a URL
+                        const mainPoints = item.mainPoints ? (item.mainPoints[this.lang] || item.mainPoints['en'] || []) : [];
                         const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(title + ' ' + item.source)}`;
                         
                         return `
                             <div class="news-card">
-                                <a href="${item.url}" target="_blank" class="news-title-link"><h4>${title}</h4></a>
-                                <p>${summary}</p>
+                                <div class="news-card-header">
+                                    <a href="${item.url}" target="_blank" class="news-title-link"><h4>${title}</h4></a>
+                                    ${item.isVerified ? `<span class="verified-badge"><i data-lucide="check-circle"></i> ${t.verified}</span>` : ''}
+                                </div>
+                                <p class="news-summary">${summary}</p>
+                                
+                                ${mainPoints.length > 0 ? `
+                                    <div class="key-points-container">
+                                        <h5>${t.keyPoints}</h5>
+                                        <ul class="key-points-list">
+                                            ${mainPoints.map(point => `<li>${point}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                ` : ''}
+
                                 <div class="news-meta">
                                     <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
                                         <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
