@@ -54,74 +54,6 @@ const TRANSLATIONS = {
     }
 };
 
-class DisqusComments extends HTMLElement {
-    connectedCallback() {
-        this.style.display = 'block';
-        this.style.width = '100%';
-        this.style.minHeight = '300px';
-        
-        this.innerHTML = `
-            <div id="disqus_thread"></div>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        `;
-        
-        const resetDisqus = () => {
-            if (window.DISQUS) {
-                window.DISQUS.reset({
-                    reload: true,
-                    config: function () {
-                        this.page.url = window.location.href.split('#')[0];
-                        this.page.identifier = 'harness_news_global_main';
-                    }
-                });
-            }
-        };
-
-        if (window.DISQUS) {
-            // Give the browser a tiny tick to paint the new #disqus_thread before resetting
-            setTimeout(resetDisqus, 100);
-        } else if (!document.getElementById('dsq-embed-scr')) {
-            window.disqus_config = function () {
-                this.page.url = window.location.href.split('#')[0];
-                this.page.identifier = 'harness_news_global_main';
-            };
-            
-            const script = document.createElement('script');
-            script.id = 'dsq-embed-scr';
-            script.textContent = `
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://harness-news.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            `;
-            document.body.appendChild(script);
-        } else {
-            // Script is already in the document but window.DISQUS isn't ready yet.
-            // Wait for it to load and then reset it.
-            let retries = 0;
-            const checkInterval = setInterval(() => {
-                if (window.DISQUS) {
-                    clearInterval(checkInterval);
-                    resetDisqus();
-                }
-                if (++retries > 20) clearInterval(checkInterval);
-            }, 500);
-        }
-    }
-}
-customElements.define('disqus-comments', DisqusComments);
-
 class IndustryApp extends HTMLElement {
     constructor() {
         super();
@@ -203,6 +135,15 @@ class IndustryApp extends HTMLElement {
         const availableDates = StorageService.getAvailableDates();
         const industries = NewsService.getIndustries();
 
+        // 1. RESCUE THE DISQUS CONTAINER BEFORE RE-RENDERING
+        // If it's currently inside our element, move it to the body temporarily to prevent its destruction.
+        const disqusContainer = document.getElementById('disqus-persistent-container');
+        if (disqusContainer) {
+            document.body.appendChild(disqusContainer);
+            disqusContainer.style.display = 'none';
+        }
+
+        // 2. OVERWRITE HTML
         this.innerHTML = `
             <div class="app-container">
                 <aside class="${this.sidebarActive ? 'active' : ''}">
@@ -231,10 +172,8 @@ class IndustryApp extends HTMLElement {
                         </div>
                     </nav>
 
-                    <!-- Disqus Comment Section -->
-                    <div style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem; flex-shrink: 0; width: 100%; box-sizing: border-box;">
-                        <disqus-comments></disqus-comments>
-                    </div>
+                    <!-- Disqus Placeholder -->
+                    <div id="disqus-placeholder" style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem; flex-shrink: 0; width: 100%; box-sizing: border-box;"></div>
 
                     <div class="contact-section">
                         <h3>${t.contactUs}</h3>
@@ -285,6 +224,26 @@ class IndustryApp extends HTMLElement {
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
+
+        // 3. RESTORE THE DISQUS CONTAINER INTO THE NEW PLACEHOLDER
+        const restoredDisqusContainer = document.getElementById('disqus-persistent-container');
+        const placeholder = this.querySelector('#disqus-placeholder');
+        
+        if (restoredDisqusContainer && placeholder) {
+            restoredDisqusContainer.style.display = 'block';
+            placeholder.appendChild(restoredDisqusContainer);
+            
+            // Tell Disqus to reset itself to calculate its new position in the DOM correctly
+            if (window.DISQUS) {
+                window.DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.url = window.location.href.split('#')[0];
+                        this.page.identifier = 'harness_news_global_main';
+                    }
+                });
+            }
+        }
     }
 
     renderIndustrySection(industry, t) {
