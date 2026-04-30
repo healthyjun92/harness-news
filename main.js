@@ -205,8 +205,6 @@ class IndustryApp extends HTMLElement {
                         <div class="briefing-grid">
                             ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
                         </div>
-                        <div id="disqus_thread" style="margin-top: 4rem;"></div>
-                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     `}
                 </main>
             </div>
@@ -214,42 +212,6 @@ class IndustryApp extends HTMLElement {
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
-
-        if (!this.isLoading) {
-            this.loadDisqus();
-        }
-    }
-
-    loadDisqus() {
-        const pageId = `${this.currentView}_${this.selectedDate}`;
-        const pageUrl = window.location.origin + window.location.pathname + '#!/' + pageId;
-
-        // Exactly map the config the user requested
-        window.disqus_config = function () {
-            this.page.url = pageUrl;
-            this.page.identifier = pageId;
-        };
-
-        // If the script is already injected, reset the instance to match new DOM
-        if (document.getElementById('disqus-script')) {
-            if (window.DISQUS) {
-                window.DISQUS.reset({
-                    reload: true,
-                    config: window.disqus_config
-                });
-            } else {
-                // If script exists but DISQUS isn't loaded yet, it's still initializing.
-                // Setting window.disqus_config above is sufficient for when it completes.
-            }
-            return;
-        }
-
-        // Initialize exact snippet requested by user
-        var d = document, s = d.createElement('script');
-        s.id = 'disqus-script';
-        s.src = 'https://harness-news.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
     }
 
     renderIndustrySection(industry, t) {
