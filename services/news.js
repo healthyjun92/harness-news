@@ -27,16 +27,16 @@ export const NewsService = {
                     robotics: [
                         { 
                             title: { en: 'Amazon expands robotics investment with new fulfillment technology', ko: '아마존, 신규 물류 기술 도입으로 로보틱스 투자 확대' }, 
-                            summary: { en: 'Amazon continues to lead the industry by deploying advanced robotic systems across its global fulfillment network to enhance safety and efficiency.', ko: '아마존이 안전성과 효율성을 높이기 위해 글로벌 물류 네트워크 전반에 첨단 로봇 시스템을 구축하며 산업계를 선도하고 있습니다.' }, 
+                            summary: { en: 'Amazon continues to lead the industry by deploying advanced robotic systems like Sequoia to enhance safety and efficiency in fulfillment centers.', ko: '아마존이 세쿼이아(Sequoia)와 같은 첨단 로봇 시스템을 물류 센터에 구축하여 안전성과 효율성을 높이며 산업계를 선도하고 있습니다.' }, 
                             source: 'Amazon News',
                             url: 'https://www.aboutamazon.com/news/operations/amazon-robotics-fulfillment-center-technology',
                             date: today
                         },
                         { 
-                            title: { en: 'Humanoid robots taking flight: The latest from Boston Dynamics', ko: '비상하는 휴머노이드 로봇: 보스턴 다이내믹스 최신 현황' }, 
-                            summary: { en: 'Boston Dynamics showcases its latest humanoid capabilities, pushing the boundaries of what autonomous mobile robots can achieve in human environments.', ko: '보스턴 다이내믹스가 인간 환경에서 자율 이동 로봇이 달성할 수 있는 한계를 뛰어넘는 최신 휴머노이드 역량을 선보였습니다.' }, 
+                            title: { en: 'Boston Dynamics introduces All-Electric Atlas humanoid robot', ko: '보스턴 다이내믹스, 올-일렉트릭 아틀라스 휴머노이드 공개' }, 
+                            summary: { en: 'Boston Dynamics has unveiled an entirely new, fully electric Atlas robot designed for real-world applications, moving beyond the hydraulic version.', ko: '보스턴 다이내믹스가 기존 유압식을 넘어 실제 산업 현장 적용을 위해 설계된 완전 전동식 아틀라스 로봇을 새롭게 공개했습니다.' }, 
                             source: 'Boston Dynamics',
-                            url: 'https://bostondynamics.com/news/',
+                            url: 'https://bostondynamics.com/blog/electric-atlas/',
                             date: today
                         }
                     ],
@@ -65,40 +65,40 @@ export const NewsService = {
                             date: today
                         },
                         { 
-                            title: { en: 'Global energy storage market projections and trends', ko: '글로벌 에너지 저장 시장 전망 및 트렌드' }, 
-                            summary: { en: 'Analysis of the rapidly growing energy storage sector, driven by renewable energy integration and grid stability needs.', ko: '재생 에너지 통합 및 그리드 안정성 요구에 힘입어 빠르게 성장하는 에너지 저장 부문에 대한 분석입니다.' }, 
+                            title: { en: 'Global energy storage market to grow to 137GW/352GWh by 2030', ko: '글로벌 에너지 저장 시장, 2030년까지 137GW 규모로 성장 전망' }, 
+                            summary: { en: 'BloombergNEF analysis shows the global energy storage market is set to quadruple by 2030, driven by AI and renewable integration.', ko: 'BloombergNEF 분석에 따르면, AI 및 신재생 에너지 통합에 힘입어 글로벌 에너지 저장 시장이 2030년까지 현재의 4배인 137GW 규모로 성장할 전망입니다.' }, 
                             source: 'BloombergNEF',
-                            url: 'https://about.bnef.com/blog/category/energy-storage/',
+                            url: 'https://about.bnef.com/blog/global-energy-storage-market-to-grow-to-137gw-352gwh-by-2030/',
                             date: today
                         }
                     ],
                     wiring: [
                         { 
-                            title: { en: 'Global Automotive Wire Harness Market Insights', ko: '글로벌 자동차 와이어링 하네스 시장 통찰력' }, 
-                            summary: { en: 'Comprehensive analysis of the automotive wiring harness market, including key growth drivers and technological advancements in high-voltage systems.', ko: '고전압 시스템의 주요 성장 동력 및 기술 발전을 포함한 자동차 와이어링 하네스 시장에 대한 종합 분석입니다.' }, 
-                            source: 'Business Wire',
-                            url: 'https://www.businesswire.com/portal/site/home/search/?searchType=all&searchTerm=wiring+harness',
+                            title: { en: 'Aptiv to Acquire Intercable Automotive Solutions for Harness Expansion', ko: '앱티브, 하네스 사업 확장을 위한 인터케이블 오토모티브 인수' }, 
+                            summary: { en: 'Aptiv announced the acquisition of Intercable Automotive Solutions to strengthen its position in high-voltage busbar and connection systems.', ko: '앱티브(Aptiv)가 고전압 버스바 및 하네스 연결 시스템 시장에서의 입지를 강화하기 위해 인터케이블 오토모티브 인수를 발표했습니다.' }, 
+                            source: 'Aptiv Newsroom',
+                            url: 'https://www.aptiv.com/en/newsroom/article/aptiv-to-acquire-intercable-automotive-solutions',
                             date: today
                         },
                         { 
-                            title: { en: 'Nissan\'s breakthrough in automated wire harness assembly', ko: '닛산, 와이어링 하네스 조립 자동화 기술 돌파구' }, 
-                            summary: { en: 'Nissan demonstrated a robotic system capable of automating the complex task of wire harness insertion, improving manufacturing efficiency.', ko: '닛산이 와이어링 하네스 삽입이라는 복잡한 작업을 자동화하여 제조 효율성을 높일 수 있는 로봇 시스템을 시연했습니다.' }, 
-                            source: 'Nissan Newsroom',
-                            url: 'https://usa.nissannews.com/en-US',
+                            title: { en: 'Nissan showcases automated wire harness assembly at intelligent factory', ko: '닛산, 지능형 공장에서 와이어링 하네스 조립 자동화 시연' }, 
+                            summary: { en: 'Nissan demonstrated a robotic system that automates the complex task of wire harness insertion, a significant step in smart manufacturing.', ko: '닛산이 스마트 제조의 핵심 단계인 와이어링 하네스 삽입 공정을 자동화하는 로봇 시스템을 자사 지능형 공장에서 시연했습니다.' }, 
+                            source: 'Nissan Global News',
+                            url: 'https://global.nissannews.com/en/releases/release-1349e4d58079a0b165b4c48325019d08-211129-01-e',
                             date: today
                         }
                     ],
                     automation: [
                         { 
-                            title: { en: 'Intel and Partners Advance AI-Driven Industrial Automation', ko: '인텔 및 파트너사, AI 기반 산업 자동화 추진' }, 
-                            summary: { en: 'Intel announced new collaborations to deliver AI-optimized solutions for factory automation and predictive maintenance.', ko: '인텔이 공장 자동화 및 예측 유지보수를 위한 AI 최적화 솔루션을 제공하기 위한 새로운 협업을 발표했습니다.' }, 
+                            title: { en: 'Intel Unveils World’s First Optical Compute Interconnect Chiplet', ko: '인텔, 세계 최초 광학 컴퓨팅 인터커넥트 칩렛 공개' }, 
+                            summary: { en: 'Intel demonstrated the industry’s first fully integrated optical compute interconnect (OCI) chiplet to accelerate AI infrastructure data processing.', ko: '인텔이 AI 인프라의 데이터 처리를 가속화하기 위해 업계 최초의 완전 통합형 광학 컴퓨팅 인터커넥트(OCI) 칩렛을 선보였습니다.' }, 
                             source: 'Intel Newsroom',
-                            url: 'https://www.intel.com/content/www/us/en/newsroom/home.html',
+                            url: 'https://www.intel.com/content/www/us/en/newsroom/news/intel-unveils-optical-compute-interconnect-chiplet.html',
                             date: today
                         },
                         { 
-                            title: { en: 'NVIDIA Showcases Factory-Scale Digital Twins', ko: '엔비디아, 공장 규모의 디지털 트윈 시연' }, 
-                            summary: { en: 'NVIDIA demonstrated how generative AI and digital twins are transforming industrial operations through high-fidelity simulations.', ko: '엔비디아가 생성형 AI와 디지털 트윈이 고충실도 시뮬레이션을 통해 어떻게 산업 운영을 변화시키고 있는지 시연했습니다.' }, 
+                            title: { en: 'NVIDIA and Partners Showcase Factory-Scale Digital Twins', ko: '엔비디아, 공장 규모의 디지털 트윈 시연' }, 
+                            summary: { en: 'NVIDIA demonstrated how generative AI and digital twins are transforming industrial operations through high-fidelity simulations with Omniverse.', ko: '엔비디아가 옴니버스(Omniverse)를 통해 생성형 AI와 디지털 트윈이 어떻게 산업 운영을 변화시키고 있는지 시연했습니다.' }, 
                             source: 'NVIDIA Newsroom',
                             url: 'https://nvidianews.nvidia.com/news/hannover-messe-2024-digital-twin-generative-ai',
                             date: today
