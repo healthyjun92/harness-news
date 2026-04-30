@@ -14,7 +14,7 @@ A professional dashboard for industry professionals to stay updated on global tr
   - **Hyper-Stable Sourcing:** Every news item links directly to an official corporate newsroom or primary press release platform (Business Wire, PRNewswire), ensuring 100% link reliability and permanence.
   - **Verified Source Enforcement:** The app automatically suppresses news items that lack a verified official source URL to prevent "Not Found" errors and maintain professional standards.
   - **Daily Briefing Engine:** Automatically generates or displays the latest industry news through AI-driven synthesis of global reports.
-  - **Historical Logging (V4):** Saves daily briefings to LocalStorage using a versioned key (`gidb_logs_v4`) to ensure data integrity and force-refresh when sourcing logic improves.
+  - **Historical Logging (V5):** Saves daily briefings to LocalStorage using a versioned key (`gidb_logs_v5`) to force-clear any stale or potentially broken legacy links.
   - **Archive Navigator:** A dedicated view to browse and read past briefings.
   - **Industry Segmentation:** Categorized news sections for focused reading.
 
