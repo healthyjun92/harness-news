@@ -98,7 +98,6 @@ class IndustryApp extends HTMLElement {
             StorageService.saveBriefing(today, newBriefing);
             this.briefingData = newBriefing;
             this.isLoading = false;
-            this.render();
         } else {
             this.briefingData = existingBriefing;
         }
@@ -223,29 +222,30 @@ class IndustryApp extends HTMLElement {
 
     loadDisqus() {
         const pageId = `${this.currentView}_${this.selectedDate}`;
-        const pageUrl = window.location.href.split('#')[0] + '#!/' + pageId;
+        const pageUrl = window.location.origin + window.location.pathname + '#!/' + pageId;
 
-        // If the script is already injected, just reset the existing instance.
+        // Exactly map the config the user requested
+        window.disqus_config = function () {
+            this.page.url = pageUrl;
+            this.page.identifier = pageId;
+        };
+
+        // If the script is already injected, reset the instance to match new DOM
         if (document.getElementById('disqus-script')) {
             if (window.DISQUS) {
                 window.DISQUS.reset({
                     reload: true,
-                    config: function () {
-                        this.page.identifier = pageId;
-                        this.page.url = pageUrl;
-                    }
+                    config: window.disqus_config
                 });
+            } else {
+                // If script exists but DISQUS isn't loaded yet, it's still initializing.
+                // Setting window.disqus_config above is sufficient for when it completes.
             }
             return;
         }
 
-        // Initial setup and script injection
-        window.disqus_config = function () {
-            this.page.identifier = pageId;
-            this.page.url = pageUrl;
-        };
-
-        const d = document, s = d.createElement('script');
+        // Initialize exact snippet requested by user
+        var d = document, s = d.createElement('script');
         s.id = 'disqus-script';
         s.src = 'https://harness-news.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
