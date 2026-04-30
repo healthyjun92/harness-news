@@ -163,6 +163,12 @@ class IndustryApp extends HTMLElement {
                         </div>
                     </nav>
 
+                    <!-- Disqus Comment Section -->
+                    <div style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem;">
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+
                     <div class="contact-section">
                         <h3>${t.contactUs}</h3>
                         <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
@@ -204,12 +210,6 @@ class IndustryApp extends HTMLElement {
                     ` : `
                         <div class="briefing-grid">
                             ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
-                        </div>
-                        
-                        <!-- EXACT DISQUS SNIPPET REQUESTED BY USER -->
-                        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-                            <div id="disqus_thread"></div>
-                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                         </div>
                     `}
                 </main>
