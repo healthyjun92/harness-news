@@ -192,6 +192,16 @@ class IndustryApp extends HTMLElement {
         const newsItems = this.briefingData ? this.briefingData[industry.id] : [];
         if (!newsItems || newsItems.length === 0) return '';
 
+        // Filter: Only include items with verified official URLs to prevent broken experiences
+        const verifiedItems = newsItems.filter(item => 
+            item.url && 
+            item.url !== 'undefined' && 
+            item.url !== '' && 
+            item.url.startsWith('http')
+        );
+
+        if (verifiedItems.length === 0) return '';
+
         return `
             <section class="industry-section ${industry.id}">
                 <div class="industry-header">
@@ -199,29 +209,23 @@ class IndustryApp extends HTMLElement {
                     <h2>${industry.name[this.lang] || industry.name['en'] || industry.name}</h2>
                 </div>
                 <div class="news-cards">
-                    ${newsItems.map(item => {
+                    ${verifiedItems.map(item => {
                         const title = typeof item.title === 'object' ? item.title[this.lang] || item.title['en'] : item.title;
                         const summary = typeof item.summary === 'object' ? item.summary[this.lang] || item.summary['en'] : item.summary;
-                        const hasUrl = item.url && item.url !== 'undefined';
+                        const hasUrl = true; // Since we filtered, all items here have a URL
                         const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(title + ' ' + item.source)}`;
                         
                         return `
                             <div class="news-card">
-                                ${hasUrl ? 
-                                    `<a href="${item.url}" target="_blank" class="news-title-link"><h4>${title}</h4></a>` : 
-                                    `<h4>${title}</h4>`
-                                }
+                                <a href="${item.url}" target="_blank" class="news-title-link"><h4>${title}</h4></a>
                                 <p>${summary}</p>
                                 <div class="news-meta">
                                     <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
                                         <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
                                             <span class="badge">${item.source}</span>
-                                            ${hasUrl ? 
-                                                `<a href="${item.url}" target="_blank" class="read-more-link direct-article-link highlight" title="${t.directLinkTip}">
-                                                    <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> ${t.readArticle}
-                                                </a>` : 
-                                                ''
-                                            }
+                                            <a href="${item.url}" target="_blank" class="read-more-link direct-article-link highlight" title="${t.directLinkTip}">
+                                                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> ${t.readArticle}
+                                            </a>
                                             <a href="${searchUrl}" target="_blank" class="read-more-link search-fallback-link" title="${t.searchTip}" style="opacity: 0.8;">
                                                 <i data-lucide="search" style="width: 14px; height: 14px;"></i> ${t.searchFallback}
                                             </a>
