@@ -9,7 +9,9 @@
     pkgs.python3
   ];
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    GEMINI_MODEL = "gemini-3.1-pro-preview";
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
