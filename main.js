@@ -223,26 +223,33 @@ class IndustryApp extends HTMLElement {
 
     loadDisqus() {
         const pageId = `${this.currentView}_${this.selectedDate}`;
-        const pageUrl = window.location.href.split('#')[0] + '#' + pageId;
+        const pageUrl = window.location.href.split('#')[0] + '#!/' + pageId;
 
-        if (window.DISQUS) {
-            window.DISQUS.reset({
-                reload: true,
-                config: function () {
-                    this.page.identifier = pageId;
-                    this.page.url = pageUrl;
-                }
-            });
-        } else {
-            window.disqus_config = function () {
-                this.page.identifier = pageId;
-                this.page.url = pageUrl;
-            };
-            const d = document, s = d.createElement('script');
-            s.src = 'https://harness-news.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
+        // If the script is already injected, just reset the existing instance.
+        if (document.getElementById('disqus-script')) {
+            if (window.DISQUS) {
+                window.DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.identifier = pageId;
+                        this.page.url = pageUrl;
+                    }
+                });
+            }
+            return;
         }
+
+        // Initial setup and script injection
+        window.disqus_config = function () {
+            this.page.identifier = pageId;
+            this.page.url = pageUrl;
+        };
+
+        const d = document, s = d.createElement('script');
+        s.id = 'disqus-script';
+        s.src = 'https://harness-news.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     }
 
     renderIndustrySection(industry, t) {
