@@ -56,12 +56,15 @@ const TRANSLATIONS = {
 
 class DisqusComments extends HTMLElement {
     connectedCallback() {
-        if (!this.hasChildNodes()) {
-            this.innerHTML = `
-                <div id="disqus_thread"></div>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            `;
-            
+        this.innerHTML = `
+            <div id="disqus_thread" style="min-height: 300px;"></div>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        `;
+        
+        if (window.DISQUS) {
+            window.DISQUS.reset({ reload: true });
+        } else if (!window.DISQUS_INITIALIZED) {
+            window.DISQUS_INITIALIZED = true;
             const script = document.createElement('script');
             script.textContent = `
                 /**
@@ -80,9 +83,16 @@ class DisqusComments extends HTMLElement {
                 (d.head || d.body).appendChild(s);
                 })();
             `;
-            this.appendChild(script);
-        } else if (window.DISQUS) {
-            window.DISQUS.reset({ reload: true });
+            document.body.appendChild(script);
+        } else {
+            let retries = 0;
+            const checkInterval = setInterval(() => {
+                if (window.DISQUS) {
+                    clearInterval(checkInterval);
+                    window.DISQUS.reset({ reload: true });
+                }
+                if (++retries > 20) clearInterval(checkInterval);
+            }, 500);
         }
     }
 }
