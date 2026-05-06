@@ -24,7 +24,7 @@ export const NewsService = {
                                 ko: ['2026년 메트 갈라에서 데뷔', '군중과 상호작용하며 음료 서빙 시연', '생산량 1만 대 돌파']
                             },
                             source: 'PR Newswire',
-                            url: '#',
+                            url: 'https://www.prnewswire.com/',
                             date: '2026-05-05',
                             isVerified: true
                         }
@@ -38,7 +38,7 @@ export const NewsService = {
                                 ko: ['2026년 5월 3일 폐막', '소프트웨어 중심 자동차(SDV)에 초점', '지능형 연결 기술의 발전 소개']
                             },
                             source: 'Phyron',
-                            url: '#',
+                            url: 'https://www.phyron.com/news',
                             date: '2026-05-03',
                             isVerified: true
                         }
@@ -52,7 +52,7 @@ export const NewsService = {
                                 ko: ['5월 6일 60GWh 규모의 공급 계약 발표', '나트륨 이온 셀 대량 생산의 획기적 전환점', '창안 네보 A06 모델에 탑재 예정']
                             },
                             source: 'Sustainability Online',
-                            url: '#',
+                            url: 'https://www.catl.com/en/news/',
                             date: '2026-05-06',
                             isVerified: true
                         }
@@ -66,7 +66,7 @@ export const NewsService = {
                                 ko: ['2026년 5월 5일~6일 독일 루트비히스부르크에서 개최', '현대 차량의 신경망에 초점', 'SDV 표준화 논의']
                             },
                             source: 'Bordnetzkongress',
-                            url: '#',
+                            url: 'https://www.bordnetzkongress.de/',
                             date: '2026-05-05',
                             isVerified: true
                         }
