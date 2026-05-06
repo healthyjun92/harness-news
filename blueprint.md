@@ -46,4 +46,8 @@ A professional dashboard for industry professionals to stay updated on global tr
     8.  **Disqus Comments Integration (Current):**
     - Added Disqus comment section (`<div id="disqus_thread">`) to the bottom of the news briefing dashboard.
     - Implemented SPA-compatible Disqus script loading and dynamic re-initialization `DISQUS.reset` for daily view routing.
+    9.  **News Content Update (Current):**
+    - Updated `NewsService.fetchLatestBriefing()` to provide actual recent news from the past week (May 2026) instead of old mock data.
+    - Excluded the Automation category as no significant recent news was found, adhering to user's strict briefing criteria.
+    - Updated `StorageService.STORAGE_KEY` to `gidb_logs_v15` to force cache invalidation and ensure the latest data is displayed.
 
