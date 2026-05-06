@@ -198,13 +198,8 @@ class IndustryApp extends HTMLElement {
                         </div>
                     `}
 
-                    <!-- Page Footer: Disqus & Contact -->
+                    <!-- Page Footer: Contact -->
                     <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-                        <!-- Disqus Placeholder -->
-                        <div id="disqus-placeholder" style="margin-bottom: 2rem; width: 100%; box-sizing: border-box; min-height: 300px;">
-                            <div id="disqus_thread"></div>
-                        </div>
-
                         <div class="contact-section">
                             <h3>${t.contactUs}</h3>
                             <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
@@ -221,31 +216,6 @@ class IndustryApp extends HTMLElement {
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
-        this.loadDisqus();
-    }
-
-    loadDisqus() {
-        if (window.DISQUS) {
-            window.DISQUS.reset({
-                reload: true,
-                config: function () {
-                    this.page.url = window.location.href.split('#')[0];
-                    this.page.identifier = 'harness_news_global_main';
-                }
-            });
-        } else {
-            if (!document.getElementById('disqus-embed-script')) {
-                window.disqus_config = function () {
-                    this.page.url = window.location.href.split('#')[0];
-                    this.page.identifier = 'harness_news_global_main';
-                };
-                const d = document, s = d.createElement('script');
-                s.src = 'https://harness-news.disqus.com/embed.js';
-                s.id = 'disqus-embed-script';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            }
-        }
     }
 
     renderIndustrySection(industry, t) {
