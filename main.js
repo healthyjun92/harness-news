@@ -1,5 +1,5 @@
-import { StorageService } from './services/storage.js?v=3.0';
-import { NewsService } from './services/news.js?v=3.0';
+import { StorageService } from './services/storage.js?v=5.0';
+import { NewsService } from './services/news.js?v=5.0';
 
 console.log('Harness News App is loading...');
 
@@ -210,12 +210,43 @@ class IndustryApp extends HTMLElement {
                             </form>
                         </div>
                     </div>
+                    
+                    <!-- Disqus Comments -->
+                    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <div id="disqus_thread"></div>
+                    </div>
                 </main>
             </div>
         `;
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
+        this.loadOrResetDisqus();
+    }
+
+    loadOrResetDisqus() {
+        const identifier = this.selectedDate;
+        const url = window.location.href.split('#')[0] + '#' + identifier;
+
+        if (window.DISQUS) {
+            window.DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = identifier;
+                    this.page.url = url;
+                }
+            });
+        } else {
+            window.disqus_config = function () {
+                this.page.url = url;
+                this.page.identifier = identifier;
+            };
+            const d = document, s = d.createElement('script');
+            // We need a dummy shortname since this is a prototype without a real Disqus account linked
+            s.src = 'https://gidb-test.disqus.com/embed.js'; 
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
     }
 
     renderIndustrySection(industry, t) {
