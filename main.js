@@ -171,19 +171,6 @@ class IndustryApp extends HTMLElement {
                             `).join('')}
                         </div>
                     </nav>
-
-                    <!-- Disqus Placeholder -->
-                    <div id="disqus-placeholder" style="margin-top: 2rem; margin-bottom: 2rem; padding: 0 1rem; flex-shrink: 0; width: 100%; box-sizing: border-box;"></div>
-
-                    <div class="contact-section">
-                        <h3>${t.contactUs}</h3>
-                        <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
-                            <input type="text" name="name" placeholder="${t.name}" required>
-                            <input type="email" name="email" placeholder="${t.email}" required>
-                            <textarea name="message" placeholder="${t.message}" required></textarea>
-                            <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
-                        </form>
-                    </div>
                 </aside>
 
                 <main>
@@ -218,6 +205,22 @@ class IndustryApp extends HTMLElement {
                             ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
                         </div>
                     `}
+
+                    <!-- Page Footer: Disqus & Contact -->
+                    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <!-- Disqus Placeholder -->
+                        <div id="disqus-placeholder" style="margin-bottom: 2rem; width: 100%; box-sizing: border-box;"></div>
+
+                        <div class="contact-section">
+                            <h3>${t.contactUs}</h3>
+                            <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
+                                <input type="text" name="name" placeholder="${t.name}" required>
+                                <input type="email" name="email" placeholder="${t.email}" required>
+                                <textarea name="message" placeholder="${t.message}" required></textarea>
+                                <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
+                            </form>
+                        </div>
+                    </div>
                 </main>
             </div>
         `;
