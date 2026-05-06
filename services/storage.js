@@ -3,7 +3,7 @@
  * Manages daily logs and persistence.
  */
 export const StorageService = {
-    STORAGE_KEY: 'gidb_logs_v16',
+    STORAGE_KEY: 'gidb_logs_v20',
 
     /**
      * Get all logs
@@ -37,3 +37,4 @@ export const StorageService = {
         return Object.keys(this.getLogs()).sort((a, b) => new Date(b) - new Date(a));
     }
 };
+

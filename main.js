@@ -1,5 +1,5 @@
-import { StorageService } from './services/storage.js?v=3.0';
-import { NewsService } from './services/news.js?v=3.0';
+import { StorageService } from './services/storage.js?v=6.0';
+import { NewsService } from './services/news.js?v=6.0';
 
 console.log('Harness News App is loading...');
 
