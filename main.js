@@ -135,14 +135,6 @@ class IndustryApp extends HTMLElement {
         const availableDates = StorageService.getAvailableDates();
         const industries = NewsService.getIndustries();
 
-        // 1. RESCUE THE DISQUS CONTAINER BEFORE RE-RENDERING
-        // If it's currently inside our element, move it to the body temporarily to prevent its destruction.
-        const disqusContainer = document.getElementById('disqus-persistent-container');
-        if (disqusContainer) {
-            document.body.appendChild(disqusContainer);
-            disqusContainer.style.display = 'none';
-        }
-
         // 2. OVERWRITE HTML
         this.innerHTML = `
             <div class="app-container">
@@ -209,7 +201,9 @@ class IndustryApp extends HTMLElement {
                     <!-- Page Footer: Disqus & Contact -->
                     <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
                         <!-- Disqus Placeholder -->
-                        <div id="disqus-placeholder" style="margin-bottom: 2rem; width: 100%; box-sizing: border-box;"></div>
+                        <div id="disqus-placeholder" style="margin-bottom: 2rem; width: 100%; box-sizing: border-box; min-height: 300px;">
+                            <div id="disqus_thread"></div>
+                        </div>
 
                         <div class="contact-section">
                             <h3>${t.contactUs}</h3>
@@ -227,24 +221,29 @@ class IndustryApp extends HTMLElement {
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
+        this.loadDisqus();
+    }
 
-        // 3. RESTORE THE DISQUS CONTAINER INTO THE NEW PLACEHOLDER
-        const restoredDisqusContainer = document.getElementById('disqus-persistent-container');
-        const placeholder = this.querySelector('#disqus-placeholder');
-        
-        if (restoredDisqusContainer && placeholder) {
-            restoredDisqusContainer.style.display = 'block';
-            placeholder.appendChild(restoredDisqusContainer);
-            
-            // Tell Disqus to reset itself to calculate its new position in the DOM correctly
-            if (window.DISQUS) {
-                window.DISQUS.reset({
-                    reload: true,
-                    config: function () {
-                        this.page.url = window.location.href.split('#')[0];
-                        this.page.identifier = 'harness_news_global_main';
-                    }
-                });
+    loadDisqus() {
+        if (window.DISQUS) {
+            window.DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.url = window.location.href.split('#')[0];
+                    this.page.identifier = 'harness_news_global_main';
+                }
+            });
+        } else {
+            if (!document.getElementById('disqus-embed-script')) {
+                window.disqus_config = function () {
+                    this.page.url = window.location.href.split('#')[0];
+                    this.page.identifier = 'harness_news_global_main';
+                };
+                const d = document, s = d.createElement('script');
+                s.src = 'https://harness-news.disqus.com/embed.js';
+                s.id = 'disqus-embed-script';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
             }
         }
     }
