@@ -48,6 +48,8 @@ A professional dashboard for industry professionals to stay updated on global tr
     - Implemented SPA-compatible Disqus script loading and dynamic re-initialization `DISQUS.reset` for daily view routing.
     9.  **News Content Update (Current):**
     - Updated `NewsService.fetchLatestBriefing()` to provide actual recent news from the past week (May 2026) instead of old mock data.
+    - Added multiple news items per category (2 items each for Robotics, Automotive, Battery, and Wiring Harness) for richer briefings.
+    - Updated all news URLs to point to highly reputable official corporate newsrooms (e.g., Ford Media Center, Toyota Global Newsroom, 1X Technologies Newsroom) to ensure maximum credibility and user trust.
     - Excluded the Automation category as no significant recent news was found, adhering to user's strict briefing criteria.
-    - Updated `StorageService.STORAGE_KEY` to `gidb_logs_v15` to force cache invalidation and ensure the latest data is displayed.
+    - Updated `StorageService.STORAGE_KEY` to `gidb_logs_v17` to force cache invalidation and ensure the latest data is displayed.
 
