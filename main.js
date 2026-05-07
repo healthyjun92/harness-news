@@ -28,7 +28,14 @@ const TRANSLATIONS = {
         message: 'Message',
         send: 'Send Inquiry',
         refresh: 'Refresh',
-        refreshTip: 'Force update with the latest industry data'
+        refreshTip: 'Force update with the latest industry data',
+        aboutUs: 'About Us',
+        privacyPolicy: 'Privacy Policy',
+        termsOfService: 'Terms of Service',
+        aboutUsContent: 'Harness News is a global intelligence platform dedicated to aggregating and verifying major industry trends. Our mission is to provide accurate, concise, and professional insights for business leaders and researchers worldwide.',
+        privacyContent: 'We value your privacy. Harness News does not collect personal data unnecessarily. We use standard web analytics and advertising partners (like Google AdSense) which may use cookies to serve personalized ads based on your visit to our site and other sites on the internet.',
+        termsContent: 'By accessing Harness News, you agree to use our content for informational purposes only. We strive for accuracy but do not guarantee the completeness of the curated news. The official source links are provided for your convenience.',
+        close: 'Close'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -54,7 +61,14 @@ const TRANSLATIONS = {
         message: '문의 내용',
         send: '문의 보내기',
         refresh: '새로고침',
-        refreshTip: '최신 데이터를 강제로 다시 불러옵니다'
+        refreshTip: '최신 데이터를 강제로 다시 불러옵니다',
+        aboutUs: '회사 소개',
+        privacyPolicy: '개인정보처리방침',
+        termsOfService: '이용약관',
+        aboutUsContent: '하네스 뉴스는 주요 산업 동향을 수집하고 검증하는 글로벌 인텔리전스 플랫폼입니다. 전 세계 비즈니스 리더와 연구원들에게 정확하고 간결하며 전문적인 통찰력을 제공하는 것을 사명으로 합니다.',
+        privacyContent: '당사는 귀하의 개인정보를 소중히 여깁니다. 하네스 뉴스는 불필요한 개인 데이터를 수집하지 않습니다. 당사는 구글 애드센스와 같은 광고 파트너와 표준 웹 분석 도구를 사용하며, 이러한 파트너는 쿠키를 사용하여 귀하의 웹사이트 방문 기록을 기반으로 맞춤형 광고를 제공할 수 있습니다.',
+        termsContent: '하네스 뉴스를 이용함으로써 귀하는 정보 제공 목적으로만 당사의 콘텐츠를 이용하는 데 동의하게 됩니다. 당사는 정보의 정확성을 위해 노력하지만 수집된 뉴스의 완전성을 보장하지는 않습니다. 공식 원문 링크는 사용자의 편의를 위해 제공됩니다.',
+        close: '닫기'
     }
 };
 
@@ -88,6 +102,11 @@ class IndustryApp extends HTMLElement {
                 this.sidebarActive = false;
                 aside.classList.remove('active');
             }
+        }
+        
+        const modal = this.querySelector('#info-modal');
+        if (modal && e.target === modal) {
+            modal.style.display = 'none';
         }
     }
 
@@ -145,10 +164,42 @@ class IndustryApp extends HTMLElement {
         }
     }
 
+    openModal(title, content) {
+        const modal = this.querySelector('#info-modal');
+        const modalTitle = this.querySelector('#modal-title');
+        const modalBody = this.querySelector('#modal-body');
+        
+        if (modal && modalTitle && modalBody) {
+            modalTitle.textContent = title;
+            modalBody.textContent = content;
+            modal.style.display = 'flex';
+        }
+    }
+
     render() {
         const t = TRANSLATIONS[this.lang];
         const availableDates = StorageService.getAvailableDates();
         const industries = NewsService.getIndustries();
+
+        // Render industry sections and intersperse AdSense placeholder slots
+        let industrySectionsHTML = '';
+        if (this.briefingData) {
+            industries.forEach((ind, index) => {
+                const sectionHtml = this.renderIndustrySection(ind, t);
+                if (sectionHtml) {
+                    industrySectionsHTML += sectionHtml;
+                    // Add an AdSense slot between sections (except after the last one)
+                    if (index < industries.length - 1) {
+                        industrySectionsHTML += `
+                            <div class="adsense-slot-container">
+                                <!-- AdSense Placeholder -->
+                                <div class="adsense-placeholder">Advertisement</div>
+                            </div>
+                        `;
+                    }
+                }
+            });
+        }
 
         this.innerHTML = `
             <div class="app-container">
@@ -187,6 +238,12 @@ class IndustryApp extends HTMLElement {
                             <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
                         </form>
                     </div>
+
+                    <div class="legal-links">
+                        <a href="#" class="legal-link" id="link-about">${t.aboutUs}</a>
+                        <a href="#" class="legal-link" id="link-privacy">${t.privacyPolicy}</a>
+                        <a href="#" class="legal-link" id="link-terms">${t.termsOfService}</a>
+                    </div>
                 </aside>
 
                 <main>
@@ -223,10 +280,21 @@ class IndustryApp extends HTMLElement {
                         </div>
                     ` : `
                         <div class="briefing-grid">
-                            ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
+                            ${industrySectionsHTML}
                         </div>
                     `}
                 </main>
+            </div>
+
+            <!-- Info Modal -->
+            <div class="modal-overlay" id="info-modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-title"></h2>
+                        <button class="close-modal" id="modal-close" title="${t.close}"><i data-lucide="x"></i></button>
+                    </div>
+                    <div class="modal-body" id="modal-body"></div>
+                </div>
             </div>
         `;
 
@@ -261,16 +329,16 @@ class IndustryApp extends HTMLElement {
                         const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(title + ' ' + item.source)}`;
                         
                         return `
-                            <div class="news-card">
+                            <article class="news-card">
                                 <div class="news-card-header">
-                                    <a href="${item.url}" target="_blank" class="news-title-link"><h4>${title}</h4></a>
+                                    <a href="${item.url}" target="_blank" class="news-title-link"><h3>${title}</h3></a>
                                     ${item.isVerified ? `<span class="verified-badge"><i data-lucide="check-circle"></i> ${t.verified}</span>` : ''}
                                 </div>
                                 <p class="news-summary">${summary}</p>
                                 
                                 ${mainPoints.length > 0 ? `
                                     <div class="key-points-container">
-                                        <h5>${t.keyPoints}</h5>
+                                        <h4>${t.keyPoints}</h4>
                                         <ul class="key-points-list">
                                             ${mainPoints.map(point => `<li>${point}</li>`).join('')}
                                         </ul>
@@ -294,7 +362,7 @@ class IndustryApp extends HTMLElement {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         `;
                     }).join('')}
                 </div>
@@ -344,6 +412,24 @@ class IndustryApp extends HTMLElement {
                 this.setLanguage(btn.getAttribute('data-lang'));
             });
         });
+
+        const t = TRANSLATIONS[this.lang];
+        const linkAbout = this.querySelector('#link-about');
+        if (linkAbout) linkAbout.addEventListener('click', (e) => { e.preventDefault(); this.openModal(t.aboutUs, t.aboutUsContent); });
+        
+        const linkPrivacy = this.querySelector('#link-privacy');
+        if (linkPrivacy) linkPrivacy.addEventListener('click', (e) => { e.preventDefault(); this.openModal(t.privacyPolicy, t.privacyContent); });
+        
+        const linkTerms = this.querySelector('#link-terms');
+        if (linkTerms) linkTerms.addEventListener('click', (e) => { e.preventDefault(); this.openModal(t.termsOfService, t.termsContent); });
+
+        const modalClose = this.querySelector('#modal-close');
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                const modal = this.querySelector('#info-modal');
+                if (modal) modal.style.display = 'none';
+            });
+        }
     }
 }
 

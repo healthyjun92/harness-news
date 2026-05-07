@@ -42,4 +42,8 @@ A professional dashboard for industry professionals to stay updated on global tr
     - **Sidebar Contact Form:** Moved the Partnership Inquiry form to the sidebar as per initial design goals for better accessibility.
     - **Manual Refresh Capability:** Added a "Refresh" button in the header to allow users to force cache invalidation and data reload.
     - **Cache Invalidation:** Updated `StorageService.STORAGE_KEY` to `gidb_logs_v30` to ensure all users receive the updated, high-fidelity data.
+7.  **AdSense Optimization:**
+    - **Semantic Structure:** Refactored news cards to use `<article>` elements for better SEO and bot parsing.
+    - **Policy Modals:** Implemented an "About Us", "Privacy Policy", and "Terms of Service" modal to verify site legitimacy and satisfy AdSense guidelines.
+    - **Ad Placement:** Created non-disruptive AdSense placeholder slots (`.adsense-slot-container`) strategically placed between industry sections to maintain a high content-to-ad ratio.
 
