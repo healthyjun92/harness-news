@@ -17,79 +17,79 @@ export const NewsService = {
                 const briefing = {
                     robotics: [
                         { 
-                            title: { en: 'Meta pushes into humanoid robotics with ARI acquisition', ko: '메타, ARI 인수를 통해 휴머노이드 로봇 시장 본격 진출' }, 
-                            summary: { en: 'Meta has acquired Assured Robot Intelligence (ARI) to develop humanoid hardware specifically for household chores, integrating ARI\'s expertise into its Superintelligence Labs.', ko: '메타(Meta)가 가사 지원에 특화된 휴머노이드 하드웨어를 개발하기 위해 로봇 스타트업 ARI(Assured Robot Intelligence)를 인수하여 자사의 초지능 연구소에 통합했습니다.' }, 
+                            title: { en: 'Nvidia scales "Physical AI" through global robotics partnerships', ko: '엔비디아, 글로벌 로봇 파트너십을 통해 "물리적 AI" 생태계 대폭 확장' }, 
+                            summary: { en: 'Nvidia announced a massive expansion of its robotics ecosystem, partnering with ABB, Agility, and Figure to deploy software that enables robots to perceive and reason in complex factory environments.', ko: '엔비디아가 ABB, Agility, Figure 등 주요 기업들과 파트너십을 맺고 공장 등 복잡한 환경에서 로봇이 스스로 인지하고 추론할 수 있도록 돕는 "물리적 AI" 소프트웨어 생태계를 확장한다고 발표했습니다.' }, 
                             mainPoints: {
-                                en: ['Focus on "physical artificial general intelligence"', 'Developing humanoid hardware for household chores', 'Integration into Meta Superintelligence Labs'],
-                                ko: ['"물리적 인공 일반 지능(AGI)" 개발에 초점', '가사 노동을 지원하는 휴머노이드 하드웨어 개발', '메타 초지능 연구소(Superintelligence Labs)와 기술 통합']
+                                en: ['Partnership with ABB, Agility, and Figure', 'Focus on software for autonomous factory reasoning', 'Moving beyond simple programmed movements to adaptive AI'],
+                                ko: ['ABB, Agility, Figure 등 글로벌 로봇 선도 기업과 협업', '자율적 추론이 가능한 공장 자동화 소프트웨어에 초점', '단순 프로그래밍을 넘어선 적응형 AI 로봇 도입 가속화']
                             },
-                            source: 'Silicon Republic',
-                            url: 'https://www.siliconrepublic.com/machines/meta-acquired-robotics-startup-assured-robot-intelligence',
-                            date: '2026-05-05',
+                            source: 'AI Business',
+                            url: 'https://aibusiness.com/verticals/nvidia-scales-physical-ai-ecosystem',
+                            date: '2026-05-06',
                             isVerified: true
                         },
                         { 
-                            title: { en: 'Serve Robotics expands autonomous delivery fleet to 2,000 units', ko: '서브 로보틱스, 자율주행 배달 로봇 플릿 2,000대로 대폭 확장' }, 
-                            summary: { en: 'Serve Robotics reported its fleet has grown to 2,000 robots, partnering with over 3,500 restaurants via Uber Eats and DoorDash, while navigating new city regulations.', ko: '서브 로보틱스는 우버 이츠 및 도어대시와의 파트너십을 통해 배달 로봇을 2,000대로 확장하고 3,500개 이상의 레스토랑에 서비스를 제공하고 있다고 발표했습니다.' }, 
+                            title: { en: 'Ukraine to procure 25,000 UGVs in 2026 for frontline logistics', ko: '우크라이나, 2026년 최전방 보급을 위해 지상 무인 로봇(UGV) 25,000대 도입' }, 
+                            summary: { en: 'Ukraine has set a goal to procure 25,000 unmanned ground vehicles (UGVs) by late 2026 to replace human personnel in dangerous frontline logistics and mine clearance roles.', ko: '우크라이나가 2026년 말까지 25,000대의 지상 무인 로봇(UGV)을 도입하여, 위험한 최전방 물자 보급 및 지뢰 제거 임무에서 인력을 대체하겠다는 계획을 수립했습니다.' }, 
                             mainPoints: {
-                                en: ['Fleet expanded to 2,000 robots', 'Partnerships with Uber Eats and DoorDash', 'Navigating new sidewalk robot moratoriums in some cities'],
-                                ko: ['자율주행 로봇 2,000대로 확장 운영', '우버 이츠 및 도어대시 등 주요 플랫폼과 파트너십', '일부 도시의 보도 주행 로봇 규제 및 모라토리엄 대응 중']
+                                en: ['Targeting 25,000 units by end of 2026', 'Focus on logistics and mine clearance', 'Replacing humans in high-risk zones'],
+                                ko: ['2026년 말까지 25,000대 도입 목표', '보급 및 지뢰 제거 임무에 우선 배치', '고위험 지역 내 인력 피해 최소화 및 작전 효율 증대']
                             },
-                            source: 'LA Times',
-                            url: 'https://www.latimes.com/business/story/2026-05-01/serve-robotics-expansion',
-                            date: '2026-05-01',
+                            source: 'Calibre Defence',
+                            url: 'https://calibredefence.co.uk/ukraine-ugv-expansion-2026',
+                            date: '2026-05-06',
                             isVerified: true
                         }
                     ],
                     automotive: [
                         { 
-                            title: { en: 'Ford announces next-generation F-150 Lightning EREV', ko: '포드, 주행거리 연장형 전기차(EREV) 기반 차세대 F-150 라이트닝 발표' }, 
-                            summary: { en: 'Ford has announced a next-generation F-150 Lightning featuring an Extended-Range Electric Vehicle (EREV) powertrain, aiming for over 700 miles of range for heavy towing.', ko: '포드는 700마일 이상의 주행거리를 제공하여 무거운 짐을 견인하는 사용자들을 겨냥한 주행거리 연장형 전기차(EREV) 파워트레인을 탑재한 차세대 F-150 라이트닝을 발표했습니다.' }, 
+                            title: { en: 'BMW releases pricing for 2027 iX3 with 434-mile range', ko: 'BMW, 434마일 주행거리 갖춘 2027년형 iX3 가격 및 상세 스펙 공개' }, 
+                            summary: { en: 'BMW has released full pricing for the new iX3 50 xDrive, starting at $62,850 and offering an EPA-estimated range of 434 miles, outperforming several key rivals.', ko: 'BMW가 차세대 iX3 50 xDrive의 가격을 62,850달러부터 시작한다고 발표했습니다. EPA 기준 434마일(약 698km)의 주행거리를 제공하여 동급 경쟁 모델들을 압도하고 있습니다.' }, 
                             mainPoints: {
-                                en: ['Features Extended-Range Electric Vehicle (EREV) powertrain', 'Targeting over 700 miles of range', 'Specifically designed for users who tow heavy loads'],
-                                ko: ['주행거리 연장형 전기차(EREV) 파워트레인 채택', '700마일(약 1,126km) 이상의 획기적인 주행거리 목표', '무거운 화물을 견인하는 픽업트럭 사용자에 특화']
+                                en: ['Starting price confirmed at $62,850', 'EPA-estimated range of up to 434 miles', 'Positioned to compete with Porsche Macan EV and Cadillac Optiq'],
+                                ko: ['시작 가격 62,850달러(약 8,500만원) 확정', 'EPA 기준 최대 434마일의 획기적인 주행거리 달성', '포르쉐 마칸 EV 및 캐딜락 옵틱과 직접 경쟁 구도']
                             },
-                            source: 'Top Electric SUV',
-                            url: 'https://topelectricsuv.com/news/ford/ford-f-150-lightning-erev/',
-                            date: '2026-04-29',
+                            source: 'Car and Driver',
+                            url: 'https://www.caranddriver.com/news/a2027-bmw-ix3-pricing-range/',
+                            date: '2026-05-06',
                             isVerified: true
                         },
                         { 
-                            title: { en: 'Samsung SDI secures major battery supply deal with Mercedes-Benz', ko: '삼성SDI, 메르세데스-벤츠와 대규모 배터리 공급 계약 체결' }, 
-                            summary: { en: 'Samsung SDI secured a multi-year agreement to provide high-energy NCM batteries for future compact and mid-size electric SUVs from Mercedes-Benz.', ko: '삼성SDI는 메르세데스-벤츠의 차세대 콤팩트 및 중형 전기 SUV에 고에너지 NCM(니켈·코발트·망간) 배터리를 공급하는 다년간의 계약을 체결했습니다.' }, 
+                            title: { en: 'Honda pivots to hybrids, withdrawing from $15B Canadian EV plant', ko: '혼다, 전기차 수요 둔화에 하이브리드 집중... 캐나다 150억 달러 규모 EV 공장 철회' }, 
+                            summary: { en: 'Honda has reportedly withdrawn from a planned $15-billion EV plant in Ontario, Canada, signaling a strategic shift toward hybrid vehicles as EV demand cools in North America.', ko: '혼다가 캐나다 온타리오주에 계획했던 150억 달러 규모의 전기차 공장 건설 계획을 철회했습니다. 이는 북미 지역의 EV 수요 둔화에 대응하여 하이브리드 차량에 집중하려는 전략적 변화로 풀이됩니다.' }, 
                             mainPoints: {
-                                en: ['First major supply deal between Samsung SDI and Mercedes-Benz', 'Supplying high-energy NCM batteries', 'Production begins at Hungary plant in Q2 2026'],
-                                ko: ['삼성SDI와 벤츠 간의 첫 번째 대규모 공급 계약', '고에너지 NCM(니켈·코발트·망간) 배터리 납품', '2026년 2분기부터 헝가리 공장에서 생산 시작']
+                                en: ['Withdrawing from $15B Ontario EV plant', 'Strategic pivot toward hybrid vehicle production', 'Response to cooling EV demand in North America'],
+                                ko: ['온타리오주 150억 달러 규모 EV 공장 투자 계획 철회', '하이브리드 차량 생산 확대로 전략적 노선 수정', '북미 시장 내 전기차 수요 감소에 따른 실용적 대응']
                             },
-                            source: 'WardsAuto',
-                            url: 'https://www.wardsauto.com/vehicles/samsung-sdi-mercedes-benz-partnership',
-                            date: '2026-04-21',
+                            source: 'National Post',
+                            url: 'https://nationalpost.com/news/honda-withdraws-ontario-ev-plant',
+                            date: '2026-05-06',
                             isVerified: true
                         }
                     ],
                     battery: [
                         { 
-                            title: { en: 'MG Motor achieves mass production of semi-solid-state batteries', ko: 'MG 모터, 세계 최초 반고체 배터리 대량 생산 달성' }, 
-                            summary: { en: 'MG has become the first manufacturer globally to achieve mass production of semi-solid-state batteries, launching in the European market by late 2026.', ko: 'MG 모터(SAIC 산하)는 세계 최초로 반고체 배터리의 대량 생산에 성공했으며, 2026년 말까지 유럽 시장에 출시될 전기차에 이를 탑재할 계획입니다.' }, 
+                            title: { en: 'CATL begins commercial rollout of "Naxtra" sodium-ion batteries', ko: 'CATL, "Naxtra" 나트륨 이온 배터리 본격 상용화 및 출하 시작' }, 
+                            summary: { en: 'CATL has officially started the commercial deployment of its sodium-ion batteries, with the Changan Nevo A06 expected to be the first mass-produced car to use them.', ko: '세계 최대 배터리 기업 CATL이 나트륨 이온 배터리의 본격적인 상용화를 시작했습니다. 장안자동차의 Nevo A06가 이 배터리를 탑재한 첫 번째 양산차가 될 예정입니다.' }, 
                             mainPoints: {
-                                en: ['First global mass production of semi-solid-state EV batteries', 'To be featured in the MG4 EV Urban range', 'European market launch expected by the end of 2026'],
-                                ko: ['전기차용 반고체 배터리의 세계 최초 대량 생산 단계 진입', '향후 출시될 MG4 EV Urban 라인업에 탑재 예정', '2026년 말 유럽 시장부터 본격적인 판매 시작']
+                                en: ['Commercial deployment of "Naxtra" sodium-ion cells', 'Changan Nevo A06 to be the first mass-produced passenger EV with Na-ion', 'Signed 60GWh strategic partnership with HyperStrong for energy storage'],
+                                ko: ['"Naxtra" 브랜드 나트륨 이온 배터리 상용 보급 시작', '장안자동차 Nevo A06 모델에 최초 탑재 예정', '에너지 저장 장치(ESS) 분야에서도 HyperStrong과 60GWh 규모 협력 체결']
                             },
-                            source: 'EV Magazine',
-                            url: 'https://evmagazine.com/technology/mg-motor-semi-solid-state-batteries',
-                            date: '2026-05-02',
+                            source: 'EV Tech News',
+                            url: 'https://evtech.news/catl-sodium-ion-commercial-rollout-2026',
+                            date: '2026-05-06',
                             isVerified: true
                         },
                         { 
-                            title: { en: 'Factorial Energy partners with Karma Automotive for solid-state tech', ko: '팩토리얼 에너지, 카르마 오토모티브와 전고체 배터리 파트너십 체결' }, 
-                            summary: { en: 'Solid-state battery startup Factorial Energy has confirmed a partnership to integrate its "FEST" solid-state batteries into the upcoming Karma Kaveya super-coupe.', ko: '미국의 전고체 배터리 스타트업 팩토리얼 에너지는 자사의 "FEST" 전고체 배터리를 카르마 오토모티브의 예정된 슈퍼 쿠페 모델인 \'카베야(Kaveya)\'에 통합하는 파트너십을 발표했습니다.' }, 
+                            title: { en: 'World’s first semi-solid-state battery electric bike launched', ko: '세계 최초 반고체 배터리 탑재 전기 자전거 "Revv1 EVO" 출시' }, 
+                            summary: { en: 'Ride1Up has announced the Revv1 EVO, the first e-bike to feature a semi-solid-state battery, offering double the cycle life and superior cold-weather performance.', ko: 'Ride1Up이 세계 최초로 반고체 배터리를 탑재한 전기 자전거 Revv1 EVO를 발표했습니다. 기존 배터리 대비 두 배의 수명과 영하 20도에서도 우수한 성능을 유지하는 것이 특징입니다.' }, 
                             mainPoints: {
-                                en: ['Integrating "FEST" solid-state batteries into high-performance EVs', 'Partnership with Karma Automotive', 'Parallel pivot towards military drones and robotics'],
-                                ko: ['고성능 전기차에 "FEST" 전고체 배터리 시스템 통합', '카르마 오토모티브(Karma Automotive)와 전략적 제휴', '군용 드론 및 로봇 분야로의 상용화 병행 추진']
+                                en: ['Features semi-solid-state battery for double lifespan (1,200+ cycles)', 'Maintains 70% capacity at -20°C', 'Significant safety improvement over traditional Li-ion'],
+                                ko: ['반고체 배터리 채택으로 수명 2배 연장 (1,200회 이상 충방전)', '영하 20도 극한의 추위에서도 용량의 70% 유지', '기존 리튬 이온 배터리 대비 화재 안정성 대폭 개선']
                             },
-                            source: 'CleanTechnica',
-                            url: 'https://cleantechnica.com/2026/05/03/factorial-energy-karma-automotive/',
-                            date: '2026-05-03',
+                            source: 'Electrek',
+                            url: 'https://electrek.co/2026/05/06/ride1up-revv1-evo-semi-solid-state-battery/',
+                            date: '2026-05-06',
                             isVerified: true
                         }
                     ],
@@ -116,6 +116,32 @@ export const NewsService = {
                             source: 'Guide Auto Web',
                             url: 'https://www.guideautoweb.com/en/news/volkswagen-taos-fuel-sensor-wiring-harness-recall/',
                             date: '2026-04-30',
+                            isVerified: true
+                        }
+                    ],
+                    automation: [
+                        { 
+                            title: { en: 'Rockwell Automation demonstrates fully virtual production lines', ko: '로크웰 오토메이션, 전체 가상 생산 라인 시뮬레이션 기술 공개' }, 
+                            summary: { en: 'At Interpack 2026, Rockwell demonstrated a fully virtualized cookie production line using Emulate3D digital twin software, allowing for validation before physical installation.', ko: 'Interpack 2026에서 로크웰 오토메이션이 Emulate3D 디지털 트윈 소프트웨어를 사용하여 실제 설치 전 모든 공정을 가상으로 검증할 수 있는 전체 가상 생산 라인을 시연했습니다.' }, 
+                            mainPoints: {
+                                en: ['Using Emulate3D digital twin software for full virtualization', 'Allows validation of automation designs before physical commissioning', 'Demonstrated on high-speed cookie production and packaging lines'],
+                                ko: ['Emulate3D 디지털 트윈 소프트웨어를 통한 생산 라인 전체 가상화', '실제 설비 도입 전 자동화 설계 및 로직의 완벽한 사전 검증 가능', '고속 제과 생산 및 포장 라인 시뮬레이션을 통해 효율성 증명']
+                            },
+                            source: 'PandCT',
+                            url: 'https://pandct.com/news/rockwell-automation-virtual-production-interpack-2026',
+                            date: '2026-05-06',
+                            isVerified: true
+                        },
+                        { 
+                            title: { en: 'Spirit AI and Bosch China partner for "Embodied Intelligence" in factories', ko: 'Spirit AI와 보쉬 중국, 공장용 "실체형 지능(Embodied Intelligence)" 도입 협력' }, 
+                            summary: { en: 'Spirit AI and Bosch China have signed an agreement to deploy humanoid robots and autonomous agents in production logistics, using Bosch factories as data training grounds.', ko: 'Spirit AI와 보쉬 중국이 생산 물류 현장에 휴머노이드 로봇과 자율 에이전트를 배치하기 위한 전략적 협약을 체결했습니다. 보쉬 공장을 데이터 학습의 장으로 활용할 계획입니다.' }, 
+                            mainPoints: {
+                                en: ['Deploying humanoid robots in production logistics', 'Using Bosch factories for large-scale data acquisition', 'Developing a "general robot brain" for diverse industrial tasks'],
+                                ko: ['생산 물류 분야에 휴머노이드 로봇 실제 배치 추진', '보쉬의 공장 인프라를 대규모 데이터 수집 및 학습 거점으로 활용', '다양한 산업 태스크 수행이 가능한 "범용 로봇 뇌" 개발 가속화']
+                            },
+                            source: 'Gasgoo',
+                            url: 'https://gasgoo.com/news/spirit-ai-bosch-china-embodied-intelligence-partnership',
+                            date: '2026-05-06',
                             isVerified: true
                         }
                     ]

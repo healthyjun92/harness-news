@@ -1,5 +1,5 @@
-import { StorageService } from './services/storage.js?v=6.0';
-import { NewsService } from './services/news.js?v=6.0';
+import { StorageService } from './services/storage.js?v=7.0';
+import { NewsService } from './services/news.js?v=7.0';
 
 console.log('Harness News App is loading...');
 
@@ -26,7 +26,9 @@ const TRANSLATIONS = {
         name: 'Name',
         email: 'Email',
         message: 'Message',
-        send: 'Send Inquiry'
+        send: 'Send Inquiry',
+        refresh: 'Refresh',
+        refreshTip: 'Force update with the latest industry data'
     },
     ko: {
         logo: '하네스 뉴스 글로벌',
@@ -50,7 +52,9 @@ const TRANSLATIONS = {
         name: '이름',
         email: '이메일',
         message: '문의 내용',
-        send: '문의 보내기'
+        send: '문의 보내기',
+        refresh: '새로고침',
+        refreshTip: '최신 데이터를 강제로 다시 불러옵니다'
     }
 };
 
@@ -92,15 +96,26 @@ class IndustryApp extends HTMLElement {
         const existingBriefing = StorageService.getBriefingByDate(today);
 
         if (!existingBriefing) {
-            this.isLoading = true;
-            this.render();
-            const newBriefing = await NewsService.fetchLatestBriefing();
-            StorageService.saveBriefing(today, newBriefing);
-            this.briefingData = newBriefing;
-            this.isLoading = false;
+            await this.refreshData(today);
         } else {
             this.briefingData = existingBriefing;
         }
+    }
+
+    async refreshData(date) {
+        this.isLoading = true;
+        this.render();
+        const newBriefing = await NewsService.fetchLatestBriefing();
+        StorageService.saveBriefing(date, newBriefing);
+        this.briefingData = newBriefing;
+        this.isLoading = false;
+        this.render();
+    }
+
+    async handleManualRefresh() {
+        const today = new Date().toISOString().split('T')[0];
+        StorageService.clearLogs(today);
+        await this.refreshData(today);
     }
 
     setLanguage(lang) {
@@ -135,7 +150,6 @@ class IndustryApp extends HTMLElement {
         const availableDates = StorageService.getAvailableDates();
         const industries = NewsService.getIndustries();
 
-        // 2. OVERWRITE HTML
         this.innerHTML = `
             <div class="app-container">
                 <aside class="${this.sidebarActive ? 'active' : ''}">
@@ -163,6 +177,16 @@ class IndustryApp extends HTMLElement {
                             `).join('')}
                         </div>
                     </nav>
+
+                    <div class="contact-section">
+                        <h3>${t.contactUs}</h3>
+                        <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
+                            <input type="text" name="name" placeholder="${t.name}" required>
+                            <input type="email" name="email" placeholder="${t.email}" required>
+                            <textarea name="message" placeholder="${t.message}" required></textarea>
+                            <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
+                        </form>
+                    </div>
                 </aside>
 
                 <main>
@@ -177,9 +201,14 @@ class IndustryApp extends HTMLElement {
                             </div>
                         </div>
                         <div class="top-controls">
-                            <div class="lang-toggle">
-                                <button class="lang-btn ${this.lang === 'ko' ? 'active' : ''}" data-lang="ko">KO</button>
-                                <button class="lang-btn ${this.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
+                            <div style="display: flex; gap: 0.75rem;">
+                                <button class="refresh-btn" id="refresh-btn" title="${t.refreshTip}">
+                                    <i data-lucide="refresh-cw"></i> ${t.refresh}
+                                </button>
+                                <div class="lang-toggle">
+                                    <button class="lang-btn ${this.lang === 'ko' ? 'active' : ''}" data-lang="ko">KO</button>
+                                    <button class="lang-btn ${this.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
+                                </div>
                             </div>
                             <div class="date-display">
                                 <div class="today">${new Date(this.selectedDate).toLocaleDateString(this.lang === 'ko' ? 'ko-KR' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
@@ -197,19 +226,6 @@ class IndustryApp extends HTMLElement {
                             ${industries.map(ind => this.renderIndustrySection(ind, t)).join('')}
                         </div>
                     `}
-
-                    <!-- Page Footer: Contact -->
-                    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-                        <div class="contact-section">
-                            <h3>${t.contactUs}</h3>
-                            <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
-                                <input type="text" name="name" placeholder="${t.name}" required>
-                                <input type="email" name="email" placeholder="${t.email}" required>
-                                <textarea name="message" placeholder="${t.message}" required></textarea>
-                                <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
-                            </form>
-                        </div>
-                    </div>
                 </main>
             </div>
         `;
@@ -309,6 +325,11 @@ class IndustryApp extends HTMLElement {
                 e.stopPropagation();
                 this.toggleSidebar();
             });
+        }
+
+        const refreshBtn = this.querySelector('#refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => this.handleManualRefresh());
         }
         
         this.querySelectorAll('#archive-list .nav-item').forEach(item => {

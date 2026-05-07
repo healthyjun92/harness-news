@@ -3,7 +3,7 @@
  * Manages daily logs and persistence.
  */
 export const StorageService = {
-    STORAGE_KEY: 'gidb_logs_v20',
+    STORAGE_KEY: 'gidb_logs_v30',
 
     /**
      * Get all logs
@@ -31,10 +31,22 @@ export const StorageService = {
     },
 
     /**
+     * Clear specific date or all logs (for force refresh)
+     */
+    clearLogs(date = null) {
+        if (date) {
+            const logs = this.getLogs();
+            delete logs[date];
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(logs));
+        } else {
+            localStorage.removeItem(this.STORAGE_KEY);
+        }
+    },
+
+    /**
      * Get list of dates with available logs
      */
     getAvailableDates() {
         return Object.keys(this.getLogs()).sort((a, b) => new Date(b) - new Date(a));
     }
 };
-
