@@ -3,7 +3,7 @@
  * Manages daily logs and persistence.
  */
 export const StorageService = {
-    STORAGE_KEY: 'gidb_logs_v30',
+    STORAGE_KEY: 'gidb_logs_v31',
 
     /**
      * Get all logs
