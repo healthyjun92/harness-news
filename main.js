@@ -30,6 +30,7 @@ const TRANSLATIONS = {
         back: 'Back to News',
         author: 'By',
         readTime: 'min read',
+        source: 'Source',
         aboutUsContent: 'Harness News is a premium publisher of original, in-depth articles focusing on global industry trends. Our dedicated team of analysts and writers provide accurate, concise, and professional insights for business leaders and researchers worldwide. We pride ourselves on creating high-quality, original content that adds significant value to the industry dialogue.',
         privacyContent: 'We value your privacy. Harness News does not collect personal data unnecessarily. We use standard web analytics and advertising partners (like Google AdSense) which use cookies to serve personalized ads based on your visit to our site and other sites on the internet. We ensure a safe and transparent browsing experience.',
         termsContent: 'By accessing Harness News, you agree to our terms. All content published here is original and protected by copyright. You may read and share our articles for informational purposes. Harness News provides valuable, carefully researched journalism to our readers.',
@@ -61,6 +62,7 @@ const TRANSLATIONS = {
         back: '목록으로 돌아가기',
         author: '작성자',
         readTime: '분 소요',
+        source: '출처',
         aboutUsContent: '하네스 뉴스는 글로벌 산업 동향에 초점을 맞춘 독창적이고 심층적인 기사를 발행하는 프리미엄 퍼블리셔입니다. 전문 분석가와 작가들로 구성된 팀은 전 세계 비즈니스 리더들에게 가치 있는 통찰력을 제공합니다. 우리는 업계 논의에 실질적인 가치를 더하는 고품질의 오리지널 콘텐츠 제작을 자랑스럽게 생각합니다.',
         privacyContent: '당사는 귀하의 개인정보를 소중히 여깁니다. 하네스 뉴스는 불필요한 개인 데이터를 수집하지 않습니다. 당사는 구글 애드센스와 같은 광고 파트너와 표준 웹 분석 도구를 사용하며, 이러한 파트너는 쿠키를 사용하여 귀하의 웹사이트 방문 기록을 기반으로 맞춤형 광고를 제공할 수 있습니다.',
         termsContent: '하네스 뉴스를 이용함으로써 귀하는 당사의 약관에 동의하게 됩니다. 이곳에 게재된 모든 콘텐츠는 독창적이며 저작권의 보호를 받습니다. 귀하는 정보 제공 목적으로 당사의 기사를 읽고 공유할 수 있습니다. 하네스 뉴스는 독자들에게 세심하게 연구된 가치 있는 저널리즘을 제공합니다.',
@@ -388,6 +390,7 @@ class IndustryApp extends HTMLElement {
                         <span class="article-author"><i data-lucide="user"></i> ${item.author || 'Harness News Team'}</span>
                         <span class="article-date"><i data-lucide="calendar"></i> ${item.date}</span>
                         <span class="article-read-time"><i data-lucide="clock"></i> ${item.readTime} ${t.readTime}</span>
+                        ${item.source && item.url ? `<span class="article-source"><i data-lucide="link"></i> <a href="${item.url}" target="_blank" rel="noopener noreferrer">${t.source || 'Source'}: ${item.source}</a></span>` : ''}
                     </div>
                 </header>
                 

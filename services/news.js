@@ -34,7 +34,9 @@ export const NewsService = {
                             },
                             author: 'Harness News Team',
                             date: '2026-05-06',
-                            readTime: 4
+                            readTime: 4,
+                            source: 'AI Business',
+                            url: 'https://aibusiness.com/verticals/nvidia-scales-physical-ai-ecosystem'
                         },
                         { 
                             id: 'r2',
@@ -54,7 +56,9 @@ export const NewsService = {
                             },
                             author: 'Defense Tech Editor',
                             date: '2026-05-06',
-                            readTime: 3
+                            readTime: 3,
+                            source: 'Calibre Defence',
+                            url: 'https://calibredefence.co.uk/ukraine-ugv-expansion-2026'
                         }
                     ],
                     automotive: [
@@ -68,7 +72,7 @@ export const NewsService = {
                                 This exceptional range is achieved through BMW's latest generation of high-density battery cells and significant advancements in aerodynamic design. The vehicle's intelligent thermal management system also ensures consistent performance and efficiency even in extreme weather conditions. Inside, the iX3 features BMW's newest iDrive interface, integrated deeply with augmented reality navigation and advanced driver-assistance systems.
                                 
                                 The aggressive pricing strategy combined with class-leading range signals BMW's intent to dominate the premium EV market. Industry analysts note that overcoming "range anxiety" has been a primary hurdle for EV adoption among luxury buyers, and the 2027 iX3 directly addresses this concern, potentially triggering a new wave of electric vehicle upgrades among affluent consumers.`,
-                                ko: `BMW가 럭셔리 전기 SUV 부문의 새로운 기준을 제시할 2027년형 iX3 50 xDrive의 가격과 상세 스펙을 공식 발표했습니다. 62,850달러부터 시작하는 이 최신 모델은 EPA 기준 434마일(약 698km)이라는 놀라운 1회 충전 주행거리를 자랑하며, 포르쉐 마칸 EV나 캐딜락 옵틱과 같은 직접적인 경쟁 모델들을 여유 있게 따돌리고 있습니다.
+                                ko: `BMW가 럭셔리 전기 SUV 부문을 선도할 2027년형 iX3 50 xDrive의 가격과 상세 스펙을 공식 발표했습니다. 62,850달러부터 시작하는 이 최신 모델은 EPA 기준 434마일(약 698km)이라는 놀라운 1회 충전 주행거리를 자랑하며, 포르쉐 마칸 EV나 캐딜락 옵틱과 같은 직접적인 경쟁 모델들을 여유 있게 따돌리고 있습니다.
                                 
                                 이러한 획기적인 주행거리 연장은 BMW의 최신 고밀도 배터리 셀 기술과 공기역학적 디자인의 눈부신 발전 덕분에 가능했습니다. 또한 지능형 열 관리 시스템을 도입하여 극한의 기상 조건에서도 일관된 성능과 효율성을 유지합니다. 실내에는 증강 현실(AR) 내비게이션 및 첨단 운전자 보조 시스템과 긴밀하게 통합된 BMW의 최신 iDrive 인터페이스가 적용되었습니다.
                                 
@@ -76,7 +80,9 @@ export const NewsService = {
                             },
                             author: 'Auto Industry Analyst',
                             date: '2026-05-06',
-                            readTime: 4
+                            readTime: 4,
+                            source: 'Car and Driver',
+                            url: 'https://www.caranddriver.com/news/a2027-bmw-ix3-pricing-range/'
                         }
                     ]
                 };

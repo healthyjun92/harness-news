@@ -730,4 +730,19 @@ header {
     color: var(--text-secondary);
 }
 
+.article-source {
+    margin-left: auto;
+    font-weight: 600;
+}
+
+.article-source a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.article-source a:hover {
+    color: var(--accent-orange);
+    text-decoration: underline;
+}
 
