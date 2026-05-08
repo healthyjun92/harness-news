@@ -18,71 +18,71 @@ export const NewsService = {
                     robotics: [
                         { 
                             id: 'r1',
-                            title: { en: 'Nvidia scales "Physical AI" through global robotics partnerships', ko: '엔비디아, 글로벌 로봇 파트너십을 통해 "물리적 AI" 생태계 대폭 확장' }, 
-                            summary: { en: 'Nvidia announced a massive expansion of its robotics ecosystem, partnering with ABB, Agility, and Figure to deploy software that enables robots to perceive and reason in complex factory environments.', ko: '엔비디아가 ABB, Agility, Figure 등 주요 기업들과 파트너십을 맺고 공장 등 복잡한 환경에서 로봇이 스스로 인지하고 추론할 수 있도록 돕는 "물리적 AI" 소프트웨어 생태계를 확장한다고 발표했습니다.' }, 
+                            title: { en: 'Serve Robotics Reports 238% Revenue Growth and Expands Operations', ko: 'Serve Robotics, 매출 238% 성장 및 운영 지역 대폭 확대' }, 
+                            summary: { en: 'Serve Robotics reported a 238% sequential revenue growth in Q1 2026, expanding its operations to 44 cities following the Diligent Robotics acquisition.', ko: 'Serve Robotics는 2026년 1분기에 전 분기 대비 238%의 매출 성장을 기록했으며, 딜리전트 로보틱스 인수 후 운영을 44개 도시로 확장했습니다.' }, 
                             content: {
-                                en: `Nvidia has significantly scaled its efforts in the realm of "Physical AI" by announcing comprehensive global partnerships with major robotics manufacturers, including ABB, Agility Robotics, and Figure. This move marks a pivotal shift from traditional, rigid programming to highly adaptive, AI-driven automation in industrial settings.
+                                en: `Serve Robotics (Nasdaq: SERV) has announced significant financial and operational milestones for the first quarter of 2026, reporting a staggering 238% sequential revenue growth. This rapid expansion is primarily driven by the successful integration of its recent acquisition, Diligent Robotics, which has allowed Serve to diversify its portfolio beyond outdoor sidewalk delivery.
                                 
-                                The core of this initiative revolves around Nvidia's new software stack, which empowers robots to perceive their surroundings in real-time, reason about complex tasks, and execute actions with unprecedented precision. Unlike older systems that required meticulous hard-coding for every specific movement, Physical AI allows robots to understand the physical laws of their environment, adapt to unexpected changes, and learn from human demonstrations.
+                                The company has aggressively expanded into the indoor service sector, specifically targeting hospital environments. Serve's robotic fleet is now actively operating in 44 cities across 14 states in the U.S., assisting medical staff with logistics and supply transport. This strategic pivot addresses acute labor shortages in the healthcare sector, providing autonomous solutions that allow human workers to focus on patient care.
                                 
-                                Industry analysts suggest that this breakthrough will drastically reduce the deployment time for automated systems in factories. "What used to take months of programming can now be achieved in days through AI training," stated a lead robotics researcher. The integration of Nvidia's powerful GPUs and AI models into factory floors is expected to revolutionize supply chains, enhancing both speed and safety while mitigating labor shortages in critical manufacturing sectors.`,
-                                ko: `엔비디아가 ABB, Agility Robotics, Figure 등 주요 로봇 제조사들과의 포괄적인 글로벌 파트너십을 발표하며 "물리적 AI(Physical AI)" 분야에서의 입지를 대폭 확대했습니다. 이번 조치는 산업 현장의 자동화가 기존의 경직된 프로그래밍 방식에서 고도로 적응력이 뛰어난 AI 주도 방식으로 전환되는 중요한 기점이 될 것입니다.
+                                Industry experts view Serve's trajectory as a strong indicator of the maturation of the robotics-as-a-service (RaaS) model. By demonstrating clear ROI in both outdoor and indoor commercial applications, the company is proving that autonomous delivery systems can scale profitably when tailored to specific, high-demand verticals.`,
+                                ko: `서브 로보틱스(Serve Robotics, 나스닥: SERV)가 2026년 1분기에 전 분기 대비 238%라는 놀라운 매출 성장을 기록하며 중요한 재무 및 운영 이정표를 달성했다고 발표했습니다. 이러한 급격한 성장은 최근 인수한 딜리전트 로보틱스(Diligent Robotics)의 성공적인 통합에 힘입은 것으로, 이를 통해 서브 로보틱스는 실외 인도 배달을 넘어 포트폴리오를 다각화할 수 있었습니다.
                                 
-                                이 이니셔티브의 핵심은 로봇이 실시간으로 주변 환경을 인식하고, 복잡한 작업을 추론하며, 전례 없는 정밀도로 동작을 실행할 수 있도록 지원하는 엔비디아의 새로운 소프트웨어 스택입니다. 모든 특정 움직임에 대해 세심한 하드코딩이 필요했던 과거의 시스템과 달리, 물리적 AI는 로봇이 환경의 물리적 법칙을 이해하고, 예상치 못한 변화에 적응하며, 인간의 시연을 통해 스스로 학습할 수 있도록 합니다.
+                                회사는 실내 서비스 부문, 특히 병원 환경을 타겟으로 공격적인 확장을 진행해 왔습니다. 서브 로보틱스의 로봇 자율주행 제품군은 현재 미국 내 14개 주, 44개 도시에서 활발히 운영되며 의료진의 물류 및 물품 운송을 지원하고 있습니다. 이러한 전략적 전환은 의료 부문의 심각한 인력 부족 문제를 해결하고, 인간 작업자가 환자 치료에 집중할 수 있도록 자율 솔루션을 제공합니다.
                                 
-                                업계 전문가들은 이번 기술 혁신이 공장 내 자동화 시스템의 도입 시간을 획기적으로 단축할 것이라고 전망합니다. 한 수석 로봇 연구원은 "과거에는 수개월이 걸렸던 프로그래밍 작업이 이제 AI 학습을 통해 단 며칠 만에 가능해졌습니다"라고 말했습니다. 엔비디아의 강력한 GPU와 AI 모델이 제조 현장에 본격적으로 통합됨에 따라 공급망이 혁신되고, 작업 속도와 안전성이 향상되는 동시에 핵심 제조업 분야의 노동력 부족 문제가 완화될 것으로 기대됩니다.`
+                                업계 전문가들은 서브 로보틱스의 이러한 성장 궤적을 로봇 서비스(RaaS) 모델이 성숙기에 접어들었다는 강력한 지표로 보고 있습니다. 실외 및 실내 상업용 애플리케이션 모두에서 명확한 투자 수익률(ROI)을 입증함으로써, 회사는 수요가 높은 특정 수직 시장에 맞춤화될 때 자율 배송 시스템이 수익성 있게 확장될 수 있음을 증명하고 있습니다.`
                             },
-                            author: 'Harness News Team',
-                            date: '2026-05-06',
-                            readTime: 4,
-                            source: 'AI Business',
-                            url: 'https://aibusiness.com/verticals/nvidia-scales-physical-ai-ecosystem'
+                            author: 'Serve Robotics Newsroom',
+                            date: '2026-05-08',
+                            readTime: 3,
+                            source: 'serverobotics.com',
+                            url: 'https://investors.serverobotics.com/news-releases'
                         },
                         { 
                             id: 'r2',
-                            title: { en: 'Ukraine to procure 25,000 UGVs in 2026 for frontline logistics', ko: '우크라이나, 2026년 최전방 보급을 위해 지상 무인 로봇(UGV) 25,000대 도입' }, 
-                            summary: { en: 'Ukraine has set a goal to procure 25,000 unmanned ground vehicles (UGVs) by late 2026 to replace human personnel in dangerous frontline logistics and mine clearance roles.', ko: '우크라이나가 2026년 말까지 25,000대의 지상 무인 로봇(UGV)을 도입하여, 위험한 최전방 물자 보급 및 지뢰 제거 임무에서 인력을 대체하겠다는 계획을 수립했습니다.' }, 
+                            title: { en: 'HD Hyundai Robotics Secures Major Order from Chouest Group Shipyards', ko: 'HD현대로보틱스, 미국 Chouest 조선소로부터 대규모 수주 확보' }, 
+                            summary: { en: 'HD Hyundai Robotics announced a full-scale entry into the U.S. shipyard market by securing a major order for its ArcLift GO robotic welding solution.', ko: 'HD현대로보틱스는 자사의 용접 로봇 솔루션인 ArcLift GO의 대규모 수주를 확보하며 미국 조선소 시장에 본격 진출한다고 발표했습니다.' }, 
                             content: {
-                                en: `In a major modernization of its military logistics capabilities, Ukraine has announced an ambitious target to procure 25,000 Unmanned Ground Vehicles (UGVs) by the end of 2026. This initiative is designed to dramatically reduce human casualties by replacing personnel in highly dangerous frontline roles, specifically in logistics resupply and mine clearance operations.
+                                en: `In a landmark move for heavy industry automation, HD Hyundai Robotics has secured a major strategic order from the U.S.-based Chouest Group Shipyards. The contract centers around the deployment of HD Hyundai's proprietary "ArcLift GO" robotic welding solution, marking the company's full-scale entry into the North American shipbuilding market.
                                 
-                                The deployment of these UGVs represents a critical shift toward asymmetric and technologically advanced warfare. These vehicles, ranging from small tracked robots capable of carrying medical supplies and ammunition to larger, heavily armored units designed for explosive ordnance disposal (EOD), are expected to operate autonomously or semi-autonomously in heavily contested zones.
+                                The U.S. shipbuilding sector has been grappling with severe shortages of skilled labor, particularly certified welders, causing bottlenecks in production schedules. The ArcLift GO system is designed to autonomously navigate complex ship hull structures, performing high-precision welding tasks that previously required extensive human labor. The integration of these robots is expected to drastically increase output efficiency while maintaining rigorous maritime safety standards.
                                 
-                                Defense officials emphasize that the mass adoption of UGVs will provide a vital tactical advantage. By ensuring a continuous, unmanned supply line to frontline troops and safely neutralizing minefields ahead of troop movements, the military aims to sustain momentum while preserving human life. The procurement will involve a mix of domestic production and strategic imports from allied nations, stimulating growth in the global defense robotics sector.`,
-                                ko: `우크라이나가 2026년 말까지 25,000대의 지상 무인 로봇(UGV)을 도입한다는 야심 찬 목표를 발표하며 군수 보급 역량의 대대적인 현대화에 나섰습니다. 이 이니셔티브는 최전방의 고위험 임무, 특히 물자 보급 및 지뢰 제거 작전에서 인력을 대체함으로써 인명 피해를 획기적으로 줄이기 위해 마련되었습니다.
+                                This deal is seen as a crucial step for the robotics industry's expansion into non-traditional, heavy-duty manufacturing environments. Financial analysts note that as the global maritime industry seeks to modernize and expand capacity, the demand for specialized, ruggedized industrial robotics will create a lucrative new revenue stream for established robotics manufacturers over the next decade.`,
+                                ko: `중공업 자동화 분야의 기념비적인 행보로, HD현대로보틱스가 미국 기반의 Chouest Group 조선소로부터 주요 전략적 수주를 확보했습니다. 이번 계약은 HD현대의 독자적인 용접 로봇 솔루션인 "ArcLift GO"의 도입을 중심으로 이루어졌으며, 이는 북미 조선 시장에 대한 회사의 본격적인 진출을 의미합니다.
                                 
-                                이러한 UGV의 대규모 배치는 비대칭적이고 기술 중심적인 현대전으로의 중요한 전환을 의미합니다. 의료품과 탄약을 운반할 수 있는 소형 궤도형 로봇부터 폭발물 처리(EOD)를 위해 특수 설계된 대형 장갑 무인기까지 다양한 형태의 UGV가 치열한 접전 지역에서 자율 또는 반자율 모드로 운용될 예정입니다.
+                                미국 조선업계는 숙련된 인력, 특히 인증된 용접공의 심각한 부족으로 인해 생산 일정에 병목 현상을 겪고 있습니다. ArcLift GO 시스템은 복잡한 선체 구조를 자율적으로 탐색하도록 설계되어, 과거에는 광범위한 인간의 노동이 필요했던 고정밀 용접 작업을 수행합니다. 이러한 로봇의 통합은 엄격한 해사 안전 기준을 유지하면서 생산 효율성을 획기적으로 높일 것으로 기대됩니다.
                                 
-                                국방 관계자들은 UGV의 대량 도입이 핵심적인 전술적 우위를 제공할 것이라고 강조합니다. 최전방 부대에 무인 보급선을 안정적으로 유지하고, 병력 이동 전 지뢰밭을 안전하게 무력화함으로써 군은 인명 손실을 방지하는 동시에 작전의 주도권을 유지할 수 있습니다. 이번 조달은 우크라이나 국내 생산과 동맹국의 전략적 수입을 병행하여 이루어질 예정이며, 이는 글로벌 국방 로봇 산업의 성장도 촉진할 전망입니다.`
+                                이번 거래는 로봇 산업이 비전통적인 중장비 제조 환경으로 영역을 확장하는 중요한 단계로 평가받고 있습니다. 재무 분석가들은 전 세계 해양 산업이 현대화되고 생산 능력을 확대하고자 함에 따라, 특수화되고 내구성이 뛰어난 산업용 로봇에 대한 수요가 향후 10년 동안 기존 로봇 제조업체들에게 새롭고 수익성 높은 수익원을 창출할 것이라고 주목합니다.`
                             },
-                            author: 'Defense Tech Editor',
-                            date: '2026-05-06',
-                            readTime: 3,
-                            source: 'Calibre Defence',
-                            url: 'https://calibredefence.co.uk/ukraine-ugv-expansion-2026'
+                            author: 'Morningstar Equities',
+                            date: '2026-05-07',
+                            readTime: 4,
+                            source: 'morningstar.com',
+                            url: 'https://www.morningstar.com/news/'
                         }
                     ],
                     automotive: [
                         { 
                             id: 'a1',
-                            title: { en: 'BMW releases pricing for 2027 iX3 with 434-mile range', ko: 'BMW, 434마일 주행거리 갖춘 2027년형 iX3 가격 및 상세 스펙 공개' }, 
-                            summary: { en: 'BMW has released full pricing for the new iX3 50 xDrive, starting at $62,850 and offering an EPA-estimated range of 434 miles, outperforming several key rivals.', ko: 'BMW가 차세대 iX3 50 xDrive의 가격을 62,850달러부터 시작한다고 발표했습니다. EPA 기준 434마일(약 698km)의 주행거리를 제공하여 동급 경쟁 모델들을 압도하고 있습니다.' }, 
+                            title: { en: '2026 Honda Prologue Features Expanded Access to Tesla Supercharger Network', ko: '2026년형 혼다 프롤로그, 테슬라 수퍼차저 네트워크 접근성 대폭 확대' }, 
+                            summary: { en: 'The 2026 Honda Prologue EV has been updated to include native support for the North American Charging Standard (NACS), providing access to the Tesla Supercharger network.', ko: '2026년형 혼다 프롤로그 EV는 북미 충전 표준(NACS)을 기본 지원하도록 업데이트되어 테슬라 수퍼차저 네트워크를 이용할 수 있게 되었습니다.' }, 
                             content: {
-                                en: `BMW has officially unveiled the pricing and specifications for its highly anticipated 2027 iX3 50 xDrive, setting a new benchmark in the luxury electric SUV segment. Starting at $62,850, the latest iteration of the iX3 boasts an impressive EPA-estimated range of 434 miles on a single charge, a figure that places it comfortably ahead of direct competitors like the Porsche Macan EV and the Cadillac Optiq.
+                                en: `Honda has officially announced that the upcoming 2026 model year of the Prologue electric vehicle will feature native integration of the North American Charging Standard (NACS) port. This critical update grants Honda drivers seamless, direct access to the vast Tesla Supercharger network without the need for cumbersome adapters, significantly alleviating range anxiety for consumers.
                                 
-                                This exceptional range is achieved through BMW's latest generation of high-density battery cells and significant advancements in aerodynamic design. The vehicle's intelligent thermal management system also ensures consistent performance and efficiency even in extreme weather conditions. Inside, the iX3 features BMW's newest iDrive interface, integrated deeply with augmented reality navigation and advanced driver-assistance systems.
+                                The decision reflects a broader industry consensus that charging infrastructure reliability is the primary hurdle to mainstream EV adoption. By aligning with the NACS standard, Honda ensures that Prologue owners can utilize over 15,000 high-speed chargers across the United States and Canada. This move is expected to bolster the Prologue's competitiveness in the crowded mid-size electric SUV market.
                                 
-                                The aggressive pricing strategy combined with class-leading range signals BMW's intent to dominate the premium EV market. Industry analysts note that overcoming "range anxiety" has been a primary hurdle for EV adoption among luxury buyers, and the 2027 iX3 directly addresses this concern, potentially triggering a new wave of electric vehicle upgrades among affluent consumers.`,
-                                ko: `BMW가 럭셔리 전기 SUV 부문을 선도할 2027년형 iX3 50 xDrive의 가격과 상세 스펙을 공식 발표했습니다. 62,850달러부터 시작하는 이 최신 모델은 EPA 기준 434마일(약 698km)이라는 놀라운 1회 충전 주행거리를 자랑하며, 포르쉐 마칸 EV나 캐딜락 옵틱과 같은 직접적인 경쟁 모델들을 여유 있게 따돌리고 있습니다.
+                                Automotive analysts view 2026 as the tipping point where charging hardware standardization finally becomes a reality. "Consumers no longer want to worry about connector compatibility when planning a road trip," a leading industry analyst stated. The 2026 Prologue also features slight aerodynamic tweaks and a revised battery management system, marginally improving its EPA-estimated range over previous iterations.`,
+                                ko: `혼다가 다가오는 2026년형 프롤로그(Prologue) 전기차 모델에 북미 충전 표준(NACS) 포트를 기본으로 통합할 것이라고 공식 발표했습니다. 이 중요한 업데이트를 통해 혼다 운전자들은 번거로운 어댑터 없이도 방대한 테슬라 수퍼차저 네트워크에 원활하고 직접적으로 접근할 수 있게 되어, 소비자의 주행거리 불안을 크게 완화할 수 있게 되었습니다.
                                 
-                                이러한 획기적인 주행거리 연장은 BMW의 최신 고밀도 배터리 셀 기술과 공기역학적 디자인의 눈부신 발전 덕분에 가능했습니다. 또한 지능형 열 관리 시스템을 도입하여 극한의 기상 조건에서도 일관된 성능과 효율성을 유지합니다. 실내에는 증강 현실(AR) 내비게이션 및 첨단 운전자 보조 시스템과 긴밀하게 통합된 BMW의 최신 iDrive 인터페이스가 적용되었습니다.
+                                이러한 결정은 충전 인프라의 신뢰성이 전기차 대중화의 가장 큰 장애물이라는 업계 전반의 공감대를 반영한 것입니다. 혼다는 NACS 표준을 채택함으로써 프롤로그 소유자가 미국과 캐나다 전역에 걸쳐 15,000개 이상의 고속 충전기를 이용할 수 있도록 보장합니다. 이번 조치는 경쟁이 치열한 중형 전기 SUV 시장에서 프롤로그의 경쟁력을 강화할 것으로 예상됩니다.
                                 
-                                동급 최고 수준의 주행거리와 공격적인 가격 책정은 프리미엄 전기차 시장을 주도하겠다는 BMW의 강력한 의지를 보여줍니다. 업계 전문가들은 고급차 구매자들 사이에서 전기차 전환을 망설이게 하는 주된 원인이 '주행거리 불안'이었으며, 2027년형 iX3가 이 문제를 정면으로 해결함으로써 고소득 소비층의 새로운 전기차 구매 돌풍을 일으킬 수 있다고 평가하고 있습니다.`
+                                자동차 분석가들은 2026년을 충전 하드웨어 표준화가 마침내 현실이 되는 티핑 포인트로 보고 있습니다. 한 주요 업계 분석가는 "소비자들은 더 이상 장거리 여행을 계획할 때 커넥터 호환성에 대해 걱정하고 싶어하지 않습니다"라고 말했습니다. 2026년형 프롤로그는 약간의 공기역학적 개선과 수정된 배터리 관리 시스템을 특징으로 하며, 이전 모델에 비해 EPA 추정 주행거리를 소폭 향상시켰습니다.`
                             },
-                            author: 'Auto Industry Analyst',
-                            date: '2026-05-06',
-                            readTime: 4,
-                            source: 'Car and Driver',
-                            url: 'https://www.caranddriver.com/news/a2027-bmw-ix3-pricing-range/'
+                            author: 'Honda Newsroom',
+                            date: '2026-05-08',
+                            readTime: 3,
+                            source: 'hondanews.com',
+                            url: 'https://hondanews.com/en-US/'
                         }
                     ]
                 };
