@@ -167,48 +167,48 @@ class IndustryApp extends HTMLElement {
         const t = TRANSLATIONS[this.lang];
         const availableDates = StorageService.getAvailableDates();
 
-        this.innerHTML = \`
+        this.innerHTML = `
             <div class="app-container">
-                <aside class="\${this.sidebarActive ? 'active' : ''}">
+                <aside class="${this.sidebarActive ? 'active' : ''}">
                     <div class="logo" style="cursor:pointer;" id="logo-home">
                         <i data-lucide="globe"></i>
-                        <span>\${t.logo}</span>
+                        <span>${t.logo}</span>
                     </div>
                     
                     <nav class="nav-section">
-                        <h3>\${t.main}</h3>
+                        <h3>${t.main}</h3>
                         <div class="nav-list">
-                            <div class="nav-item \${this.currentView === 'today' ? 'active' : ''}" id="nav-today">
-                                <i data-lucide="layout-dashboard"></i> \${t.todaysBriefing}
+                            <div class="nav-item ${this.currentView === 'today' ? 'active' : ''}" id="nav-today">
+                                <i data-lucide="layout-dashboard"></i> ${t.todaysBriefing}
                             </div>
                         </div>
                     </nav>
 
                     <nav class="nav-section" style="flex-grow: 1; overflow-y: auto;">
-                        <h3>\${t.archiveLogs}</h3>
+                        <h3>${t.archiveLogs}</h3>
                         <div class="nav-list" id="archive-list">
-                            \${availableDates.map(date => \`
-                                <div class="nav-item \${this.selectedDate === date && this.currentView === 'archive' ? 'active' : ''}" data-date="\${date}">
-                                    <i data-lucide="calendar"></i> \${date}
+                            ${availableDates.map(date => `
+                                <div class="nav-item ${this.selectedDate === date && this.currentView === 'archive' ? 'active' : ''}" data-date="${date}">
+                                    <i data-lucide="calendar"></i> ${date}
                                 </div>
-                            \`).join('')}
+                            `).join('')}
                         </div>
                     </nav>
 
                     <div class="contact-section">
-                        <h3>\${t.contactUs}</h3>
+                        <h3>${t.contactUs}</h3>
                         <form class="contact-form" action="https://formspree.io/f/mwvnpzna" method="POST">
-                            <input type="text" name="name" placeholder="\${t.name}" required>
-                            <input type="email" name="email" placeholder="\${t.email}" required>
-                            <textarea name="message" placeholder="\${t.message}" required></textarea>
-                            <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> \${t.send}</button>
+                            <input type="text" name="name" placeholder="${t.name}" required>
+                            <input type="email" name="email" placeholder="${t.email}" required>
+                            <textarea name="message" placeholder="${t.message}" required></textarea>
+                            <button type="submit"><i data-lucide="send" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: text-bottom;"></i> ${t.send}</button>
                         </form>
                     </div>
 
                     <div class="legal-links">
-                        <a href="#" class="legal-link" id="link-about">\${t.aboutUs}</a>
-                        <a href="#" class="legal-link" id="link-privacy">\${t.privacyPolicy}</a>
-                        <a href="#" class="legal-link" id="link-terms">\${t.termsOfService}</a>
+                        <a href="#" class="legal-link" id="link-about">${t.aboutUs}</a>
+                        <a href="#" class="legal-link" id="link-privacy">${t.privacyPolicy}</a>
+                        <a href="#" class="legal-link" id="link-terms">${t.termsOfService}</a>
                     </div>
                 </aside>
 
@@ -219,36 +219,36 @@ class IndustryApp extends HTMLElement {
                                 <i data-lucide="menu"></i>
                             </button>
                             <div class="header-title">
-                                <h1>\${this.getHeaderTitle(t)}</h1>
-                                <p>\${t.subTitle}</p>
+                                <h1>${this.getHeaderTitle(t)}</h1>
+                                <p>${t.subTitle}</p>
                             </div>
                         </div>
                         <div class="top-controls">
                             <div style="display: flex; gap: 0.75rem;">
-                                \${this.currentView !== 'article' && this.currentView !== 'page' ? \`
-                                <button class="refresh-btn" id="refresh-btn" title="\${t.refreshTip}">
-                                    <i data-lucide="refresh-cw"></i> \${t.refresh}
+                                ${this.currentView !== 'article' && this.currentView !== 'page' ? `
+                                <button class="refresh-btn" id="refresh-btn" title="${t.refreshTip}">
+                                    <i data-lucide="refresh-cw"></i> ${t.refresh}
                                 </button>
-                                \` : \`
+                                ` : `
                                 <button class="refresh-btn" id="back-btn">
-                                    <i data-lucide="arrow-left"></i> \${t.back}
+                                    <i data-lucide="arrow-left"></i> ${t.back}
                                 </button>
-                                \`}
+                                `}
                                 <div class="lang-toggle">
-                                    <button class="lang-btn \${this.lang === 'ko' ? 'active' : ''}" data-lang="ko">KO</button>
-                                    <button class="lang-btn \${this.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
+                                    <button class="lang-btn ${this.lang === 'ko' ? 'active' : ''}" data-lang="ko">KO</button>
+                                    <button class="lang-btn ${this.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
                                 </div>
                             </div>
                             <div class="date-display">
-                                <div class="today">\${new Date(this.selectedDate).toLocaleDateString(this.lang === 'ko' ? 'ko-KR' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                                <div class="today">${new Date(this.selectedDate).toLocaleDateString(this.lang === 'ko' ? 'ko-KR' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
                             </div>
                         </div>
                     </header>
 
-                    \${this.renderMainContent(t)}
+                    ${this.renderMainContent(t)}
                 </main>
             </div>
-        \`;
+        `;
 
         this.attachEventListeners();
         if (window.lucide) lucide.createIcons();
@@ -256,7 +256,7 @@ class IndustryApp extends HTMLElement {
 
     getHeaderTitle(t) {
         if (this.currentView === 'today') return t.today;
-        if (this.currentView === 'archive') return \`\${t.archive}: \${this.selectedDate}\`;
+        if (this.currentView === 'archive') return `${t.archive}: ${this.selectedDate}`;
         if (this.currentView === 'article') return t.logo;
         if (this.currentView === 'page') return t.logo;
         return t.logo;
@@ -264,12 +264,12 @@ class IndustryApp extends HTMLElement {
 
     renderMainContent(t) {
         if (this.isLoading) {
-            return \`
+            return `
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 300px; color: var(--text-muted); gap: 1.5rem;">
                     <span class="loader"></span>
-                    <p>\${t.fetching}</p>
+                    <p>${t.fetching}</p>
                 </div>
-            \`;
+            `;
         }
 
         if (this.currentView === 'article' && this.currentArticle) {
@@ -293,7 +293,7 @@ class IndustryApp extends HTMLElement {
                 if (newsItems.length > 0) {
                     html += this.renderIndustrySection(ind, newsItems, t);
                     if (index < industries.length - 1) {
-                        html += \`
+                        html += `
                             <div class="adsense-slot-container">
                                 <!-- AdSense Placeholder -->
                                 <ins class="adsbygoogle"
@@ -304,7 +304,7 @@ class IndustryApp extends HTMLElement {
                                      data-full-width-responsive="true"></ins>
                                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             </div>
-                        \`;
+                        `;
                     }
                 }
             });
@@ -314,43 +314,43 @@ class IndustryApp extends HTMLElement {
     }
 
     renderIndustrySection(industry, newsItems, t) {
-        return \`
-            <section class="industry-section \${industry.id}">
+        return `
+            <section class="industry-section ${industry.id}">
                 <div class="industry-header">
-                    <i data-lucide="\${industry.icon}" style="color: var(--accent-\${this.getAccentColor(industry.id)})"></i>
-                    <h2>\${industry.name[this.lang] || industry.name['en'] || industry.name}</h2>
+                    <i data-lucide="${industry.icon}" style="color: var(--accent-${this.getAccentColor(industry.id)})"></i>
+                    <h2>${industry.name[this.lang] || industry.name['en'] || industry.name}</h2>
                 </div>
                 <div class="news-cards">
-                    \${newsItems.map(item => {
+                    ${newsItems.map(item => {
                         const title = typeof item.title === 'object' ? item.title[this.lang] || item.title['en'] : item.title;
                         const summary = typeof item.summary === 'object' ? item.summary[this.lang] || item.summary['en'] : item.summary;
                         
-                        return \`
-                            <article class="news-card article-link" data-id="\${item.id}" data-industry="\${industry.id}">
+                        return `
+                            <article class="news-card article-link" data-id="${item.id}" data-industry="${industry.id}">
                                 <div class="news-card-header">
-                                    <h3>\${title}</h3>
+                                    <h3>${title}</h3>
                                 </div>
-                                <p class="news-summary">\${summary}</p>
+                                <p class="news-summary">${summary}</p>
                                 
                                 <div class="news-meta">
                                     <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
                                         <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
                                             <span class="read-more-link highlight">
-                                                \${t.readArticle} <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                                                ${t.readArticle} <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
                                             </span>
                                         </div>
                                         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted);">
-                                            <span class="issue-badge">\${t.author}: \${item.author || 'Harness News'}</span>
-                                            <span class="update-date" style="margin-left: auto;">\${item.readTime || 3} \${t.readTime} • \${item.date || this.selectedDate}</span>
+                                            <span class="issue-badge">${t.author}: ${item.author || 'Harness News'}</span>
+                                            <span class="update-date" style="margin-left: auto;">${item.readTime || 3} ${t.readTime} • ${item.date || this.selectedDate}</span>
                                         </div>
                                     </div>
                                 </div>
                             </article>
-                        \`;
+                        `;
                     }).join('')}
                 </div>
             </section>
-        \`;
+        `;
     }
 
     renderArticleView(t) {
@@ -363,10 +363,10 @@ class IndustryApp extends HTMLElement {
 
         let contentHtml = '';
         paragraphs.forEach((p, idx) => {
-            contentHtml += \`<p class="article-paragraph">\${p.trim()}</p>\`;
+            contentHtml += `<p class="article-paragraph">${p.trim()}</p>`;
             // Insert ad after 2nd paragraph
             if (idx === 1 && paragraphs.length > 2) {
-                contentHtml += \`
+                contentHtml += `
                     <div class="article-ad-slot">
                          <ins class="adsbygoogle"
                              style="display:block; text-align:center;"
@@ -376,23 +376,23 @@ class IndustryApp extends HTMLElement {
                              data-ad-slot="0987654321"></ins>
                         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
-                \`;
+                `;
             }
         });
 
-        return \`
+        return `
             <article class="full-article">
                 <header class="article-header">
-                    <h1>\${title}</h1>
+                    <h1>${title}</h1>
                     <div class="article-meta">
-                        <span class="article-author"><i data-lucide="user"></i> \${item.author || 'Harness News Team'}</span>
-                        <span class="article-date"><i data-lucide="calendar"></i> \${item.date}</span>
-                        <span class="article-read-time"><i data-lucide="clock"></i> \${item.readTime} \${t.readTime}</span>
+                        <span class="article-author"><i data-lucide="user"></i> ${item.author || 'Harness News Team'}</span>
+                        <span class="article-date"><i data-lucide="calendar"></i> ${item.date}</span>
+                        <span class="article-read-time"><i data-lucide="clock"></i> ${item.readTime} ${t.readTime}</span>
                     </div>
                 </header>
                 
                 <div class="article-content">
-                    \${contentHtml}
+                    ${contentHtml}
                 </div>
 
                 <div class="article-footer-ad">
@@ -405,7 +405,7 @@ class IndustryApp extends HTMLElement {
                     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                 </div>
             </article>
-        \`;
+        `;
     }
 
     renderPageView(t) {
@@ -415,14 +415,14 @@ class IndustryApp extends HTMLElement {
         if (this.currentPage === 'privacy') { title = t.privacyPolicy; content = t.privacyContent; }
         if (this.currentPage === 'terms') { title = t.termsOfService; content = t.termsContent; }
 
-        return \`
+        return `
             <div class="static-page">
-                <h1>\${title}</h1>
+                <h1>${title}</h1>
                 <div class="static-content">
-                    <p>\${content}</p>
+                    <p>${content}</p>
                 </div>
             </div>
-        \`;
+        `;
     }
 
     getAccentColor(id) {
